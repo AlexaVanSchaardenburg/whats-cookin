@@ -2,10 +2,104 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <!-- add fonts here -->
     <title>Whats Cookin</title>
   </head>
+  <header class="flex">
+    <img src="../src/images/whats-cookin-header.png">
+    <div class="invisible">
+      <button>All Recipes</button>
+      <button>Home</button>
+    </div>
+  </header>
   <body>
-    <h1>Whats Cookin</h1>
+    <section class="home-page">
+     <div>
+      <section class="banner-box">
+        <div>
+          <div>
+            <h3>
+              Box Header Here
+            </h3>
+            <p>
+              Box Tagline/Info here
+            </p>
+            <div class="home-buttons-container">
+              <input class="search-box" name="search-box" placeholder="search for recipes">
+              <button>View All</button>
+            </div>
+          </div>
+          <img>
+        </div>
+      </section>
+      <section class="featured-box">
+        <div>
+          <h2>Featured Recipes</h2>
+          <div class="recipes-container">
+            <article>
+              <img>
+              <h3></h3>
+            </article>
+            <article>
+              <img>
+              <h3></h3>
+            </article>
+            <article>
+              <img>
+              <h3></h3>
+            </article>
+          </div>
+        </div>
+      </section>
+     </div> 
+    </section>
+    <section class="all-recipes-page">
+      <div>
+        <div class="all-recipes-page-buttons">
+          <label for="filter-recipes">Filter Recipes</label>
+          <select name="filter-recipes">
+            <option></option>
+            <!-- all options here -->
+          </select>
+          <button>View Saved Recipes</button>
+          <input class="search-box" name="search-box" placeholder="search for recipes">
+        </div>
+      </div>
+      <section>
+        <!-- Recipes Go Here -->
+      </section>
+    </section>
+    <section class="recipe-page">
+      <aside>
+        <img>
+        <h3>Ingredients:</h3>
+        <ul>
+          <!-- Ingredients Go Here -->
+        </ul>
+      </aside>
+      <section>
+        <div>
+          <h2>Recipe Name</h2>
+          <button>Save Recipe</button>
+        </div>
+        <div class="pink-container flex">
+          <div class="tags">
+            <ul>
+              <!-- Tags Populate Here -->
+            </ul>
+          </div>
+          <div>
+            <p>Populate Total Cost Here</p>
+          </div>
+        </div>
+        <div class="instructions">
+          <h3>Instructions</h3>
+          <ol>
+            <!-- Instructions Populate Here -->
+          </ol>
+        </div>
+      </section>
+    </section>
   </body>
   <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
