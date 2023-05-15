@@ -3,7 +3,7 @@ const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe')
 const {filterByTag} = require('../src/RecipeRepository');
 
-describe('Recipe', () => {
+describe('Filter', () => {
   
   let recipes;
 
@@ -124,12 +124,41 @@ describe('Recipe', () => {
     }])
 
   });
-
-  it('Should not return anything the tag does not exist', () => {
+  it('Should return a message if no recieps match the tag filter', () => {
 
     const filteredRecipes2 = filterByTag(recipes,'javascript')
 
     expect(filteredRecipes2).to.equal("Sorry, No Recipes Were Found!")
-
   })
-})
+  it('Should filter recipes by search', function(){
+      const filteredRecipes = filterByName('')
+
+      expect(filteredRecipes).to.deep.equal(/* Array of sample data filterd for key word appears here */)
+  });
+  it('Should return a message if no recipes match the search', function(){
+      const filteredRecipes = filterByName('')
+
+      expect(filteredRecipes).to.equal(/* message */)
+  });
+});
+
+// describe('Filter by name', function(){
+//   const recipes = recipeSampleData
+//   it('should be a function', function(){
+//       filterByName = filterByName()
+//       expect(filterByName).to.be.a('function')
+//   });
+//   it('Should return an array of recipes with matching name', function(){
+//       const filteredRecipes = filterByName('')
+
+//       expect(filteredRecipes).to.deep.equal(/* Array of sample data filterd for key word appears here */)
+//   });
+//   it('Should return an array of recipes with matching name', function(){
+//       const filteredRecipes = filterByName('')
+
+//       expect(filteredRecipes).to.deep.equal(/* Array of sample data filterd for key word appears here */)
+//   });
+// });
+// describe('Filter by tag', function(){
+
+// });
