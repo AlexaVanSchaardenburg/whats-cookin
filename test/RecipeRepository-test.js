@@ -1,9 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe')
-const {filterByTag} = require('../src/RecipeRepository');
+const {filterByTag, filterByName} = require('../src/RecipeRepository');
 
-describe('Filter', () => {
+describe('Filtering Functions', () => {
   
   let recipes;
   beforeEach(() => {
@@ -131,7 +131,7 @@ describe('Filter', () => {
     expect(filteredRecipes2).to.equal("Sorry, No Recipes Were Found!")
   })
   it('Should filter recipes by search', function(){
-      const filteredRecipes = filterByName('cookie')
+      const filteredRecipes = filterByName(recipes, 'cookie')
 
       expect(filteredRecipes).to.deep.equal([
         {
