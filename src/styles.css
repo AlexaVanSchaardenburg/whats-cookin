@@ -10,14 +10,18 @@
 
 body {
   background-color: #FFFFFF;
-  /* border: 2px blue; */
 }
 
 .flex-header {
   display: flex;
-  align-items: center;
+  align-items: center; /* use flexend to move lower?*/
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+.header-image {
+  max-width: 20%;
 }
 
 button {
@@ -27,7 +31,7 @@ button {
 /* add hover/cursor/change color */
 
 .invisible {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   margin-right: 50px;
   padding: 10px 30px;
   border-radius: 8px;
@@ -85,6 +89,7 @@ button {
 
 .call-to-action-img {
   background-color: black;
+  max-width: 10%;
 }
 
 .recipes-container {
