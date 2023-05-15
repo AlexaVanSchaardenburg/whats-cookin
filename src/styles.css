@@ -26,29 +26,66 @@ button {
 
 /* add hover/cursor/change color */
 
-button, .invisible {
-  margin-top: 10px;
-  margin-right: 30px;
+.invisible {
+  margin: 10px 30px 0 0;
   padding: 10px 30px;
   border-radius: 8px;
 }
 
 .call-to-action-box {
   background-color: #AEB88E;
-  width: 95%;
+  width: 90%;
   /* need to center box */
-  /* text-align: center; */
   border-radius: 8px;
   display: flex;
+  padding: 2rem;
 }
 
+.left-side-call-to-action {
+  width: 60%;
+}
 
 .intro-title {
   font-size: 30px;
-  text-align: center
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.home-buttons-container {
+  margin-top: 30px;
+}
+
+.featured-text {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  padding: 5px 150px;
+  margin-right: 20px;
+  border-radius: 8px;
+  border-style: none;
+}
+
+.view-all {
+  padding: 5px 20px;
+  border-radius: 8px;
 }
 
 .call-to-action-img {
   background-color: black;
 }
 
+.recipes-container {
+  display: flex;
+  /* border:1px solid black; */
+  justify-content: center;
+  gap: 1rem;
+}
+
+.recipe-box {
+  width: 25%;
+  background-color: #AEB88E;
+  border:1px solid black;
+}
