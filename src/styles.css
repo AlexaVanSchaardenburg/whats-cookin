@@ -17,7 +17,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 button {
@@ -27,9 +27,13 @@ button {
 /* add hover/cursor/change color */
 
 .invisible {
-  margin: 10px 30px 0 0;
+  margin-top: 40px;
+  margin-right: 50px;
   padding: 10px 30px;
   border-radius: 8px;
+  background-color: #476F54;
+  color: white;
+  border-style: none;
 }
 
 .call-to-action-box {
@@ -39,6 +43,7 @@ button {
   border-radius: 8px;
   display: flex;
   padding: 2rem;
+  margin: 0 auto;
 }
 
 .left-side-call-to-action {
@@ -47,8 +52,12 @@ button {
 
 .intro-title {
   font-size: 30px;
-  text-align: center;
+  /* text-align: center; */
   margin-bottom: 15px;
+}
+
+.intro-text {
+  width: 80%;
 }
 
 .home-buttons-container {
@@ -64,6 +73,7 @@ button {
 .search-box {
   padding: 5px 150px;
   margin-right: 20px;
+  margin-bottom: 10px;
   border-radius: 8px;
   border-style: none;
 }
@@ -89,3 +99,5 @@ button {
   background-color: #AEB88E;
   border:1px solid black;
 }
+
+/* RECIPE PAGE */
