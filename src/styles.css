@@ -4,8 +4,17 @@
 /* HEX: rasberry #D60A58 */
 /* HEX: font-green #101913 */
 
+/* FONTS */
+/* Lily Script One Regular 400 */
+/* Instrument Sans Regular 400 */
+/* Instrument Sans Medium 500 */
+/* Instrument Sans Bold 700 */
+
+
 * {
   margin: 0;
+  font-family: 'Instrument Sans';
+  font-weight: 400;
 }
 
 body {
@@ -55,6 +64,7 @@ button {
   font-size: 30px;
   /* text-align: center; */
   margin-bottom: 15px;
+  font-family: 'Lily Script One'
 }
 
 .intro-text {
@@ -69,6 +79,7 @@ button {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 30px;
+  font-family: 'Lily Script One'
 }
 
 .search-box {
@@ -123,4 +134,8 @@ button {
 
 aside {
   width: 30%;
+}
+
+.hidden {
+  display: none;
 }
