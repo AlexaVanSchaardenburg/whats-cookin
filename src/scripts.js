@@ -5,7 +5,7 @@ import apiCalls from './apiCalls'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
-import './images/place-hold-salad.jpg'
+import './images/healthy-cook.png'
 import ingredientsData from './data/ingredients.js'
 
 //Example of one way to import functions from the domUpdates file. You will delete these examples.
