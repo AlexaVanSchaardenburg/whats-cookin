@@ -100,4 +100,21 @@ button {
   border:1px solid black;
 }
 
-/* RECIPE PAGE */
+/* ALL RECIPE PAGE */
+
+/* INDIVIDUAL RECIPE PAGE */
+
+.recipe-page {
+  background-color: #AEB88E;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.recipe-page {
+  display: flex;
+}
+
+aside {
+  width: 30%;
+}
