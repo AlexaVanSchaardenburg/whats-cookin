@@ -128,7 +128,7 @@ describe('Recipe', () => {
   it('Should not return anything the tag does not exist', () => {
 
     const filteredRecipes2 = filterByTag(recipes,'shoes')
-    "Sorry, No Recipes Were Found!"
+
     expect(filteredRecipes2).to.equal("Sorry, No Recipes Were Found!")
 
   })
