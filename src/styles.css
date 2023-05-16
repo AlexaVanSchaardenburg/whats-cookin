@@ -1,4 +1,246 @@
+/* HEX: light-green #AEB88E */
+/* HEX: dark-green #476F54 */
+/* HEX: white #FFFFFF*/
+/* HEX: rasberry #D60A58 */
+/* HEX: font-green #101913 */
+
+/* FONTS */
+/* Lily Script One Regular 400 */
+/* Instrument Sans Regular 400 */
+/* Instrument Sans Medium 500 */
+/* Instrument Sans Bold 700 */
+
+
+* {
+  margin: 0;
+  font-family: 'Instrument Sans';
+  font-weight: 400;
+  color: #101913;
+}
+
 body {
   background-color: #FFFFFF;
-  border: 2px blue;
+}
+
+.flex-header {
+  display: flex;
+  align-items: center; /* use flexend to move lower?*/
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header-image {
+  max-width: 20%;
+}
+
+button {
+  border-style: none;
+}
+
+/* add hover/cursor/change color */
+
+.invisible {
+  padding: 10px 30px;
+  border-radius: 8px;
+  background-color: #476F54;
+  color: white;
+  border-style: none;
+}
+
+.call-to-action-box {
+  background-color: #AEB88E;
+  width: 90%;
+  border-radius: 8px;
+  display: flex;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.left-side-call-to-action {
+  width: 60%;
+}
+
+.intro-title {
+  font-size: 30px;
+  /* text-align: center; */
+  margin-bottom: 15px;
+  font-family: 'Lily Script One'
+}
+
+.intro-text {
+  width: 80%;
+  margin-bottom: 90px;
+}
+
+.home-buttons-container {
+  margin-top: 30px;
+}
+
+.featured-text {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-family: 'Lily Script One'
+}
+
+.search-box {
+  padding: 5px 150px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-style: none;
+}
+
+.view-all {
+  padding: 5px 20px;
+  border-radius: 8px;
+}
+
+.right-side-img {
+  border: 1px solid black;
+}
+
+.font-page-img {
+  max-width: 40%;
+  margin-right: 40px;
+}
+
+.recipes-container {
+  display: flex;
+  /* border:1px solid black; */
+  justify-content: center;
+  gap: 1rem;
+}
+
+.recipe-box {
+  width: 25%;
+  background-color: #AEB88E;
+  border: 1px solid black;
+}
+
+/* ALL RECIPE PAGE */
+
+.all-recipes-page-buttons {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 30px;
+}
+ 
+label {
+  background-color: #476F54;
+  color: white;
+  border-radius: 8px;
+  padding: 5px 20px;
+  flex-grow: 1;
+}
+
+select {
+  margin-right: 30px;
+}
+ 
+.all-recipe-search-box {
+  flex-grow: 2;
+}
+
+.saved-recipe {
+  border-radius: 8px;
+  padding: 5px 20px;
+  flex-grow: 1;
+  margin-left: 30px;
+  background-color: #476F54;
+  color: white;
+}
+
+.all-recipe-flex {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.all-recipe-box {
+  background-color: #AEB88E;
+  width: 20%;
+}
+
+.all-recipe-image {
+  max-width: 95%;
+}
+
+/* INDIVIDUAL RECIPE PAGE */
+
+.recipe-page {
+  background-color: #AEB88E;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.recipe-page {
+  display: flex;
+}
+
+aside {
+  width: 30%;
+}
+
+.aside-img {
+  max-width: 90%;
+}
+
+.ingredients-header {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.ingredients-list {
+  margin-bottom: 15px;
+}
+
+.green-flex-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #476F54;
+  border-radius: 8px;
+  padding: 10px 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.flex-tags {
+  display: flex;
+  list-style-type: none;
+  background-color: #D60A58;
+  border-radius: 8px;
+  padding: 5px 30px;
+}
+
+.pink-container-flex {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.total-cost {
+  background-color: #D60A58;
+  margin-left: 120px;
+  padding: 5px 30px;
+  border-radius: 8px;
+}
+
+.save-recipe {
+  border-radius: 8px;
+  padding: 5px 30px;
+}
+
+.instructions {
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+ 
+.hidden {
+  display: none;
 }
