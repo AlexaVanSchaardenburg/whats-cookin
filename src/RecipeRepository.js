@@ -36,16 +36,18 @@ const calcRecipeCost = (infos, recipe) => {
     c. take cost and multiply it by quantity from recipe - return totalIngredientCost ✅
   4.  add totalIngredientCost to counter ✅
   5. return total cost ✅
+  6. transform totalcost into a number with two decimal places
   */
 
   const ingredientsCosts = recipe.ingredients.map(ingredient => {
+    console.log(infos)
     const currentInfo = infos.find(info => info.id === ingredient.id) 
     const currentIngredientCost = currentInfo.estimatedCostInCents * ingredient.quantity.amount
     return currentIngredientCost
     }
     )
 
-  const totalCost = ingredientsCosts.reduce((total, cost) => total + cost, 0)
+  const totalCost = parseFloat((ingredientsCosts.reduce((total, cost) => total + cost, 0)/100)).toFixed(2)
   return totalCost
 
 }
