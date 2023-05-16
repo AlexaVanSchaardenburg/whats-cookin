@@ -12,13 +12,10 @@ const filterByName = (data, search) => {
   //return that whole object if it is, if not return message that nothing was found
   //use filter
   const searchAllLowerCase = search.toLowerCase()
-  console.log(searchAllLowerCase)
   const arrOfWords = searchAllLowerCase.split(' ')
-  console.log(arrOfWords)
   const searchProper = arrOfWords.map(word => {
     return upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)}
     )
-  console.log(searchProper)
   const finalSearch = searchProper.join(' ')
   const filteredRecipes = data.filter(recipe => {
     return recipe.name.includes(finalSearch)
