@@ -1,5 +1,5 @@
 const filterByTag = (data, tag) => {
-  const filteredRecipes = data.filter((recipe) => recipe.tags.includes(tag))
+  const filteredRecipes = data.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
    if (filteredRecipes.length < 1) {
     return "Sorry, No Recipes Were Found!"
    } else {
@@ -8,29 +8,37 @@ const filterByTag = (data, tag) => {
 }
 
 const filterByName = (data, search) => {
-  //want to take search and look in the datas names to check if that word is there 
-  //return that whole object if it is, if not return message that nothing was found
-  //use filter
-  // const filteredRecipes = data.filter((recipe) => {
-  //   console.log(recipe['name'.toLowerCase()])
-  //   console.log(search.toLowerCase())
-  //   return recipe['name'.toLowerCase()].includes(search.toLowerCase())
-  // })
-  const searchLowerCase = search.toLowerCase()
-  const searchProper  = searchLowerCase.charAt(0)
-  const filteredRecipes = data.filter((recipe) => {
-    console.log(recipe.name)
-    return recipe.name.includes(searchProper)
+  const searchAllLowerCase = search.toLowerCase()
+  const arrOfWords = searchAllLowerCase.split(' ')
+  const searchProper = arrOfWords.map(word => {
+    return upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)
   })
-  // if (filteredRecipes.length < 1) {
-  //   return "Sorry, No Recipes Were Found!"
-  //  } else {
+  const finalSearch = searchProper.join(' ')
+  const filteredRecipes = data.filter(recipe => {
+    return recipe.name.includes(finalSearch)
+  })
+  if(filteredRecipes.length < 1){
+    return "Sorry, No Recipes Were Found!"
+  }else{
     return filteredRecipes
-  //  }
+  }
+}
+
+const getInstructions = (data, name) => {
+  const foundRecipe = data.find((recipe) => recipe.name.toLowerCase() === name.toLowerCase())
+    if (foundRecipe === undefined) {
+      return "Sorry, No Recipes Were Found!"
+    } else {
+    return foundRecipe.instructions.reduce((acc, index) => {
+      acc[index.number] = index.instruction
+      return acc
+    }, {})
+  }
 }
 
 
 module.exports = {
   filterByTag,
-  filterByName
+  filterByName,
+  getInstructions,
 };
