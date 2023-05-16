@@ -124,7 +124,7 @@ describe('Filtering Functions', () => {
       }])
 
     });
-  it('Should return a message if no recieps match the tag filter', () => {
+  it('Should return a message if no recipes match the tag filter', () => {
 
     const filteredRecipes2 = filterByTag(recipes,'javascript')
 
@@ -254,7 +254,7 @@ describe('Filtering Functions', () => {
         }])
   });
   it('Should return a message if no recipes match the search', function(){
-      const filteredRecipes = filterByName('gabblygookblahblahblah')
+      const filteredRecipes = filterByName(recipes, 'gabblygookblahblahblah')
 
       expect(filteredRecipes).to.equal("Sorry, No Recipes Were Found!")
   });
