@@ -1,5 +1,5 @@
 const filterByTag = (data, tag) => {
-  const filteredRecipes = data.filter((recipe) => recipe.tags.includes(tag))
+  const filteredRecipes = data.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
    if (filteredRecipes.length < 1) {
     return "Sorry, No Recipes Were Found!"
    } else {
