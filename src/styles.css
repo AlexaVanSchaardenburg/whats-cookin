@@ -69,6 +69,7 @@ button {
 
 .intro-text {
   width: 80%;
+  margin-bottom: 90px;
 }
 
 .home-buttons-container {
@@ -134,6 +135,45 @@ button {
 
 aside {
   width: 30%;
+}
+
+.aside-img {
+  max-width: 90%;
+}
+
+.ingredients-header {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.green-flex-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #476F54;
+  border-radius: 8px;
+  padding: 5px 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.flex-tags {
+  display: flex;
+  list-style-type: none;
+  background-color: #D60A58;
+  border-radius: 8px;
+  padding: 5px 30px;
+}
+
+.pink-container-flex {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.total-cost {
+  background-color: #D60A58;
+  margin-left: 120px;
+  padding: 5px 30px;
+  border-radius: 8px;
 }
 
 .hidden {
