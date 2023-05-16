@@ -8,14 +8,11 @@ const filterByTag = (data, tag) => {
 }
 
 const filterByName = (data, search) => {
-  //want to take search and look in the datas names to check if that word is there 
-  //return that whole object if it is, if not return message that nothing was found
-  //use filter
   const searchAllLowerCase = search.toLowerCase()
   const arrOfWords = searchAllLowerCase.split(' ')
   const searchProper = arrOfWords.map(word => {
-    return upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)}
-    )
+    return upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)
+  })
   const finalSearch = searchProper.join(' ')
   const filteredRecipes = data.filter(recipe => {
     return recipe.name.includes(finalSearch)
