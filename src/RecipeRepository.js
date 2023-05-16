@@ -19,7 +19,7 @@ const filterByName = (data, search) => {
   }
 }
 
-const calcRecipeCost = (ingredientsInfo, recipe) => {
+const calcRecipeCost = (infos, recipe) => {
   //takes in recipe and outputs number
   // needs to acess list of ingredients
   //for each ingrident it needs to check if the ingrident is an ingredient in the ingredient list
@@ -38,14 +38,14 @@ const calcRecipeCost = (ingredientsInfo, recipe) => {
   5. return total cost ✅
   */
 
-  const recipeIngredientsCosts = recipe.ingredients.map(ingredient => {
-    const curentIngredientInfo = ingredientsInfo.find(ingredientInfo => ingredientInfo.id === ingredient.id) 
-    const currentIngredientCost = curentIngredientInfo.estimatedCostInCents * ingredient.quantity.amount
+  const ingredientsCosts = recipe.ingredients.map(ingredient => {
+    const currentInfo = infos.find(info => info.id === ingredient.id) 
+    const currentIngredientCost = currentInfo.estimatedCostInCents * ingredient.quantity.amount
     return currentIngredientCost
     }
     )
 
-  const totalCost = recipeIngredientsCosts.reduce((total, cost) => total + cost, 0)
+  const totalCost = ingredientsCosts.reduce((total, cost) => total + cost, 0)
   return totalCost
 
 }
