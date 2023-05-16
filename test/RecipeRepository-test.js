@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe');
 const {mockIngredientsData} = require('../src/data/mockIngredients');
-const {filterByTag, filterByName} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, getInstructions, listIngredients} = require('../src/RecipeRepository');
 
 describe('Filtering Functions', () => {
   
@@ -527,12 +527,13 @@ describe('Filtering Functions', () => {
 
 describe('ingredients functions', () => {
   it('should return an array of ingredients needed for a recipe', () => {
-    const ingredients = mockIngredientsData;
     const recipes = mockRecipeData;
+    const ingredients = mockIngredientsData;
 
-    const ingredientsByRecipe = listIngredients(recipe);
+    const ingredientsByRecipe = listIngredients(recipes, ingredients, 'Loaded Chocolate Chip Pudding Cookie Cups');
+    
 
-    expect(recipe.ingredients).to.equal([
+    expect(ingredientsByRecipe).to.deep.equal([
       'wheat flour',
       'bicarbonate of soda',
       'eggs',

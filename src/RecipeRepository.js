@@ -36,9 +36,21 @@ const getInstructions = (data, name) => {
   }
 }
 
+const listIngredients = (recipeData, ingredientData, selectedRecipe) =>  {
+  const recipe = recipeData.find(recipe => recipe.name === selectedRecipe);
+  const ingredientIds = recipe.ingredients.map(ingredient => ingredient.id);
+
+  const ingredientNames = ingredientIds.map(id => {
+    const ingredientIndex = ingredientData.findIndex(ingredient => id === ingredient.id)
+    return ingredientData[ingredientIndex].name
+    })
+
+  return ingredientNames;
+};
 
 module.exports = {
   filterByTag,
   filterByName,
   getInstructions,
+  listIngredients
 };
