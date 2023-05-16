@@ -505,3 +505,9 @@ describe('Filtering Functions', () => {
       expect(filteredRecipes).to.equal("Sorry, No Recipes Were Found!")
   });
 });
+
+describe('calculate cost of recipes ingredients', function(){
+  it('calculate the total cost given a recipe',function(){
+    
+  });
+});
