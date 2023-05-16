@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe')
-const {filterByTag, filterByName} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, getInstructions} = require('../src/RecipeRepository');
 
 describe('Filtering Functions', () => {
   
@@ -503,5 +503,23 @@ describe('Filtering Functions', () => {
       const filteredRecipes = filterByName(recipes, 'gabblygookblahblahblah')
 
       expect(filteredRecipes).to.equal("Sorry, No Recipes Were Found!")
+  });
+
+  it('Should return recipe instructions based on recipe name', () => {
+
+    const instructions = getInstructions(recipes, "Ambrosia Cupcakes")
+
+    expect(instructions).to.deep.equal({
+      '1': 'To make the Cupcakes: Preheat oven to 350 degrees. Line 12 cupcake tins with paper holders.',
+      '2': 'Whisk together dry Fruit Cocktail Cupcakes ingredients.',
+      '3': 'Add in wet Fruit Cocktail Cupcakes ingredients and stir with a rubber spatula until thoroughly combined. Fill cupcake tins evenly, and bake for 20 minutes or until thin knife inserted in center comes out clean.'
+    })
+  });
+
+  it('Should retrun a message if no recipe is found by the given name', () => {
+
+    const instructions1 = getInstructions(recipes, "Rocky Mountian Oysters")
+
+    expect(instructions1).to.equal("Sorry, No Recipes Were Found!")
   });
 });

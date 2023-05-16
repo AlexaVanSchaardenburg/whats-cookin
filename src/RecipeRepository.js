@@ -24,10 +24,10 @@ const filterByName = (data, search) => {
   }
 }
 
-const getInstructions = (data ,name) => {
+const getInstructions = (data, name) => {
   const foundRecipe = data.find((recipe) => recipe.name === name)
     if (foundRecipe === undefined) {
-      return "Sorry, No Recipe Was Found!"
+      return "Sorry, No Recipes Were Found!"
     } else {
     return foundRecipe.instructions.reduce((acc, index) => {
       acc[index.number] = index.instruction
