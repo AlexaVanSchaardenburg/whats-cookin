@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect
-const {mockRecipeData} = require('../src/data/mockRecipe')
+const {mockRecipeData} = require('../src/data/mockRecipe');
+const {mockIngredientsData} = require('../src/data/mockIngredients');
 const {filterByTag, filterByName} = require('../src/RecipeRepository');
 
 describe('Filtering Functions', () => {
@@ -502,5 +503,28 @@ describe('Filtering Functions', () => {
       const filteredRecipes = filterByName(recipes, 'gabblygookblahblahblah')
 
       expect(filteredRecipes).to.equal("Sorry, No Recipes Were Found!")
+  });
+});
+
+describe('ingredients functions', () => {
+  it('should return an array of ingredients needed for a recipe', () => {
+    const ingredients = mockIngredientsData;
+    const recipes = mockRecipeData;
+
+    const ingredientsByRecipe = listIngredients(recipes);
+
+    expect(recipe.ingredients)to.equal([
+      'wheat flour',
+      'bicarbonate of soda',
+      'eggs',
+      'sucrose',
+      'instant vanilla pudding',
+      'brown sugar',
+      'salt',
+      'fine sea salt',
+      'semi sweet chips',
+      'unsalted butter',
+      'vanilla'
+    ]);
   });
 });
