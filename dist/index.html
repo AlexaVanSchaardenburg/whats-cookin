@@ -54,7 +54,7 @@
       </section>
      </div> 
     </section>
-    <section class="all-recipes-page hidden">
+    <section class="all-recipes-page">
       <div>
         <div class="all-recipes-page-buttons">
           <label for="filter-recipes">Filter Recipes</label>
@@ -62,15 +62,35 @@
             <option></option>
             <!-- all options here -->
           </select>
-          <button>View Saved Recipes</button>
-          <input class="search-box" name="search-box" placeholder="search be name">
+          <input class="all-recipe-search-box" name="all-recipe-search-box" placeholder="search be name">
+          <button class="saved-recipe">View Saved Recipes</button>
         </div>
       </div>
-      <section>
+      <section class="all-recipe-flex">
         <!-- Recipes Go Here -->
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
       </section>
     </section>
-    <section class="recipe-page">
+    <section class="recipe-page hidden">
       <aside>
         <img class="aside-img" src="../images/turing-logo.png">
         <h3 class="ingredients-header">Ingredients:</h3>
@@ -105,7 +125,7 @@
             </ul>
           </div>
           <div>
-            <p class="total-cost">Populate Total Cost Here</p>
+            <p class="total-cost">Total cost:</p>
           </div>
         </div>
         <div>

@@ -115,10 +115,60 @@ button {
 .recipe-box {
   width: 25%;
   background-color: #AEB88E;
-  border:1px solid black;
+  border: 1px solid black;
 }
 
 /* ALL RECIPE PAGE */
+
+.all-recipes-page-buttons {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 30px;
+}
+ 
+label {
+  background-color: #476F54;
+  color: white;
+  border-radius: 8px;
+  padding: 5px 20px;
+  flex-grow: 1;
+}
+
+select {
+  margin-right: 30px;
+}
+ 
+.all-recipe-search-box {
+  flex-grow: 2;
+}
+
+.saved-recipe {
+  border-radius: 8px;
+  padding: 5px 20px;
+  flex-grow: 1;
+  margin-left: 30px;
+  background-color: #476F54;
+  color: white;
+}
+
+.all-recipe-flex {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.all-recipe-box {
+  background-color: #AEB88E;
+  width: 20%;
+}
+
+.all-recipe-image {
+  max-width: 95%;
+}
 
 /* INDIVIDUAL RECIPE PAGE */
 
