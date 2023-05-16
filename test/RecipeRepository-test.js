@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe')
-const {filterByTag, filterByName} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, calcRecipeCost} = require('../src/RecipeRepository');
 
 describe('Filtering Functions', () => {
   
@@ -506,8 +506,13 @@ describe('Filtering Functions', () => {
   });
 });
 
-describe('calculate cost of recipes ingredients', function(){
-  it('calculate the total cost given a recipe',function(){
-    
+describe('Calculate cost Function', function(){
+  it('should calculate the total cost in dollars given a recipe',function(){
+    const totalCost = calcRecipeCost(recipe)
+    expect(totalCost).to.equal()
+  });
+  it('should return a cost of 0 if no recipe is given',function(){
+    const totalCost = calcRecipeCost()
+    expect(totalCost).to.equal(0)
   });
 });
