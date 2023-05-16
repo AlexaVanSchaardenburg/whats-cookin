@@ -8,12 +8,7 @@ const filterByTag = (data, tag) => {
 }
 
 const filterByName = (data, search) => {
-  const searchAllLowerCase = search.toLowerCase()
-  const arrOfWords = searchAllLowerCase.split(' ')
-  const searchProper = arrOfWords.map(word => {
-    return upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)
-  })
-  const finalSearch = searchProper.join(' ')
+  const finalSearch = search.toLowerCase().split(' ').map(word => upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
   const filteredRecipes = data.filter(recipe => {
     return recipe.name.includes(finalSearch)
   })
