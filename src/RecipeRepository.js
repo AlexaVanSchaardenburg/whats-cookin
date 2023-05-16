@@ -25,7 +25,7 @@ const filterByName = (data, search) => {
 }
 
 const getInstructions = (data, name) => {
-  const foundRecipe = data.find((recipe) => recipe.name === name)
+  const foundRecipe = data.find((recipe) => recipe.name.toLowerCase() === name.toLowerCase())
     if (foundRecipe === undefined) {
       return "Sorry, No Recipes Were Found!"
     } else {

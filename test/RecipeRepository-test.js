@@ -507,7 +507,7 @@ describe('Filtering Functions', () => {
 
   it('Should return recipe instructions based on recipe name', () => {
 
-    const instructions = getInstructions(recipes, "Ambrosia Cupcakes")
+    const instructions = getInstructions(recipes, "AMbrOSia CupCAkeS")
 
     expect(instructions).to.deep.equal({
       '1': 'To make the Cupcakes: Preheat oven to 350 degrees. Line 12 cupcake tins with paper holders.',
