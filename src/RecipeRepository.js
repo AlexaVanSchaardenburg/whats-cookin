@@ -19,7 +19,7 @@ const filterByName = (data, search) => {
   }
 }
 
-const calcRecipeCost = () => {
+const calcRecipeCost = (ingredientsInfo, recipe) => {
   //takes in recipe and outputs number
   // needs to acess list of ingredients
   //for each ingrident it needs to check if the ingrident is an ingredient in the ingredient list
@@ -29,11 +29,25 @@ const calcRecipeCost = () => {
   //reduce? forEach? 
   /*
   start with value 0
-  1. make list of ingredients
-  2. iterate through ingredients info array for each ingridient - return the ingreidents cost
-  3.  take cost and multiply it by quantity from recipe - return totalIngredientCost
-  4.  
+  1. make list of ingredients ✅
+  2. map through recipe ingredients ✅
+    a. iterate through ingredients info array for each ingridient to find the ingredient info (returns object) ✅
+    b. take ingrdientInfo that was found and get ingredient cost ✅
+    c. take cost and multiply it by quantity from recipe - return totalIngredientCost ✅
+  4.  add totalIngredientCost to counter ✅
+  5. return total cost ✅
   */
+
+  const recipeIngredientsCosts = recipe.ingredients.map(ingredient => {
+    const curentIngredientInfo = ingredientsInfo.find(ingredientInfo => ingredientInfo.id === ingredient.id) 
+    const currentIngredientCost = curentIngredientInfo.estimatedCostInCents * ingredient.quantity.amount
+    return currentIngredientCost
+    }
+    )
+
+  const totalCost = recipeIngredientsCosts.reduce((total, cost) => total + cost, 0)
+  return totalCost
+
 }
 
 
