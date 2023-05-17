@@ -23,9 +23,7 @@ const filterByName = (recipeData, searchInput) => {
   };
 };
 
-// Clarification: For the following 3 functions, we can use the event listener to pass the entire recipe object as an argument. This allows us to compleete remove the logic that "finds" a matching recipe in the recipeData array, since the event.target should already have identified the recipe for us. In the tests, the argument passed in will be the entire recipe object, rather than just the name.
-
-// I removed the conditional and sad path test for this function because it will only ever run when triggered by an event listener. We can change it back if needed.
+// I removed the conditional and sad path test for this function because it will only ever run when triggered by an event listener.
 const getInstructions = (recipe) => {
   return recipe.instructions.reduce((acc, index) => {
     acc[index.number] = index.instruction
