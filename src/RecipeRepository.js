@@ -40,7 +40,6 @@ const calcRecipeCost = (infos, recipe) => {
   */
 
   const ingredientsCosts = recipe.ingredients.map(ingredient => {
-    console.log(infos)
     const currentInfo = infos.find(info => info.id === ingredient.id) 
     const currentIngredientCost = currentInfo.estimatedCostInCents * ingredient.quantity.amount
     return currentIngredientCost
