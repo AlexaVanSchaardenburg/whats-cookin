@@ -1,3 +1,16 @@
+// const testData = (recipeData, ingData) => {
+//   console.log('number of recipes:', recipeData.length);
+//   console.log('number of ingredients:', ingData.length);
+//   console.log('recipe names:', recipeData.map(recipe => recipe.name));
+//   console.log('recipe tags:', recipeData.map(recipe => recipe.tags))
+//   const cookiesIds = recipeData[0].ingredients.map(ingredient => ingredient.id);
+//   const yogurtIds = recipeData[1].ingredients.map(ingredient => ingredient.id);
+//   const allIds = cookiesIds.concat(yogurtIds);
+//   const uniqueIds = [...new Set(allIds)];
+//   console.log(uniqueIds);
+//   console.log('expected num ingredients:', uniqueIds.length);
+// }
+
 const filterByTag = (recipeData, tag) => {
   const filteredRecipes = recipeData.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
   
@@ -12,9 +25,8 @@ const filterByTag = (recipeData, tag) => {
 
 const filterByName = (recipeData, searchInput) => {
   const searchTerms = searchInput.toLowerCase().split(' ');
-  const searchToMatch = searchTerms.map(word => (word.charAt(0).toUpperCase() + word.slice(1)).join(' '));
-
-  const filteredRecipes = recipeData.filter(recipe => recipe.name.includes(searchToMatch));
+  const formattedSearch = searchTerms.map(word => capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const filteredRecipes = recipeData.filter(recipe => recipe.name.includes(formattedSearch));
 
   // See suggestions in above function
   if (filteredRecipes.length) {
@@ -24,8 +36,8 @@ const filterByName = (recipeData, searchInput) => {
   };
 };
 
-const getInstructions = (data, name) => {
-  const foundRecipe = data.find((recipe) => recipe.name.toLowerCase() === name.toLowerCase())
+const getInstructions = (recipeData, name) => {
+  const foundRecipe = recipeData.find(recipe => recipe.name.toLowerCase() === name.toLowerCase())
     if (foundRecipe === undefined) {
       return "Sorry, No Recipes Were Found!"
     } else {
