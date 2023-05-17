@@ -2,25 +2,24 @@ const chai = require('chai');
 const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe');
 const {mockIngredientsData} = require('../src/data/mockIngredients');
-const {testData, filterByTag, filterByName, getInstructions, listIngredients, calcRecipeCost} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, getInstructions, listIngredients, calcRecipeCost} = require('../src/RecipeRepository');
 
-describe('get info about test data', () => {
-  it.skip('should return info about data sets', () => {
-    recipes = mockRecipeData;
-    ingredients = mockIngredientsData;
+// describe('get info about test data', () => {
+//   it.skip('should return info about data sets', () => {
+//     recipes = mockRecipeData;
+//     ingredients = mockIngredientsData;
 
-    testData(recipes, ingredients);
-  })
-});
+//     testData(recipes, ingredients);
+//   })
+// });
 
-describe('Filtering Functions', () => {
-  
+describe('Filter recipes by tag', () => {
   let recipes;
   beforeEach(() => {
     return recipes = mockRecipeData
   });
 
-  it.only('Should return an array of all recipes with matching tags', () => {
+  it('Should return an array of all recipes with matching tags', () => {
     const filteredRecipes1 = filterByTag(recipes,'dessert')
 
     expect(filteredRecipes1).to.deep.equal([
@@ -268,7 +267,7 @@ describe('Filtering Functions', () => {
 
   });
 
-  it.only('Should return a different array of recipes with a different tag', () => {
+  it('Should return a different array of recipes with a different tag', () => {
     const filteredRecipes1 = filterByTag(recipes,'side dish')
 
     expect(filteredRecipes1).to.deep.equal([
@@ -401,7 +400,9 @@ describe('Filtering Functions', () => {
 
     expect(filteredRecipes2).to.equal("Sorry, No Recipes Were Found!")
   });
+});
 
+describe('Filter recipes by search input', () => {
   it('Should return an array of recipes with names that match the search term', function(){
     const filteredRecipes = filterByName(recipes, 'Cookie')
 
@@ -807,7 +808,7 @@ describe('Get recipe instructions', function(){
   });
 });
 
-describe('ingredients functions', () => {
+describe('Get ingredients for a recipe', () => {
   it('should return an array of ingredients needed for a recipe', () => {
     const recipes = mockRecipeData;
     const ingredients = mockIngredientsData;
@@ -831,7 +832,7 @@ describe('ingredients functions', () => {
   });
 });
 
-describe('Calculate cost Function', function(){
+describe('Calculate cost of a recipe', function(){
   it('should calculate the total cost in dollars given a recipe',function(){
     const recipe = mockRecipeData[0]
     const ingredientInfo = [
