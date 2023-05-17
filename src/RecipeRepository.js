@@ -1,5 +1,5 @@
 const filterByTag = (data, tag) => {
-  const filteredRecipes = data.filter((recipe) => recipe.tags.includes(tag))
+  const filteredRecipes = data.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
    if (filteredRecipes.length < 1) {
     return "Sorry, No Recipes Were Found!"
    } else {
@@ -19,14 +19,19 @@ const filterByName = (data, search) => {
   }
 }
 
-const calcRecipeCost = (infos, recipe) => {
-  //takes in recipe and outputs number
-  // needs to acess list of ingredients
-  //for each ingrident it needs to check if the ingrident is an ingredient in the ingredient list
-    //if yes access that ingredients cost and multiply it by the quantity needed from recipe and add that number to the counter
-  //then convert number into correct format and return as number with two decimal places
+const getInstructions = (data, name) => {
+  const foundRecipe = data.find((recipe) => recipe.name.toLowerCase() === name.toLowerCase())
+    if (foundRecipe === undefined) {
+      return "Sorry, No Recipes Were Found!"
+    } else {
+    return foundRecipe.instructions.reduce((acc, index) => {
+      acc[index.number] = index.instruction
+      return acc
+    }, {})
+  }
+}
 
-  //reduce? forEach? 
+const calcRecipeCost = (infos, recipe) => {
   /*
   start with value 0
   1. make list of ingredients ✅
@@ -36,7 +41,7 @@ const calcRecipeCost = (infos, recipe) => {
     c. take cost and multiply it by quantity from recipe - return totalIngredientCost ✅
   4.  add totalIngredientCost to counter ✅
   5. return total cost ✅
-  6. transform totalcost into a number with two decimal places
+  6. transform totalcost into a number with two decimal places ✅
   */
 
   const ingredientsCosts = recipe.ingredients.map(ingredient => {
@@ -55,5 +60,6 @@ const calcRecipeCost = (infos, recipe) => {
 module.exports = {
   filterByTag,
   filterByName,
+  getInstructions,
   calcRecipeCost
 };
