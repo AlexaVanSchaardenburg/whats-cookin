@@ -15,8 +15,13 @@ const showRecipesPage = (homePage, allRecipesPage) => {
   showDomElement(allRecipesPage)
 }
 
-const displayAllRecipes = (recipeBox) => {
-  recipeBox.innerHTML = 
+const displayAllRecipes = (data, recipeBox) => {
+  console.log(data)
+  data.forEach((recipe) => {
+  recipeBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
+  <img class="all-recipe-image" src="${recipe.image}">
+  <h3>${recipe.name}</h3>
+  </article>`})
 }
 
 
