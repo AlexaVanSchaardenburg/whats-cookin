@@ -24,14 +24,4 @@ const displayAllRecipes = (data, recipeBox) => {
   </article>`})
 }
 
-
-//iterate over array of recipes (FOREACH?)
-//for each element we want to display the name and image
-
-
-
-{/* <article class="all-recipe-box">
-<img class="all-recipe-image" src="../images/turing-logo.png">
-<h3>Recipe Title</h3>
-</article> */}
 export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes}
