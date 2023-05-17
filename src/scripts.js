@@ -8,10 +8,19 @@ import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
 import ingredientsData from './data/ingredients.js'
 
-//Example of one way to import functions from the domUpdates file. You will delete these examples.
-import {exampleFunction1, exampleFunction2} from './domUpdates.js'
+//Import Functions
 
-exampleFunction1('heather')
-exampleFunction2('heather')
+import {showRecipesPage} from './domUpdates.js'
 
-console.log(ingredientsData)
+//Query Selectors
+
+const goToRecipesButton = document.querySelector('.go-to-recipes')
+const homePage = document.querySelector('.home-page')
+const allRecipesPage = document.querySelector('.all-recipes-page')
+const allRecipesBox = document.querySelector('.all-recipes-box')
+
+//Event Listeners
+
+goToRecipesButton.addEventListener('click', () => {showRecipesPage(homePage, allRecipesPage)})
+
+//Functions
