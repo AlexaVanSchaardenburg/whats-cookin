@@ -1,21 +1,26 @@
-const filterByTag = (data, tag) => {
-  const filteredRecipes = data.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
-   if (filteredRecipes.length < 1) {
-    return "Sorry, No Recipes Were Found!"
-   } else {
+const filterByTag = (recipeData, tag) => {
+  const filteredRecipes = recipeData.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
+  
+  // Suggested Change: Put this conditional in a helper function; we use it multiple times
+  if (filteredRecipes.length) {
     return filteredRecipes
-   };
+  } else {
+    // Suggested Change: Instead of returning this sad path message, invoke a function that displays this message to the DOM; or do both so this path is still testable
+    return "Sorry, No Recipes Were Found!"
+  };
 };
 
-const filterByName = (data, search) => {
-  const finalSearch = search.toLowerCase().split(' ').map(word => upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
-  const filteredRecipes = data.filter(recipe => {
-    return recipe.name.includes(finalSearch)
-  });
-  if(filteredRecipes.length < 1){
-    return "Sorry, No Recipes Were Found!"
-  }else{
+const filterByName = (recipeData, searchInput) => {
+  const searchTerms = searchInput.toLowerCase().split(' ');
+  const searchToMatch = searchTerms.map(word => (word.charAt(0).toUpperCase() + word.slice(1)).join(' '));
+
+  const filteredRecipes = recipeData.filter(recipe => recipe.name.includes(searchToMatch));
+
+  // See suggestions in above function
+  if (filteredRecipes.length) {
     return filteredRecipes
+  } else {
+    return "Sorry, No Recipes Were Found!"
   };
 };
 

@@ -11,7 +11,7 @@ describe('Filtering Functions', () => {
     return recipes = mockRecipeData
   });
 
-  it('Should filter recipes by tags', () => {
+  it('Should return an array of recipes with matching tags', () => {
     const filteredRecipes1 = filterByTag(recipes,'sauce')
 
     expect(filteredRecipes1).to.deep.equal([
@@ -131,7 +131,7 @@ describe('Filtering Functions', () => {
     expect(filteredRecipes2).to.equal("Sorry, No Recipes Were Found!")
   });
 
-  it('Should filter recipes by search', function(){
+  it('Should return an array of recipes with names that match the search term', function(){
     const filteredRecipes = filterByName(recipes, 'Cookie')
 
     expect(filteredRecipes).to.deep.equal([
