@@ -1234,4 +1234,4 @@ const mockIngredientsData = [
   }
 ];
 
-export default mockIngredientsData
+export {mockIngredientsData}

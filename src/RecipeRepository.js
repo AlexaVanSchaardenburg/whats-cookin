@@ -4,20 +4,20 @@ const filterByTag = (data, tag) => {
     return "Sorry, No Recipes Were Found!"
    } else {
     return filteredRecipes
-   }
-}
+   };
+};
 
 const filterByName = (data, search) => {
   const finalSearch = search.toLowerCase().split(' ').map(word => upperCaseWord = word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
   const filteredRecipes = data.filter(recipe => {
     return recipe.name.includes(finalSearch)
-  })
+  });
   if(filteredRecipes.length < 1){
     return "Sorry, No Recipes Were Found!"
   }else{
     return filteredRecipes
-  }
-}
+  };
+};
 
 const getInstructions = (data, name) => {
   const foundRecipe = data.find((recipe) => recipe.name.toLowerCase() === name.toLowerCase())
@@ -27,9 +27,21 @@ const getInstructions = (data, name) => {
     return foundRecipe.instructions.reduce((acc, index) => {
       acc[index.number] = index.instruction
       return acc
-    }, {})
-  }
-}
+    }, {});
+  };
+};
+
+const listIngredients = (recipeData, ingredientData, selectedRecipe) =>  {
+  const recipe = recipeData.find(recipe => recipe.name === selectedRecipe);
+  const ingredientIds = recipe.ingredients.map(ingredient => ingredient.id);
+
+  const ingredientNames = ingredientIds.map(id => {
+    const ingredientIndex = ingredientData.findIndex(ingredient => id === ingredient.id)
+    return ingredientData[ingredientIndex].name
+    })
+
+  return ingredientNames;
+};
 
 const calcRecipeCost = (infos, recipe) => {
   /*
@@ -53,13 +65,13 @@ const calcRecipeCost = (infos, recipe) => {
 
   const totalCost = parseFloat((ingredientsCosts.reduce((total, cost) => total + cost, 0)/100)).toFixed(2)
   return totalCost
-
-}
+};
 
 
 module.exports = {
   filterByTag,
   filterByName,
   getInstructions,
+  listIngredients,
   calcRecipeCost
 };

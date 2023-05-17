@@ -1,18 +1,17 @@
 const chai = require('chai');
 const expect = chai.expect
-const {mockRecipeData} = require('../src/data/mockRecipe')
-const {mockIngredientsData} = require('../src/data/mockIngredients')
-const {filterByTag, filterByName, calcRecipeCost, getInstructions} = require('../src/RecipeRepository');
+const {mockRecipeData} = require('../src/data/mockRecipe');
+const {mockIngredientsData} = require('../src/data/mockIngredients');
+const {filterByTag, filterByName, getInstructions, listIngredients, calcRecipeCost} = require('../src/RecipeRepository');
 
 describe('Filtering Functions', () => {
   
   let recipes;
   beforeEach(() => {
-  return recipes = mockRecipeData
+    return recipes = mockRecipeData
   });
 
   it('Should filter recipes by tags', () => {
-    
     const filteredRecipes1 = filterByTag(recipes,'sauce')
 
     expect(filteredRecipes1).to.deep.equal([
@@ -122,19 +121,20 @@ describe('Filtering Functions', () => {
        "tags": [
           "sauce"
         ]
-      }])
+    }])
 
-    });
+  });
+
   it('Should return a message if no recipes match the tag filter', () => {
-
     const filteredRecipes2 = filterByTag(recipes,'javascript')
 
     expect(filteredRecipes2).to.equal("Sorry, No Recipes Were Found!")
-  })
-  it('Should filter recipes by search', function(){
-      const filteredRecipes = filterByName(recipes, 'Cookie')
+  });
 
-      expect(filteredRecipes).to.deep.equal([
+  it('Should filter recipes by search', function(){
+    const filteredRecipes = filterByName(recipes, 'Cookie')
+
+    expect(filteredRecipes).to.deep.equal([
         {
           "id": 595736,
           "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
@@ -252,8 +252,9 @@ describe('Filtering Functions', () => {
             "antipasto",
             "hor d'oeuvre"
           ]
-        }])
+    }]);
   });
+
   it('Should filter recipes by search regardless of letter case', function(){
     const filteredRecipes = filterByName(recipes, 'cOoKiE')
 
@@ -375,13 +376,14 @@ describe('Filtering Functions', () => {
           "antipasto",
           "hor d'oeuvre"
         ]
-      }])
+    }]);
   });
-  it('Should filter recipes by search regardless of letter case with multiple words', function(){
-  const filteredRecipes = filterByName(recipes, 'cOoKiE CuPs')
 
-  expect(filteredRecipes).to.deep.equal([
-    {
+  it('Should filter recipes by search regardless of letter case with multiple words', function(){
+    const filteredRecipes = filterByName(recipes, 'cOoKiE CuPs')
+
+    expect(filteredRecipes).to.deep.equal([
+      {
       "id": 595736,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
       "ingredients": [
@@ -498,8 +500,9 @@ describe('Filtering Functions', () => {
         "antipasto",
         "hor d'oeuvre"
       ]
-    }])
+    }]);
   });
+
   it('Should return a message if no recipes match the search', function(){
       const filteredRecipes = filterByName(recipes, 'gabblygookblahblahblah')
 
@@ -511,7 +514,7 @@ describe('Get recipe instructions', function(){
     
   let recipes;
   beforeEach(() => {
-  return recipes = mockRecipeData
+    return recipes = mockRecipeData
   });
   
   it('Should return recipe instructions based on recipe name', () => {
@@ -522,7 +525,7 @@ describe('Get recipe instructions', function(){
       '1': 'To make the Cupcakes: Preheat oven to 350 degrees. Line 12 cupcake tins with paper holders.',
       '2': 'Whisk together dry Fruit Cocktail Cupcakes ingredients.',
       '3': 'Add in wet Fruit Cocktail Cupcakes ingredients and stir with a rubber spatula until thoroughly combined. Fill cupcake tins evenly, and bake for 20 minutes or until thin knife inserted in center comes out clean.'
-    })
+    });
   });
 
   it('Should return a message if no recipe is found by the given name', () => {
@@ -530,6 +533,30 @@ describe('Get recipe instructions', function(){
     const instructions1 = getInstructions(recipes, "Rocky Mountian Oysters")
 
     expect(instructions1).to.equal("Sorry, No Recipes Were Found!")
+  });
+});
+
+describe('ingredients functions', () => {
+  it('should return an array of ingredients needed for a recipe', () => {
+    const recipes = mockRecipeData;
+    const ingredients = mockIngredientsData;
+
+    const ingredientsByRecipe = listIngredients(recipes, ingredients, 'Loaded Chocolate Chip Pudding Cookie Cups');
+    
+
+    expect(ingredientsByRecipe).to.deep.equal([
+      'wheat flour',
+      'bicarbonate of soda',
+      'eggs',
+      'sucrose',
+      'instant vanilla pudding',
+      'brown sugar',
+      'salt',
+      'fine sea salt',
+      'semi sweet chips',
+      'unsalted butter',
+      'vanilla'
+    ]);
   });
 });
 
