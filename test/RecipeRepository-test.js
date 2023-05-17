@@ -2,17 +2,16 @@ const chai = require('chai');
 const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe');
 const {mockIngredientsData} = require('../src/data/mockIngredients');
-const {filterByTag, filterByName, getInstructions, listIngredients} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, getInstructions, listIngredients, calcRecipeCost} = require('../src/RecipeRepository');
 
 describe('Filtering Functions', () => {
   
   let recipes;
   beforeEach(() => {
-  return recipes = mockRecipeData
+    return recipes = mockRecipeData
   });
 
   it('Should filter recipes by tags', () => {
-    
     const filteredRecipes1 = filterByTag(recipes,'sauce')
 
     expect(filteredRecipes1).to.deep.equal([
@@ -122,19 +121,20 @@ describe('Filtering Functions', () => {
        "tags": [
           "sauce"
         ]
-      }])
+    }])
 
-    });
+  });
+
   it('Should return a message if no recipes match the tag filter', () => {
-
     const filteredRecipes2 = filterByTag(recipes,'javascript')
 
     expect(filteredRecipes2).to.equal("Sorry, No Recipes Were Found!")
-  })
-  it('Should filter recipes by search', function(){
-      const filteredRecipes = filterByName(recipes, 'Cookie')
+  });
 
-      expect(filteredRecipes).to.deep.equal([
+  it('Should filter recipes by search', function(){
+    const filteredRecipes = filterByName(recipes, 'Cookie')
+
+    expect(filteredRecipes).to.deep.equal([
         {
           "id": 595736,
           "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
@@ -252,8 +252,9 @@ describe('Filtering Functions', () => {
             "antipasto",
             "hor d'oeuvre"
           ]
-        }])
+    }]);
   });
+
   it('Should filter recipes by search regardless of letter case', function(){
     const filteredRecipes = filterByName(recipes, 'cOoKiE')
 
@@ -375,13 +376,14 @@ describe('Filtering Functions', () => {
           "antipasto",
           "hor d'oeuvre"
         ]
-      }])
+    }]);
   });
-  it('Should filter recipes by search regardless of letter case with multiple words', function(){
-  const filteredRecipes = filterByName(recipes, 'cOoKiE CuPs')
 
-  expect(filteredRecipes).to.deep.equal([
-    {
+  it('Should filter recipes by search regardless of letter case with multiple words', function(){
+    const filteredRecipes = filterByName(recipes, 'cOoKiE CuPs')
+
+    expect(filteredRecipes).to.deep.equal([
+      {
       "id": 595736,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
       "ingredients": [
@@ -498,14 +500,23 @@ describe('Filtering Functions', () => {
         "antipasto",
         "hor d'oeuvre"
       ]
-    }])
+    }]);
   });
+
   it('Should return a message if no recipes match the search', function(){
       const filteredRecipes = filterByName(recipes, 'gabblygookblahblahblah')
 
       expect(filteredRecipes).to.equal("Sorry, No Recipes Were Found!")
   });
+});
 
+describe('Get recipe instructions', function(){
+    
+  let recipes;
+  beforeEach(() => {
+    return recipes = mockRecipeData
+  });
+  
   it('Should return recipe instructions based on recipe name', () => {
 
     const instructions = getInstructions(recipes, "AMbrOSia CupCAkeS")
@@ -514,10 +525,10 @@ describe('Filtering Functions', () => {
       '1': 'To make the Cupcakes: Preheat oven to 350 degrees. Line 12 cupcake tins with paper holders.',
       '2': 'Whisk together dry Fruit Cocktail Cupcakes ingredients.',
       '3': 'Add in wet Fruit Cocktail Cupcakes ingredients and stir with a rubber spatula until thoroughly combined. Fill cupcake tins evenly, and bake for 20 minutes or until thin knife inserted in center comes out clean.'
-    })
+    });
   });
 
-  it('Should retrun a message if no recipe is found by the given name', () => {
+  it('Should return a message if no recipe is found by the given name', () => {
 
     const instructions1 = getInstructions(recipes, "Rocky Mountian Oysters")
 
@@ -546,5 +557,70 @@ describe('ingredients functions', () => {
       'unsalted butter',
       'vanilla'
     ]);
+  });
+});
+
+describe('Calculate cost Function', function(){
+  it('should calculate the total cost in dollars given a recipe',function(){
+    const recipe = mockRecipeData[0]
+    const ingredientInfo = [
+      {
+        "id": 20081,
+        "name": "wheat flour",
+        "estimatedCostInCents": 142
+      },
+      {
+        "id": 18372,
+        "name": "bicarbonate of soda",
+        "estimatedCostInCents": 582
+      },
+      {
+        "id": 1123,
+        "name": "eggs",
+        "estimatedCostInCents": 472
+      },
+      {
+        "id": 19335,
+        "name": "sucrose",
+        "estimatedCostInCents": 902
+      },
+      {
+        "id": 19206,
+        "name": "instant vanilla pudding",
+        "estimatedCostInCents": 660
+      },
+      {
+        "id": 19334,
+        "name": "brown sugar",
+        "estimatedCostInCents": 559
+      },
+      {
+        "id": 2047,
+        "name": "salt",
+        "estimatedCostInCents": 280
+      },
+      {
+        "id": 1012047,
+        "name": "fine sea salt",
+        "estimatedCostInCents": 528
+      },
+      {
+        "id": 10019903,
+        "name": "semi sweet chips",
+        "estimatedCostInCents": 253
+      },
+      {
+        "id": 1145,
+        "name": "unsalted butter",
+        "estimatedCostInCents": 617
+      },
+      {
+        "id": 2050,
+        "name": "vanilla",
+        "estimatedCostInCents": 926
+      }]
+    
+    const totalCost = calcRecipeCost(ingredientInfo, recipe)
+    expect(totalCost).to.equal('177.76')
   });
 });

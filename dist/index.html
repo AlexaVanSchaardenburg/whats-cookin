@@ -2,49 +2,50 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- add fonts here -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Lily+Script+One&display=swap" rel="stylesheet">
     <title>Whats Cookin</title>
   </head>
-  <header class="flex">
-    <img src="../src/images/whats-cookin-header.png">
-    <div class="invisible">
-      <button>All Recipes</button>
-      <button>Home</button>
+  <header class="flex-header">
+    <img class="header-image" src="../images/whats-cookin-header.png">
+    <div>
+      <button class="invisible">All Recipes</button>
+      <button class="invisible">Home</button>
     </div>
   </header>
   <body>
-    <section class="home-page">
+    <section class="home-page hidden">
      <div>
-      <section class="banner-box">
-        <div>
-          <div>
-            <h3>
-              Box Header Here
+      <section class="call-to-action-box">
+        <!-- <div> -->
+          <div class="left-side-call-to-action">
+            <h3 class="intro-title">
+              What's Cookin'
             </h3>
-            <p>
-              Box Tagline/Info here
+            <p class="intro-text">
+              Indulge in a gastronomic journey with our food recipe website! Start your day with healthy breakfast options, savor delectable lunch creations, and explore irresistible dinner recipes. Discover the perfect blend of healthy and delicious flavors, right at your fingertips.
             </p>
             <div class="home-buttons-container">
-              <input class="search-box" name="search-box" placeholder="search for recipes">
-              <button>View All</button>
+              <input class="search-box" name="search-box" placeholder="search by name">
+              <button class="view-all">View All</button>
             </div>
           </div>
-          <img>
-        </div>
+          
+            <img class="font-page-img" src="./images/healthy-cook.png">
+        <!-- </div> -->
       </section>
       <section class="featured-box">
         <div>
-          <h2>Featured Recipes</h2>
+          <h2 class="featured-text">Featured Recipes</h2>
           <div class="recipes-container">
-            <article>
+            <article class="recipe-box">
               <img>
               <h3></h3>
             </article>
-            <article>
+            <article class="recipe-box">
               <img>
               <h3></h3>
             </article>
-            <article>
+            <article class="recipe-box">
               <img>
               <h3></h3>
             </article>
@@ -53,7 +54,7 @@
       </section>
      </div> 
     </section>
-    <section class="all-recipes-page">
+    <section class="all-recipes-page hidden">
       <div>
         <div class="all-recipes-page-buttons">
           <label for="filter-recipes">Filter Recipes</label>
@@ -61,41 +62,84 @@
             <option></option>
             <!-- all options here -->
           </select>
-          <button>View Saved Recipes</button>
-          <input class="search-box" name="search-box" placeholder="search for recipes">
+          <input class="all-recipe-search-box" name="all-recipe-search-box" placeholder="search be name">
+          <button class="saved-recipe">View Saved Recipes</button>
         </div>
       </div>
-      <section>
+      <section class="all-recipe-flex">
         <!-- Recipes Go Here -->
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
+        <article class="all-recipe-box">
+          <img class="all-recipe-image" src="../images/turing-logo.png">
+          <h3>Recipe Title</h3>
+        </article>
       </section>
     </section>
     <section class="recipe-page">
       <aside>
-        <img>
-        <h3>Ingredients:</h3>
-        <ul>
+        <img class="aside-img" src="../images/turing-logo.png">
+        <h3 class="ingredients-header">Ingredients:</h3>
+        <ul class="ingredients-list">
           <!-- Ingredients Go Here -->
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
+          <li>chocolate | quantity</li>
         </ul>
       </aside>
-      <section>
-        <div>
+      <section class="right-side">
+        <div class="green-flex-container">
           <h2>Recipe Name</h2>
-          <button>Save Recipe</button>
+          <button class="save-recipe">Save Recipe</button>
         </div>
-        <div class="pink-container flex">
+        <div class="pink-container-flex">
           <div class="tags">
-            <ul>
+            <ul class="flex-tags">
               <!-- Tags Populate Here -->
+              <li>#dinner</li>
+              <li>#soup</li>
+              <li>#yummy</li>
+              <li>#vegetarian</li>
+              <li>#feeds4</li>
             </ul>
           </div>
           <div>
-            <p>Populate Total Cost Here</p>
+            <p class="total-cost">Total cost:</p>
           </div>
         </div>
-        <div class="instructions">
-          <h3>Instructions</h3>
+        <div>
+          <h3 class="instructions">Instructions:</h3>
           <ol>
             <!-- Instructions Populate Here -->
+            <li>Step</li>
+            <li>Step</li>
+            <li>Step</li>
+            <li>Step</li>
+            <li>Step</li>
+            <li>Step</li>
+            <li>Step</li>
+            <li>Step</li>
           </ol>
         </div>
       </section>
