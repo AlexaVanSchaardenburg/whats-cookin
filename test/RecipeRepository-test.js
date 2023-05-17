@@ -568,6 +568,6 @@ describe('Calculate cost Function', function(){
       }]
     
     const totalCost = calcRecipeCost(ingredientInfo, recipe)
-    expect(totalCost).to.equal(177.76)
+    expect(totalCost).to.equal('177.76')
   });
 });
