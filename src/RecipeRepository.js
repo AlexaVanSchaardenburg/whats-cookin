@@ -1,16 +1,3 @@
-// const testData = (recipeData, ingData) => {
-//   console.log('number of recipes:', recipeData.length);
-//   console.log('number of ingredients:', ingData.length);
-//   console.log('recipe names:', recipeData.map(recipe => recipe.name));
-//   console.log('recipe tags:', recipeData.map(recipe => recipe.tags))
-//   const cookiesIds = recipeData[0].ingredients.map(ingredient => ingredient.id);
-//   const yogurtIds = recipeData[1].ingredients.map(ingredient => ingredient.id);
-//   const allIds = cookiesIds.concat(yogurtIds);
-//   const uniqueIds = [...new Set(allIds)];
-//   console.log(uniqueIds);
-//   console.log('expected num ingredients:', uniqueIds.length);
-// }
-
 const filterByTag = (recipeData, tag) => {
   const filteredRecipes = recipeData.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
   
@@ -18,7 +5,7 @@ const filterByTag = (recipeData, tag) => {
   if (filteredRecipes.length) {
     return filteredRecipes
   } else {
-    // Suggested Change: Instead of returning this sad path message, invoke a function that displays this message to the DOM; or do both so this path is still testable
+    // Suggested Change: Instead of returning this sad path message, invoke a function that displays this message to the DOM; OR do both so this path is still testable
     return "Sorry, No Recipes Were Found!"
   };
 };
@@ -36,51 +23,48 @@ const filterByName = (recipeData, searchInput) => {
   };
 };
 
-const getInstructions = (recipeData, name) => {
-  const foundRecipe = recipeData.find(recipe => recipe.name.toLowerCase() === name.toLowerCase())
-    if (foundRecipe === undefined) {
-      return "Sorry, No Recipes Were Found!"
-    } else {
-    return foundRecipe.instructions.reduce((acc, index) => {
-      acc[index.number] = index.instruction
-      return acc
-    }, {});
-  };
+// Clarification: For the following 3 functions, we can use the event listener to pass the entire recipe object as an argument. This allows us to compleete remove the logic that "finds" a matching recipe in the recipeData array, since the event.target should already have identified the recipe for us. In the tests, the argument passed in will be the entire recipe object, rather than just the name.
+
+// I removed the conditional and sad path test for this function because it will only ever run when triggered by an event listener. We can change it back if needed.
+const getInstructions = (recipe) => {
+  return recipe.instructions.reduce((acc, index) => {
+    acc[index.number] = index.instruction
+    return acc
+  }, {});
 };
 
-const listIngredients = (recipeData, ingredientData, selectedRecipe) =>  {
-  const recipe = recipeData.find(recipe => recipe.name === selectedRecipe);
+const listIngredients = (ingredientData, recipe) =>  {
   const ingredientIds = recipe.ingredients.map(ingredient => ingredient.id);
-
   const ingredientNames = ingredientIds.map(id => {
     const ingredientIndex = ingredientData.findIndex(ingredient => id === ingredient.id)
     return ingredientData[ingredientIndex].name
-    })
+    });
 
   return ingredientNames;
 };
 
-const calcRecipeCost = (infos, recipe) => {
+const calcRecipeCost = (ingredientData, recipe) => {
   /*
   start with value 0
   1. make list of ingredients ✅
   2. map through recipe ingredients ✅
-    a. iterate through ingredients info array for each ingridient to find the ingredient info (returns object) ✅
-    b. take ingrdientInfo that was found and get ingredient cost ✅
+    a. iterate through ingredients info array for each ingredient to find the ingredient info (returns object) ✅
+    b. take ingredientInfo that was found and get ingredient cost ✅
     c. take cost and multiply it by quantity from recipe - return totalIngredientCost ✅
   4.  add totalIngredientCost to counter ✅
   5. return total cost ✅
   6. transform totalcost into a number with two decimal places ✅
   */
 
-  const ingredientsCosts = recipe.ingredients.map(ingredient => {
-    const currentInfo = infos.find(info => info.id === ingredient.id) 
-    const currentIngredientCost = currentInfo.estimatedCostInCents * ingredient.quantity.amount
+  const ingredientsCosts = recipe.ingredients.map(recipeIngredient => {
+    const currentIngredient = ingredientData.find(ingredient => ingredient.id === recipeIngredient.id); 
+    const currentIngredientCost = currentIngredient.estimatedCostInCents * recipeIngredient.quantity.amount
+
     return currentIngredientCost
-    }
-    )
+  })
 
   const totalCost = parseFloat((ingredientsCosts.reduce((total, cost) => total + cost, 0)/100)).toFixed(2)
+
   return totalCost
 };
 
