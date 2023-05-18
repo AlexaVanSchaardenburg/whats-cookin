@@ -1,6 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
 import{homePage, allRecipesPage, recipePage, allRecipesBox, recipeTags} from './scripts.js'
 import {recipeData} from './data/recipes.js'
+import { filterByTag } from './RecipeRepository.js';
 
 //DOM Functions
 
@@ -46,15 +47,15 @@ const displayRecipe = (event) => {
 };
 
 const showRecipeByTag = () => {
-  const selectedTag = recipeTags.value
-  return recipeData.filter((recipe) => {
-    const tagged = document.getElementById(recipe.id);
-    if (!recipe.tags.includes(selectedTag)) {
-      hideDomElement(tagged)
-    } else {
-      showDomElement(tagged)
-    }
-  })
+  allRecipesBox.innerHTML = ''
+    const recipes = filterByTag(recipeData, recipeTags.value)
+      recipes.forEach((recipe) => {
+  allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
+  <img class="all-recipe-image" src="${recipe.image}">
+  <h3>${recipe.name}</h3>
+  </article>`
+ })
+
 }
 
 export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, displayRecipe, showRecipeByTag}
