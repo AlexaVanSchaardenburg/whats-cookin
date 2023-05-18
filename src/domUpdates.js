@@ -5,7 +5,7 @@ import {ingredientsData} from './data/ingredients.js'
 const { filterByTag,
   filterByName,
   getInstructions,
-  listIngredients,
+  listIngredient,
   calcRecipeCost} = require('../src/data/RecipeRepository.js');
 
 //DOM Functions
@@ -46,7 +46,7 @@ const selectRecipe = (e) => {
 const displayRecipe = (event) => {
   const recipe = selectRecipe(event)
   //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
-  const ingredientsNames = listIngredients(ingredientsData, recipe);
+  const ingredientsNames = listIngredient(ingredientsData, ingredient);
   const name = recipe.name;
   const recipeTags = recipe.tags; 
   const recipeCost;
@@ -54,7 +54,7 @@ const displayRecipe = (event) => {
   recipePageImage.src = recipe.image;
   recipe.ingredients.forEach(ingredient => {
     recipeIngredientsListSection.innerHTML += `
-    <li>${}|${ingredient.amount}<li>
+    <li>${listIngredient(ingredientsData, ingredient)}|${ingredient.amount}<li>
     `
   })
   recipePageNameSection =
