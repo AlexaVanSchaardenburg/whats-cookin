@@ -22,6 +22,7 @@ const allRecipesPage = document.querySelector('.all-recipes-page')
 const recipePage = document.querySelector('.recipe-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const searchInput = document.querySelector('#searchInput');
+const searchInput2 = document.querySelector('#searchInput2');
 const searchButton = document.querySelector('#searchButton');
 const searchButton2 = document.querySelector('#searchButton2')
 // const homeForm = document.querySelector('.home-form');
@@ -37,7 +38,7 @@ searchButton.addEventListener('click', () => {
 )
 searchButton2.addEventListener('click', () => {
   if (searchInput.value) {
-    searchRecipeByName(recipeData, searchInput)}
+    searchRecipeByName(recipeData, searchInput2)}
   }
 )
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
