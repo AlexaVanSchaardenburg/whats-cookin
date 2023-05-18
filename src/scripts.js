@@ -10,7 +10,7 @@ import ingredientsData from './data/ingredients.js'
 
 //Import Functions
 
-import {showRecipesPage} from './domUpdates.js'
+import {showRecipesPage, displayRecipe} from './domUpdates.js'
 
 //Query Selectors
 
@@ -33,4 +33,4 @@ allRecipesBox.addEventListener('click', (event) => {
     displayRecipe(event)
 })
 
-export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection, recipeCostSection}
+export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage,recipePageNameSection, recipeTagsSection, recipeIngredientListSection, recipeCostSection, recipeInstructionsSection}

@@ -1060,7 +1060,7 @@ describe('Get info by recipe', () => {
       'wheat flour');
   });
 
-  it('should return an ingredient name for a different recipe', () => {
+  it('should return an ingredient for a different recipe', () => {
     const ingredientsByRecipe = listIngredient(ingredients, recipe2.ingredients[1]);
     
     expect(ingredientsByRecipe).to.equal(

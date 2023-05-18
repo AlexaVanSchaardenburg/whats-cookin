@@ -6,7 +6,7 @@ const { filterByTag,
   filterByName,
   getInstructions,
   listIngredient,
-  calcRecipeCost} = require('../src/data/RecipeRepository.js');
+  calcRecipeCost} = require('../src/RecipeRepository.js');
 
 //DOM Functions
 
@@ -27,9 +27,9 @@ const showRecipesPage = () => {
 
 const displayAllRecipes = (data) => {
   data.forEach((recipe) => {
-  allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
-  <img class="all-recipe-image" src="${recipe.image}">
-  <h3>${recipe.name}</h3>
+  allRecipesBox.innerHTML += `<article class="all-recipe-box click-to-view-recipe" id="${recipe.id}">
+  <img class="all-recipe-image click-to-view-recipe" src="${recipe.image}">
+  <h3 class="click-to-view-recipe">${recipe.name}</h3>
   </article>`})
 };
 
@@ -40,26 +40,32 @@ const showRecipePage = () => {
 };
 
 const selectRecipe = (e) => {
-    return recipeData.find(recipe => recipe.id === e.target.id)
+    const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
+    return recipe
 };
 
 const displayRecipe = (event) => {
   const recipe = selectRecipe(event)
-  //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
-  const ingredientsNames = listIngredient(ingredientsData, ingredient);
-  const name = recipe.name;
-  const recipeTags = recipe.tags; 
-  const recipeCost;
+  // //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
 
   recipePageImage.src = recipe.image;
+  recipePageNameSection.innerText = recipe.name;
+  recipeCostSection.innerText = `Total Cost: ${`cost here`}`
+
   recipe.ingredients.forEach(ingredient => {
-    recipeIngredientsListSection.innerHTML += `
-    <li>${listIngredient(ingredientsData, ingredient)}|${ingredient.amount}<li>
-    `
+    console.log(listIngredient(recipeData, ingredient))
+    recipeIngredientListSection.innerHTML += `<li>${listIngredient(recipeData, ingredient)} | ${ingredient.quantity.amount} ${ingredient.quantity.unit}<li>`
   })
-  recipePageNameSection =
-  recipeTagsSection =
-  recipeInstructionsSection =
+
+  recipe.tags.forEach(tag => {
+    recipeTagsSection.innerHTML += `<li>#${tag}</li>`
+  })
+
+  const recipeInstructions = getInstructions(recipe)
+  const numSteps = Object.keys(recipeInstructions)
+  numSteps.forEach(step => {
+    recipeInstructionsSection.innerHTML += `<ol><li>${recipeInstructions[step]}<li><ol>`
+  })
 
   showRecipePage()
 };

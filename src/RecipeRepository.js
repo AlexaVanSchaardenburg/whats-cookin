@@ -31,21 +31,13 @@ const getInstructions = (recipe) => {
   }, {});
 };
 
-// const listIngredients = (ingredientData, recipe) =>  {
-//   const ingredientIds = recipe.ingredients.map(ingredient => ingredient.id);
-//   const ingredientNames = ingredientIds.map(id => {
-//     const ingredientIndex = ingredientData.findIndex(ingredient => id === ingredient.id)
-//     return ingredientData[ingredientIndex].name
-//     });
-
-//   return ingredientNames;
-// };
 
 const listIngredient = (ingredientData, ingredient) =>  {
   const ingredientInfo = ingredientData.find(ingredientExample => ingredient.id === ingredientExample.id)
+  console.log(ingredientInfo)
   const ingredientName = ingredientInfo.name
 
-  console.log(ingredientName)
+  // console.log(ingredientName)
   return ingredientName;
 };
 
