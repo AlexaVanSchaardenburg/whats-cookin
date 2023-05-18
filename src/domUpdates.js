@@ -36,9 +36,9 @@ const searchRecipeByName = (recipeData, searchInput) => {
   console.log(searchInput.value);
   const filteredNames = filterByName(recipeData, searchInput.value);
   console.log(filteredNames);
-  if (filteredNames) {
-    allRecipesBox.innerHTML = "";
-    allRecipesBox.innerHTML += `<p>${filteredNames}</p>`
+  allRecipesBox.innerHTML = "";
+  if (typeof filteredNames === 'string') {
+    allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
     filteredNames.forEach((recipe) => {
       allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
