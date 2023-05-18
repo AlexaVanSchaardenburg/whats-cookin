@@ -1,5 +1,5 @@
 //NOTE: Your DOM manipulation will occur in this file
-import{homePage, allRecipesPage, recipePage, allRecipesBox} from './scripts.js'
+import{homePage, allRecipesPage, recipePage, allRecipesBox, recipeTags} from './scripts.js'
 import {recipeData} from './data/recipes.js'
 
 //DOM Functions
@@ -45,4 +45,16 @@ const displayRecipe = (event) => {
   showRecipePage()
 };
 
-export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, displayRecipe}
+const showRecipeByTag = () => {
+  const tag = recipeTags.value
+  return recipeData.filter((recipe) => {
+    const r = document.getElementById(recipe.id);
+    if (!recipe.tags.includes(tag)) {
+      r.classList.add('hidden')
+    } else {
+      r.classList.remove('hidden')
+    }
+  })
+}
+
+export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, displayRecipe, showRecipeByTag}

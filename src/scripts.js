@@ -10,7 +10,7 @@ import ingredientsData from './data/ingredients.js'
 
 //Import Functions
 
-import {showRecipesPage} from './domUpdates.js'
+import {showRecipesPage, showRecipeByTag} from './domUpdates.js'
 
 //Query Selectors
 
@@ -24,7 +24,8 @@ const recipeTags = document.querySelector('.recipe-tags')
 //Event Listeners
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
-recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
+// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
+recipeTags.addEventListener('change', () => {showRecipeByTag()})
 // allRecipesBox.addEventListener('click', ())
 
-export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox}
+export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, recipeTags}
