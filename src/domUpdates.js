@@ -33,9 +33,7 @@ const displayAllRecipes = (data) => {
 };
 
 const searchRecipeByName = (recipeData, searchInput) => {
-  // console.log(searchInput.value);
   const filteredNames = filterByName(recipeData, searchInput.value);
-  // console.log(filteredNames);
   allRecipesBox.innerHTML = "";
   if (typeof filteredNames === 'string') {
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
