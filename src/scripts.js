@@ -25,6 +25,4 @@ const allRecipesBox = document.querySelector('.all-recipe-flex')
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
 // allRecipesBox.addEventListener('click', ())
 
-//Functions
-
 export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox}
