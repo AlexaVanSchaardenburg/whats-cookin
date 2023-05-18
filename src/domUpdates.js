@@ -46,7 +46,7 @@ const selectRecipe = (e) => {
 const displayRecipe = (event) => {
   const recipe = selectRecipe(event)
   //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
-  const ingredientsNames = listIngredients(recipeData, ingredientsData, recipe);
+  const ingredientsNames = listIngredients(ingredientsData, recipe);
   const name = recipe.name;
   const recipeTags = recipe.tags; 
   const recipeCost;
