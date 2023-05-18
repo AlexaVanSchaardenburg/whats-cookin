@@ -1,8 +1,14 @@
 //NOTE: Your DOM manipulation will occur in this file
 
 import {filterByName} from './RecipeRepository.js'
-import {homePage, allRecipesPage, recipePage, allRecipesBox} from './scripts.js'
+import{homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection, recipeCostSection} from './scripts.js'
 import {recipeData} from './data/recipes.js'
+import {ingredientsData} from './data/ingredients.js'
+const { filterByTag,
+  filterByName,
+  getInstructions,
+  listIngredient,
+  calcRecipeCost} = require('../src/RecipeRepository.js');
 
 // const {filterByName} = require('../data/RecipeRepository.js')
 
@@ -26,9 +32,9 @@ const showRecipesPage = () => {
 
 const displayAllRecipes = (data) => {
   data.forEach((recipe) => {
-  allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
-  <img class="all-recipe-image" src="${recipe.image}">
-  <h3>${recipe.name}</h3>
+  allRecipesBox.innerHTML += `<article class="all-recipe-box click-to-view-recipe" id="${recipe.id}">
+  <img class="all-recipe-image click-to-view-recipe" src="${recipe.image}">
+  <h3 class="click-to-view-recipe">${recipe.name}</h3>
   </article>`})
 };
 
@@ -58,14 +64,33 @@ const showRecipePage = () => {
 };
 
 const selectRecipe = (e) => {
-    //iterate through the recipes data and find the recipe with the matching id to the elements id that was clicked. - FUNCTION
-    return selectedRecipe = recipeData.find(recipe => recipe.id === e.id)
+    const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
+    return recipe
 };
 
 const displayRecipe = (event) => {
-  //needs to take in an event target as the parameter -- event listener listens for click on page and returns the element that was clicked (child element) -- put event listener on allRecipesBox - IN SCRIPT.JS FILE
   const recipe = selectRecipe(event)
-  //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
+  // //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
+
+  recipePageImage.src = recipe.image;
+  recipePageNameSection.innerText = recipe.name;
+  recipeCostSection.innerText = `Total Cost: ${`cost here`}`
+
+  recipe.ingredients.forEach(ingredient => {
+    console.log(listIngredient(recipeData, ingredient))
+    recipeIngredientListSection.innerHTML += `<li>${listIngredient(recipeData, ingredient)} | ${ingredient.quantity.amount} ${ingredient.quantity.unit}<li>`
+  })
+
+  recipe.tags.forEach(tag => {
+    recipeTagsSection.innerHTML += `<li>#${tag}</li>`
+  })
+
+  const recipeInstructions = getInstructions(recipe)
+  const numSteps = Object.keys(recipeInstructions)
+  numSteps.forEach(step => {
+    recipeInstructionsSection.innerHTML += `<ol><li>${recipeInstructions[step]}<li><ol>`
+  })
+
   showRecipePage()
 };
 

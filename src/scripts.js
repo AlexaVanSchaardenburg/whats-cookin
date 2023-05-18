@@ -18,8 +18,8 @@ import {showRecipesPage, displayAllRecipes, searchRecipeByName} from './domUpdat
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
-const allRecipesPage = document.querySelector('.all-recipes-page')
 const recipePage = document.querySelector('.recipe-page')
+const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const searchInput = document.querySelector('#searchInput');
 const searchInput2 = document.querySelector('#searchInput2');
@@ -27,6 +27,12 @@ const searchButton = document.querySelector('#searchButton');
 const searchButton2 = document.querySelector('#searchButton2')
 // const homeForm = document.querySelector('.home-form');
 
+const recipePageImage = document.querySelector('.aside-img');
+const recipeIngredientListSection = document.querySelector('.ingredients-list');
+const recipePageNameSection = document.querySelector('#recipe-name');
+const recipeTagsSection = document.querySelector('.flex-tags');
+const recipeInstructionsSection = document.querySelector('.instructions'); 
+const recipeCostSection = document.querySelector('.total-cost'); 
 
 //Event Listeners
 
@@ -42,6 +48,8 @@ searchButton2.addEventListener('click', () => {
   }
 )
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
-// allRecipesBox.addEventListener('click', ())
+allRecipesBox.addEventListener('click', (event) => {
+    displayRecipe(event)
+})
 
-export {goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, searchInput}
+export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, searchInput, recipePageImage,recipePageNameSection, recipeTagsSection, recipeIngredientListSection, recipeCostSection, recipeInstructionsSection}

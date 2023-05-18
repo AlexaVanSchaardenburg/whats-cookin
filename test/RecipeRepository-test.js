@@ -3,7 +3,7 @@ const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe');
 const {mockIngredientsData} = require('../src/data/mockIngredients');
 const {mockUserData} = require('../src/data/mockUser');
-const {filterByTag, filterByName, getInstructions, listIngredients, calcRecipeCost, selectRandomUser, saveRecipe} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, getInstructions, listIngredient, calcRecipeCost, selectRandomUser, saveRecipe} = require('../src/RecipeRepository');
 
 const recipes = mockRecipeData;
 const ingredients = mockIngredientsData;
@@ -1054,41 +1054,19 @@ describe('Get info by recipe', () => {
     });
   });
 
-  it('should return an array of ingredients needed for a recipe', () => {
-    const ingredientsByRecipe = listIngredients(ingredients, recipe1);
+  it('should return the name of an ingredient given a recipe ingredient', () => {
+    const ingredientsByRecipe = listIngredient(ingredients, recipe1.ingredients[0]);
     
-    expect(ingredientsByRecipe).to.deep.equal([
-      'wheat flour',
-      'bicarbonate of soda',
-      'eggs',
-      'sucrose',
-      'instant vanilla pudding',
-      'brown sugar',
-      'salt',
-      'fine sea salt',
-      'semi sweet chips',
-      'unsalted butter',
-      'vanilla'
-    ]);
+    expect(ingredientsByRecipe).to.equal(
+      'wheat flour');
   });
 
-  it('should return ingredients for a different recipe', () => {
-    const ingredientsByRecipe = listIngredients(ingredients, recipe2);
+  it('should return an ingredient for a different recipe', () => {
+    const ingredientsByRecipe = listIngredient(ingredients, recipe2.ingredients[1]);
     
-    expect(ingredientsByRecipe).to.deep.equal([
-      'whole almonds',
-      'brown sugar',
-      'coconut',
-      'coconut cream',
-      'coconut oil',
-      'dark chocolate morsels',
-      'granola cereal',
-      'maple',
-      'oatmeal',
-      'pecan',
-      'salt',
-      'vanilla'
-    ]);
+    expect(ingredientsByRecipe).to.equal(
+      'brown sugar'
+);
   });
 
   it('should calculate the total cost in dollars given a recipe',() => {
