@@ -7,23 +7,24 @@ import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
 import ingredientsData from './data/ingredients.js'
-import {recipeData} from './data/recipes.js'
 
 //Import Functions
 
-import {showRecipesPage, displayAllRecipes} from './domUpdates.js'
+import {showRecipesPage} from './domUpdates.js'
 
 //Query Selectors
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
+const recipePage = document.querySelector('.recipe-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 
 //Event Listeners
 
-goToRecipesButton.addEventListener('click', () => {showRecipesPage(homePage, allRecipesPage)})
+goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
+// allRecipesBox.addEventListener('click', ())
 
 //Functions
-console.log(recipeData)
-displayAllRecipes(recipeData, allRecipesBox)
+
+export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox}
