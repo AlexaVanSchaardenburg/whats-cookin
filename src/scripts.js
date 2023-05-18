@@ -24,6 +24,7 @@ const allRecipesBox = document.querySelector('.all-recipe-flex')
 const searchInput = document.querySelector('#searchInput');
 const searchButton = document.querySelector('#searchButton');
 
+
 //Event Listeners
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage(homePage, allRecipesPage)})

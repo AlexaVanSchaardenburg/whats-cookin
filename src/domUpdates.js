@@ -33,17 +33,25 @@ const displayAllRecipes = (data) => {
 };
 
 const searchRecipeByName = (recipeData, searchInput) => {
-  // console.log(searchInput.value);
+  console.log(searchInput.value);
   const filteredNames = filterByName(recipeData, searchInput.value);
-  filteredNames.forEach((recipe) => {
-    allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
-    <img class="all-recipe-image" src="${recipe.image}">
-    <h3>${recipe.name}</h3>
-    </article>`});
+  console.log(filteredNames);
+  if (filteredNames) {
+    allRecipesBox.innerHTML = "";
+    allRecipesBox.innerHTML += `<p>${filteredNames}</p>`
+  } else {
+    filteredNames.forEach((recipe) => {
+      allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
+      <img class="all-recipe-image" src="${recipe.image}">
+      <h3>${recipe.name}</h3>
+      </article>`});
+  }
   hideDomElement(homePage)
   hideDomElement(homePage)
   showDomElement(allRecipesPage)
 }
+
+
 
 const showRecipePage = () => {
   hideDomElement(homePage)
