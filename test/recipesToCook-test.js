@@ -9,17 +9,18 @@ const {saveRecipe} = require('../src/recipesToCook')
 // user will click a button to save recipe
 // recipe will be added to existing array of recipesToCook - if recipesToCook already exists in the user object, push recipe to it. Otherwise, create key recipesToCook and assign it a value of an array with the saved recipe inside.
 
-describe('Create user', () => {
-  // should select a random user from an array of users
+describe('Select a user', () => {
+  it('Should select a random user from an array of users', () => {
+
+  });
 });
 
 describe('Save recipes', () => {
+  const recipe1 = mockRecipeData[0];
   let user;
-  let recipe1;
   beforeEach(() => {
     user = mockUserData[0];
     delete user.recipesToCook;
-    recipe1 = mockRecipeData[0];
   });
 
   it('Should save a recipe to the user object', () => {  
