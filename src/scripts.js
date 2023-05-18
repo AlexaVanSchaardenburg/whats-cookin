@@ -24,6 +24,7 @@ const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
 const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions'); 
+const recipeCostSection = document.querySelector('.total-cost'); 
 
 //Event Listeners
 
@@ -32,4 +33,4 @@ allRecipesBox.addEventListener('click', (event) => {
     displayRecipe(event)
 })
 
-export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection}
+export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection, recipeCostSection}

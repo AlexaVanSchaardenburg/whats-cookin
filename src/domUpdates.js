@@ -1,5 +1,5 @@
 //NOTE: Your DOM manipulation will occur in this file
-import{homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection} from './scripts.js'
+import{homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection, recipeCostSection} from './scripts.js'
 import {recipeData} from './data/recipes.js'
 import {ingredientsData} from './data/ingredients.js'
 const { filterByTag,
@@ -49,6 +49,7 @@ const displayRecipe = (event) => {
   const ingredientsNames = listIngredients(recipeData, ingredientsData, recipe);
   const name = recipe.name;
   const recipeTags = recipe.tags; 
+  const recipeCost;
 
   recipePageImage.src = recipe.image;
   recipe.ingredients.forEach(ingredient => {
