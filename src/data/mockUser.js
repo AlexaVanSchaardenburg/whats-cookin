@@ -601,7 +601,6 @@ const mockUserData = [
       }
     ]
   }
-  ]
-}];
+];
 
 export {mockUserData}
