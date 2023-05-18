@@ -1,5 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
 
+import { filterByName } from './data/RecipeRepository.js'
+
 //DOM Functions
 
 const hideDomElement = (element) => {
@@ -24,14 +26,11 @@ const displayAllRecipes = (data, recipeBox) => {
   </article>`})
 }
 
+const searchRecpieByName = (recipeData, searchInput) => {
+  console.log(searchInput);
+  filterByName(recipeData, searchInput);
+}
 
-//iterate over array of recipes (FOREACH?)
-//for each element we want to display the name and image
 
 
-
-{/* <article class="all-recipe-box">
-<img class="all-recipe-image" src="../images/turing-logo.png">
-<h3>Recipe Title</h3>
-</article> */}
-export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes}
+export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, searchRecpieByName}
