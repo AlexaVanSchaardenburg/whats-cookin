@@ -41,10 +41,11 @@ const getInstructions = (recipe) => {
 //   return ingredientNames;
 // };
 
-const listIngredients = (ingredientData, ingredient) =>  {
-  const ingredientIndex = ingredientData.findIndex(ingredientExample => id === ingredient.id)
-  const ingredientName = ingredientData[ingredientIndex].name
+const listIngredient = (ingredientData, ingredient) =>  {
+  const ingredientInfo = ingredientData.find(ingredientExample => ingredient.id === ingredientExample.id)
+  const ingredientName = ingredientInfo.name
 
+  console.log(ingredientName)
   return ingredientName;
 };
 
@@ -78,6 +79,6 @@ module.exports = {
   filterByTag,
   filterByName,
   getInstructions,
-  listIngredients,
+  listIngredient,
   calcRecipeCost
 };
