@@ -2,16 +2,18 @@ const chai = require('chai');
 const expect = chai.expect;
 const {mockUserData} = require('../src/data/mockUser');
 const {mockRecipeData} = require('../src/data/mockRecipe');
-const {saveRecipe} = require('../src/recipesToCook')
+const {selectRandomUser, saveRecipe} = require('../src/recipesToCook')
 
-// Allow a user to add/remove a recipe to/from their recipesToCook list (add to my recipesToCook)
+describe('Select a random user', () => {
+  it('Should return a user object with correct keys', () => {
+    const users = mockUserData;
 
-// user will click a button to save recipe
-// recipe will be added to existing array of recipesToCook - if recipesToCook already exists in the user object, push recipe to it. Otherwise, create key recipesToCook and assign it a value of an array with the saved recipe inside.
+    const randomUser = selectRandomUser(users);
 
-describe('Select a user', () => {
-  it('Should select a random user from an array of users', () => {
-
+    expect(typeof randomUser).to.equal('object');
+    expect(randomUser.name).to.exist;
+    expect(randomUser.id).to.exist;
+    expect(randomUser.pantry).to.exist;
   });
 });
 
