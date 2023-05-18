@@ -7,7 +7,6 @@ import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
 import ingredientsData from './data/ingredients.js'
-import {recipeData} from './data/recipes.js'
 
 //Import Functions
 
@@ -18,6 +17,7 @@ import {showRecipesPage, displayAllRecipes, filterByName} from './domUpdates.js'
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
+const recipePage = document.querySelector('.recipe-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const searchInput = document.querySelector('#searchInput').value;
 const searchButton = document.querySelector('#searchButton');
@@ -26,7 +26,7 @@ const searchButton = document.querySelector('#searchButton');
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage(homePage, allRecipesPage)})
 searchButton.addEventListener('click', () => {searchRecpieByName(recipeData, searchInput)})
+goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
+// allRecipesBox.addEventListener('click', ())
 
-//Functions
-console.log(recipeData)
-displayAllRecipes(recipeData, allRecipesBox)
+export {goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox}
