@@ -46,13 +46,13 @@ const displayRecipe = (event) => {
 };
 
 const showRecipeByTag = () => {
-  const tag = recipeTags.value
+  const selectedTag = recipeTags.value
   return recipeData.filter((recipe) => {
-    const r = document.getElementById(recipe.id);
-    if (!recipe.tags.includes(tag)) {
-      r.classList.add('hidden')
+    const tagged = document.getElementById(recipe.id);
+    if (!recipe.tags.includes(selectedTag)) {
+      hideDomElement(tagged)
     } else {
-      r.classList.remove('hidden')
+      showDomElement(tagged)
     }
   })
 }
