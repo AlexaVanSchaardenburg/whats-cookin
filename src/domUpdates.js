@@ -21,9 +21,9 @@ const showRecipesPage = () => {
 
 const displayAllRecipes = (data) => {
   data.forEach((recipe) => {
-  allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
-  <img class="all-recipe-image" src="${recipe.image}">
-  <h3>${recipe.name}</h3>
+  allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
+  <img class="recipe all-recipe-image" src="${recipe.image}">
+  <h3 class="recipe">${recipe.name}</h3>
   </article>`})
 };
 
@@ -40,9 +40,8 @@ const selectRecipe = (e) => {
 
 const displayRecipe = (event) => {
   //needs to take in an event target as the parameter -- event listener listens for click on page and returns the element that was clicked (child element) -- put event listener on allRecipesBox - IN SCRIPT.JS FILE
-  const recipe = selectRecipe(event)
+  const recipe = selectRecipe(event);
   //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
-  showRecipePage()
 };
 
-export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, displayRecipe}
+export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, showRecipePage, displayRecipe}

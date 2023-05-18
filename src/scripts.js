@@ -10,7 +10,7 @@ import ingredientsData from './data/ingredients.js'
 
 //Import Functions
 
-import {showRecipesPage} from './domUpdates.js'
+import {showRecipesPage, showRecipePage} from './domUpdates.js'
 
 //Query Selectors
 
@@ -23,6 +23,12 @@ const allRecipesBox = document.querySelector('.all-recipe-flex')
 //Event Listeners
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
+allRecipesBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('recipe')) {
+    showRecipePage();
+    displayRecipe(event);
+  };
+});
 // allRecipesBox.addEventListener('click', ())
 
 export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox}
