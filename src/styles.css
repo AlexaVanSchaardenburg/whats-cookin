@@ -86,7 +86,7 @@ button {
 
 .search-box {
   padding: 5px 150px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   margin-bottom: 10px;
   border-radius: 8px;
   border-style: none;
