@@ -1,6 +1,12 @@
 //NOTE: Your DOM manipulation will occur in this file
-import{homePage, allRecipesPage, recipePage, allRecipesBox} from './scripts.js'
+import{homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection} from './scripts.js'
 import {recipeData} from './data/recipes.js'
+import {ingredientsData} from './data/ingredients.js'
+const { filterByTag,
+  filterByName,
+  getInstructions,
+  listIngredients,
+  calcRecipeCost} = require('../src/data/RecipeRepository.js');
 
 //DOM Functions
 
@@ -34,14 +40,26 @@ const showRecipePage = () => {
 };
 
 const selectRecipe = (e) => {
-    //iterate through the recipes data and find the recipe with the matching id to the elements id that was clicked. - FUNCTION
-    return selectedRecipe = recipeData.find(recipe => recipe.id === e.id)
+    return recipeData.find(recipe => recipe.id === e.target.id)
 };
 
 const displayRecipe = (event) => {
-  //needs to take in an event target as the parameter -- event listener listens for click on page and returns the element that was clicked (child element) -- put event listener on allRecipesBox - IN SCRIPT.JS FILE
   const recipe = selectRecipe(event)
   //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
+  const ingredientsNames = listIngredients(recipeData, ingredientsData, recipe);
+  const name = recipe.name;
+  const recipeTags = recipe.tags; 
+
+  recipePageImage.src = recipe.image;
+  recipe.ingredients.forEach(ingredient => {
+    recipeIngredientsListSection.innerHTML += `
+    <li>${}|${ingredient.amount}<li>
+    `
+  })
+  recipePageNameSection =
+  recipeTagsSection =
+  recipeInstructionsSection =
+
   showRecipePage()
 };
 

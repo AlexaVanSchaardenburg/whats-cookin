@@ -16,13 +16,20 @@ import {showRecipesPage} from './domUpdates.js'
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
-const allRecipesPage = document.querySelector('.all-recipes-page')
 const recipePage = document.querySelector('.recipe-page')
+const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
+const recipePageImage = document.querySelector('.aside-img');
+const recipeIngredientListSection = document.querySelector('.ingredients-list');
+const recipePageNameSection = document.querySelector('#recipe-name');
+const recipeTagsSection = document.querySelector('.flex-tags');
+const recipeInstructionsSection = document.querySelector('.instructions'); 
 
 //Event Listeners
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
-// allRecipesBox.addEventListener('click', ())
+allRecipesBox.addEventListener('click', (event) => {
+    displayRecipe(event)
+})
 
-export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox}
+export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection}
