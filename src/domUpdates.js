@@ -1,8 +1,11 @@
 //NOTE: Your DOM manipulation will occur in this file
+
+import {filterByName} from './RecipeRepository.js'
 import {homePage, allRecipesPage, recipePage, allRecipesBox} from './scripts.js'
 import {recipeData} from './data/recipes.js'
 
-import { filterByName } from './data/RecipeRepository.js'
+// const {filterByName} = require('../data/RecipeRepository.js')
+
 
 //DOM Functions
 
@@ -29,9 +32,17 @@ const displayAllRecipes = (data) => {
   </article>`})
 };
 
-const searchRecpieByName = (recipeData, searchInput) => {
-  console.log(searchInput);
-  filterByName(recipeData, searchInput);
+const searchRecipeByName = (recipeData, searchInput) => {
+  // console.log(searchInput.value);
+  const filteredNames = filterByName(recipeData, searchInput.value);
+  filteredNames.forEach((recipe) => {
+    allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
+    <img class="all-recipe-image" src="${recipe.image}">
+    <h3>${recipe.name}</h3>
+    </article>`});
+  hideDomElement(homePage)
+  hideDomElement(homePage)
+  showDomElement(allRecipesPage)
 }
 
 const showRecipePage = () => {
@@ -52,4 +63,4 @@ const displayRecipe = (event) => {
   showRecipePage()
 };
 
-export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, displayRecipe, searchRecpieByName}
+export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, displayRecipe, searchRecipeByName}
