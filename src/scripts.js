@@ -19,10 +19,12 @@ const homePage = document.querySelector('.home-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const recipePage = document.querySelector('.recipe-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
+const recipeTags = document.querySelector('.recipe-tags')
 
 //Event Listeners
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
+recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 // allRecipesBox.addEventListener('click', ())
 
 export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox}
