@@ -56,11 +56,7 @@ const searchRecipeByName = (recipeData, searchInput) => {
   if (typeof filteredNames === 'string') {
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
-    filteredNames.forEach((recipe) => {
-      allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
-      <img class="all-recipe-image" src="${recipe.image}">
-      <h3>${recipe.name}</h3>
-      </article>`});
+    displayAllRecipes(filteredNames);
   }
 }
 
