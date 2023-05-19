@@ -47,7 +47,6 @@ const showHomePage = () => {
 
 const showRecipesPage = () => {
   homeButton.classList.remove('invisible')
-  // hideDomElement(homePage)
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
 };

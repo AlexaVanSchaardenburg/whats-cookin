@@ -46,10 +46,9 @@ recipeTags.addEventListener('change', () => {showRecipeByTag()})
 homeButton.addEventListener('click', () => {showHomePage()})
 
 // const searchInput = document.querySelector('#searchInput');
-const searchInput2 = document.querySelector('#searchInput2');
+const searchInput = document.querySelector('#searchInput');
 // const searchButton = document.querySelector('#searchButton');
-const searchButton2 = document.querySelector('#searchButton2')
-// const homeForm = document.querySelector('.home-form');
+const searchButton = document.querySelector('#searchButton')
 
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
@@ -62,17 +61,10 @@ const recipeCostSection = document.querySelector('.total-cost');
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
 
-// searchButton.addEventListener('click', () => {
-//   if (searchInput.value) {
-//     showRecipesPage()
-//     searchRecipeByName(recipeData, searchInput)}
-//   }
-// );
-
-searchButton2.addEventListener('click', () => {
-  if (searchInput2.value) {
+searchButton.addEventListener('click', () => {
+  if (searchInput.value) {
     showRecipesPage()
-    searchRecipeByName(recipeData, searchInput2)}
+    searchRecipeByName(recipeData, searchInput)}
   }
 );
 
@@ -90,7 +82,7 @@ export {
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 
-  searchInput2, 
+  searchInput, 
   recipePageImage,
   recipePageNameSection, 
   recipeTagsSection, 
