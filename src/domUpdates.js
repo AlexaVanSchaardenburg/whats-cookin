@@ -87,7 +87,7 @@ const displayRecipe = (ingredientsData, event) => {
   recipePageNameSection.innerText = recipe.name;
   const recipeCost = calcRecipeCost(ingredientsData, recipe);
   recipeCostSection.innerText = `Total Cost: $${recipeCost}`
-
+  recipeTagsSection.innerHTML = ''
   recipe.tags.forEach(tag => {
     recipeTagsSection.innerHTML += `<li>#${tag}</li>`
   })
