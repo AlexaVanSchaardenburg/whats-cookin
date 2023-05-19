@@ -13,6 +13,7 @@ import {ingredientsData} from './data/ingredients'
 
 import {
   showRecipesPage, 
+  showHomePage,
   showDomElement, 
   hideDomElement, 
   displayRecipes, 
@@ -30,7 +31,11 @@ const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
+<<<<<<< HEAD
 const savedRecipesButton = document.querySelector('.saved-recipe')
+=======
+const homeButton = document.querySelector('.home-button')
+>>>>>>> 0bc0dd280176f27beda8c8e8f70c73ec3eb61d0f
 
 //Event Listeners
 
@@ -38,6 +43,7 @@ goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
 // allRecipesBox.addEventListener('click', ())
+homeButton.addEventListener('click', () => {showHomePage()})
 
 const searchInput = document.querySelector('#searchInput');
 const searchInput2 = document.querySelector('#searchInput2');
@@ -78,6 +84,7 @@ allRecipesBox.addEventListener('click', (event) => {
 export {
   goToRecipesButton, 
   homePage, 
+  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 

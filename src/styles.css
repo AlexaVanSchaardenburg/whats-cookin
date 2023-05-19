@@ -40,12 +40,16 @@ button {
 
 /* add hover/cursor/change color */
 
-.invisible {
+.header-button {
   padding: 10px 30px;
   border-radius: 8px;
   background-color: #476F54;
   color: white;
   border-style: none;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .call-to-action-box {
