@@ -95,8 +95,8 @@ const displayRecipe = (ingredientsData, event) => {
   const recipeInstructions = getInstructions(recipe)
   const numSteps = Object.keys(recipeInstructions)
   numSteps.forEach(step => {
-    recipeInstructionsSection.innerHTML += `<ol><li>${recipeInstructions[step]}<li><ol>`
-  })
+    recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
+  }
 };
 
 export {
