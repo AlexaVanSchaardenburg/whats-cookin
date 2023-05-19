@@ -15,7 +15,7 @@ import {
   showRecipesPage, 
   showDomElement, 
   hideDomElement, 
-  displayAllRecipes, 
+  displayRecipes, 
   showRecipePage, 
   displayRecipe, 
   searchRecipeByName

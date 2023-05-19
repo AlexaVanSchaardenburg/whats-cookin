@@ -35,12 +35,12 @@ const showDomElement = (element) => {
 };
 
 const showRecipesPage = () => {
-  displayAllRecipes(recipeData)
+  displayRecipes(recipeData)
   hideDomElement(homePage)
   showDomElement(allRecipesPage)
 };
 
-const displayAllRecipes = (data) => {
+const displayRecipes = (data) => {
   data.forEach((recipe) => {
   allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
   <img class="recipe all-recipe-image" src="${recipe.image}">
@@ -56,7 +56,7 @@ const searchRecipeByName = (recipeData, searchInput) => {
   if (typeof filteredNames === 'string') {
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
-    displayAllRecipes(filteredNames);
+    displayRecipes(filteredNames);
   }
 }
 
@@ -99,7 +99,7 @@ export {
   showRecipesPage, 
   showDomElement, 
   hideDomElement, 
-  displayAllRecipes, 
+  displayRecipes, 
   showRecipePage, 
   displayRecipe, 
   searchRecipeByName
