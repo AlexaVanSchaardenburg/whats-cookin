@@ -43,7 +43,7 @@ window.addEventListener('load', () => {
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
 // allRecipesBox.addEventListener('click', ())
-homeButton.addEventListener('click', () => {showHomePage()})
+homeButton.addEventListener('click', () => {showRecipesPage()})
 
 // const searchInput = document.querySelector('#searchInput');
 const searchInput = document.querySelector('#searchInput');
