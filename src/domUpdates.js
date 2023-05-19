@@ -25,7 +25,9 @@ const {
   filterByName,
   getInstructions,
   getIngredientInfo,
-  calcRecipeCost
+  calcRecipeCost,
+  saveRecipe,
+  deleteRecipe
 } = require('../src/RecipeRepository.js');
 
 //DOM Functions
@@ -118,6 +120,15 @@ const showRecipeByTag = () => {
   <h3 class="recipe">${recipe.name}</h3>
   </article>`
  })
+
+ const showSavedRecipes = () => {
+  allRecipesBox.innerHTML = ''
+  
+  allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
+  <img class="recipe all-recipe-image" src="${recipe.image}">
+  <h3 class="recipe">${recipe.name}</h3>
+  </article>`
+};
 
 }
 

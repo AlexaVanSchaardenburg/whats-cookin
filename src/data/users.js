@@ -6479,3 +6479,5 @@ const usersData = [
       ]
     }
   ]
+
+  export {usersData}
