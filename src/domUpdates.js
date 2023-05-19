@@ -1,17 +1,28 @@
 //NOTE: Your DOM manipulation will occur in this file
 
-import {filterByName} from './RecipeRepository.js'
-import{homePage, allRecipesPage, recipePage, allRecipesBox, recipePageImage, recipeIngredientListSection,recipePageNameSection, recipeTagsSection, recipeInstructionsSection, recipeCostSection} from './scripts.js'
-import {recipeData} from './data/recipes.js'
-import {ingredientsData} from './data/ingredients.js'
-const { filterByTag,
+import {
+  homePage, 
+  allRecipesPage, 
+  recipePage, 
+  allRecipesBox, 
+  recipePageImage, 
+  recipeIngredientListSection,
+  recipePageNameSection, 
+  recipeTagsSection, 
+  recipeInstructionsSection, 
+  recipeCostSection,
+  searchInput,
+  searchInput2
+} from './scripts.js'
+import {recipeData} from './data/recipes'
+import {ingredientsData} from './data/ingredients'
+const { 
+  filterByTag,
   filterByName,
   getInstructions,
   listIngredient,
-  calcRecipeCost} = require('../src/RecipeRepository.js');
-
-// const {filterByName} = require('../data/RecipeRepository.js')
-
+  calcRecipeCost
+} = require('../src/RecipeRepository.js');
 
 //DOM Functions
 
@@ -26,7 +37,6 @@ const showDomElement = (element) => {
 const showRecipesPage = () => {
   displayAllRecipes(recipeData)
   hideDomElement(homePage)
-  hideDomElement(homePage)
   showDomElement(allRecipesPage)
 };
 
@@ -39,6 +49,8 @@ const displayAllRecipes = (data) => {
 };
 
 const searchRecipeByName = (recipeData, searchInput) => {
+  console.log(recipeData)
+  showRecipesPage();
   const filteredNames = filterByName(recipeData, searchInput.value);
   allRecipesBox.innerHTML = "";
   if (typeof filteredNames === 'string') {
@@ -50,12 +62,7 @@ const searchRecipeByName = (recipeData, searchInput) => {
       <h3>${recipe.name}</h3>
       </article>`});
   }
-  hideDomElement(homePage)
-  hideDomElement(homePage)
-  showDomElement(allRecipesPage)
 }
-
-
 
 const showRecipePage = () => {
   hideDomElement(homePage)
@@ -64,8 +71,8 @@ const showRecipePage = () => {
 };
 
 const selectRecipe = (e) => {
-    const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
-    return recipe
+  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
+  return recipe
 };
 
 const displayRecipe = (event) => {
@@ -90,8 +97,14 @@ const displayRecipe = (event) => {
   numSteps.forEach(step => {
     recipeInstructionsSection.innerHTML += `<ol><li>${recipeInstructions[step]}<li><ol>`
   })
-
-  showRecipePage()
 };
 
-export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, showRecipePage, displayRecipe, searchRecipeByName}
+export {
+  showRecipesPage, 
+  showDomElement, 
+  hideDomElement, 
+  displayAllRecipes, 
+  showRecipePage, 
+  displayRecipe, 
+  searchRecipeByName
+}

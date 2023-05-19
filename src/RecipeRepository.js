@@ -11,7 +11,6 @@ const filterByTag = (recipeData, tag) => {
 };
 
 const filterByName = (recipeData, searchInput) => {
-  console.log(searchInput);
   const searchTerms = searchInput.toLowerCase().split(' ');
   const formattedSearch = searchTerms.map(word => capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const filteredRecipes = recipeData.filter(recipe => recipe.name.includes(formattedSearch));

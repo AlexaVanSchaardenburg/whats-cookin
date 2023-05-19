@@ -6,13 +6,20 @@ import apiCalls from './apiCalls'
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
-import ingredientsData from './data/ingredients.js'
 import {recipeData} from './data/recipes'
-// import filterByName from './data/RecipeRepository.js'
+import {ingredientsData} from './data/ingredients'
 
 //Import Functions
 
-import {showRecipesPage, showRecipePage, displayAllRecipes, searchRecipeByName} from './domUpdates.js'
+import {
+  showRecipesPage, 
+  showDomElement, 
+  hideDomElement, 
+  displayAllRecipes, 
+  showRecipePage, 
+  displayRecipe, 
+  searchRecipeByName
+} from './domUpdates.js'
 
 //Query Selectors
 
@@ -36,24 +43,38 @@ const recipeCostSection = document.querySelector('.total-cost');
 
 //Event Listeners
 
-goToRecipesButton.addEventListener('click', () => {showRecipesPage(homePage, allRecipesPage)})
+goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
     searchRecipeByName(recipeData, searchInput)}
   }
-)
+);
+
 searchButton2.addEventListener('click', () => {
   if (searchInput.value) {
     searchRecipeByName(recipeData, searchInput2)}
   }
-)
-goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
+);
+
 allRecipesBox.addEventListener('click', (event) => {
   if (event.target.classList.contains('recipe')) {
     showRecipePage();
     displayRecipe(event);
   };
 });
-// allRecipesBox.addEventListener('click', ())
 
-export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, searchInput, recipePageImage,recipePageNameSection, recipeTagsSection, recipeIngredientListSection, recipeCostSection, recipeInstructionsSection}
+export {
+  goToRecipesButton, 
+  homePage, 
+  allRecipesPage, 
+  recipePage, 
+  allRecipesBox, 
+  searchInput, 
+  recipePageImage,
+  recipePageNameSection, 
+  recipeTagsSection, 
+  recipeIngredientListSection, 
+  recipeCostSection, 
+  recipeInstructionsSection 
+}
