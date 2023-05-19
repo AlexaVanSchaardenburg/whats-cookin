@@ -42,16 +42,17 @@ const showHomePage = () => {
   showDomElement(homePage)
   hideDomElement(allRecipesPage);
   hideDomElement(recipePage)
+  homeButton.classList.add('invisible');
 }
 
 const showRecipesPage = () => {
   homeButton.classList.remove('invisible')
-  displayRecipes(recipeData)
   hideDomElement(homePage)
   showDomElement(allRecipesPage)
 };
 
 const displayRecipes = (data) => {
+  allRecipesBox.innerHTML = "";
   data.forEach((recipe) => {
   allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
   <img class="recipe all-recipe-image" src="${recipe.image}">
@@ -60,10 +61,9 @@ const displayRecipes = (data) => {
 };
 
 const searchRecipeByName = (recipeData, searchInput) => {
-  showRecipesPage();
   const filteredNames = filterByName(recipeData, searchInput.value);
-  allRecipesBox.innerHTML = "";
   if (typeof filteredNames === 'string') {
+    allRecipesBox.innerHTML = "";
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
     displayRecipes(filteredNames);
@@ -88,7 +88,7 @@ const displayRecipe = (ingredientsData, event) => {
   recipePageNameSection.innerText = recipe.name;
   const recipeCost = calcRecipeCost(ingredientsData, recipe);
   recipeCostSection.innerText = `Total Cost: $${recipeCost}`
-
+  recipeTagsSection.innerHTML = ''
   recipe.tags.forEach(tag => {
     recipeTagsSection.innerHTML += `<li>#${tag}</li>`
   })
@@ -97,9 +97,9 @@ const displayRecipe = (ingredientsData, event) => {
   const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
   const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
 
+  recipeIngredientListSection.innerHTML += '';
   recipe.ingredients.forEach((ingredient, i) => {
-    recipeIngredientListSection.innerHTML += '';
-    recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}<li>`
+    recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}`
   })  
 
   const recipeInstructions = getInstructions(recipe)
