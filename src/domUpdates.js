@@ -96,9 +96,9 @@ const displayRecipe = (ingredientsData, event) => {
   const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
   const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
 
+  recipeIngredientListSection.innerHTML += '';
   recipe.ingredients.forEach((ingredient, i) => {
-    recipeIngredientListSection.innerHTML += '';
-    recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}<li>`
+    recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}`
   })  
 
   const recipeInstructions = getInstructions(recipe)
