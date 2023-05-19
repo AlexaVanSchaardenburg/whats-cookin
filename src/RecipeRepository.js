@@ -74,6 +74,10 @@ const saveRecipe = (userData, recipeData) => {
   return userData;
 };
 
+const deleteRecipe = (userData, recipeData) => {
+ userData.recipesToCook.splice(userData.recipesToCook.indexOf(recipeData), 1);
+ return userData;
+}
 
 module.exports = {
   filterByTag,
@@ -82,5 +86,6 @@ module.exports = {
   getIngredientInfo,
   calcRecipeCost,
   selectRandomUser, 
-  saveRecipe
+  saveRecipe,
+  deleteRecipe
 };
