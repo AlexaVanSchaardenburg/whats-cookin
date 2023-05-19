@@ -38,7 +38,7 @@ const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
 const recipeTagsSection = document.querySelector('.flex-tags');
-const recipeInstructionsSection = document.querySelector('.instructions'); 
+const recipeInstructionsSection = document.querySelector('.instructions-list'); 
 const recipeCostSection = document.querySelector('.total-cost'); 
 
 //Event Listeners
