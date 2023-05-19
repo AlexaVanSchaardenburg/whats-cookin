@@ -14,7 +14,8 @@ import {
   recipeInstructionsSection, 
   recipeCostSection,
   searchInput,
-  searchInput2
+  searchInput2,
+  recipeTags
 } from './scripts.js'
 
 const { 
@@ -95,20 +96,29 @@ const displayRecipe = (ingredientsData, event) => {
   const recipeInstructions = getInstructions(recipe)
   const numSteps = Object.keys(recipeInstructions)
   numSteps.forEach(step => {
-    recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
-  }
+   recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
+  })
 };
 
 const showRecipeByTag = () => {
   allRecipesBox.innerHTML = ''
     const recipes = filterByTag(recipeData, recipeTags.value)
       recipes.forEach((recipe) => {
-  allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
-  <img class="all-recipe-image" src="${recipe.image}">
-  <h3>${recipe.name}</h3>
+  allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
+  <img class="recipe all-recipe-image" src="${recipe.image}">
+  <h3 class="recipe">${recipe.name}</h3>
   </article>`
  })
 
 }
 
-export {showRecipesPage, showDomElement, hideDomElement, displayAllRecipes, displayRecipe, showRecipeByTag}
+export {  
+  showRecipesPage, 
+  showDomElement, 
+  hideDomElement, 
+  displayRecipes, 
+  showRecipePage, 
+  displayRecipe, 
+  searchRecipeByName, 
+  showRecipeByTag
+}

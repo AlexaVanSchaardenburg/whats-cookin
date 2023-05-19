@@ -18,7 +18,8 @@ import {
   displayRecipes, 
   showRecipePage, 
   displayRecipe, 
-  searchRecipeByName
+  searchRecipeByName,
+  showRecipeByTag
 } from './domUpdates.js'
 
 //Query Selectors
