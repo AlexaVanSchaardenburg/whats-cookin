@@ -35,7 +35,9 @@ const homeButton = document.querySelector('.home-button')
 
 //Event Listeners
 
-goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
+goToRecipesButton.addEventListener('click', () => {
+  displayRecipes(recipeData)
+  showRecipesPage()})
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
 // allRecipesBox.addEventListener('click', ())
@@ -56,16 +58,18 @@ const recipeCostSection = document.querySelector('.total-cost');
 
 //Event Listeners
 
-goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+// goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
 
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
+    showRecipesPage()
     searchRecipeByName(recipeData, searchInput)}
   }
 );
 
 searchButton2.addEventListener('click', () => {
   if (searchInput.value) {
+    showRecipesPage()
     searchRecipeByName(recipeData, searchInput2)}
   }
 );

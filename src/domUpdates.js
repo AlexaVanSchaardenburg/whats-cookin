@@ -46,7 +46,6 @@ const showHomePage = () => {
 
 const showRecipesPage = () => {
   homeButton.classList.remove('invisible')
-  displayRecipes(recipeData)
   hideDomElement(homePage)
   showDomElement(allRecipesPage)
 };
@@ -61,10 +60,9 @@ const displayRecipes = (data) => {
 };
 
 const searchRecipeByName = (recipeData, searchInput) => {
-  showRecipesPage();
   const filteredNames = filterByName(recipeData, searchInput.value);
-  allRecipesBox.innerHTML = "";
   if (typeof filteredNames === 'string') {
+    allRecipesBox.innerHTML = "";
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
     displayRecipes(filteredNames);
