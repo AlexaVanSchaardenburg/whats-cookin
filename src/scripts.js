@@ -31,11 +31,8 @@ const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
-<<<<<<< HEAD
 const savedRecipesButton = document.querySelector('.saved-recipe')
-=======
 const homeButton = document.querySelector('.home-button')
->>>>>>> 0bc0dd280176f27beda8c8e8f70c73ec3eb61d0f
 
 //Event Listeners
 
