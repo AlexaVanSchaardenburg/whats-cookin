@@ -4,6 +4,7 @@ import {ingredientsData} from './data/ingredients'
 
 import {
   homePage, 
+  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 
@@ -36,7 +37,14 @@ const showDomElement = (element) => {
   element.classList.remove('hidden')
 };
 
+const showHomePage = () => {
+  showDomElement(homePage)
+  hideDomElement(allRecipesPage);
+  hideDomElement(recipePage)
+}
+
 const showRecipesPage = () => {
+  homeButton.classList.remove('invisible')
   displayRecipes(recipeData)
   hideDomElement(homePage)
   showDomElement(allRecipesPage)
@@ -116,6 +124,7 @@ export {
   showRecipesPage, 
   showDomElement, 
   hideDomElement, 
+  showHomePage,
   displayRecipes, 
   showRecipePage, 
   displayRecipe, 
