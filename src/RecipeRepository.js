@@ -5,7 +5,6 @@ const filterByTag = (recipeData, tag) => {
   if (filteredRecipes.length) {
     return filteredRecipes
   } else {
-    // Suggested Change: Instead of returning this sad path message, invoke a function that displays this message to the DOM; OR do both so this path is still testable
     return "Sorry, No Recipes Were Found!"
   };
 };
@@ -14,8 +13,7 @@ const filterByName = (recipeData, searchInput) => {
   const searchTerms = searchInput.toLowerCase().split(' ');
   const formattedSearch = searchTerms.map(word => capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const filteredRecipes = recipeData.filter(recipe => recipe.name.includes(formattedSearch));
-
-  // See suggestions in above function
+  // See above suggestions
   if (filteredRecipes.length) {
     return filteredRecipes
   } else {
@@ -23,7 +21,6 @@ const filterByName = (recipeData, searchInput) => {
   };
 };
 
-// I removed the conditional and sad path test for this function because it will only ever run when triggered by an event listener.
 const getInstructions = (recipe) => {
   return recipe.instructions.reduce((acc, index) => {
     acc[index.number] = index.instruction
@@ -31,14 +28,14 @@ const getInstructions = (recipe) => {
   }, {});
 };
 
-const listIngredients = (ingredientData, recipe) =>  {
+const getIngredientInfo = (ingredientData, recipe, key) =>  {
   const ingredientIds = recipe.ingredients.map(ingredient => ingredient.id);
-  const ingredientNames = ingredientIds.map(id => {
+  const ingredientInfo = ingredientIds.map(id => {
     const ingredientIndex = ingredientData.findIndex(ingredient => id === ingredient.id)
-    return ingredientData[ingredientIndex].name
+    return ingredientData[ingredientIndex][key]
     });
 
-  return ingredientNames;
+  return ingredientInfo;
 };
 
 const calcRecipeCost = (ingredientData, recipe) => {
@@ -66,11 +63,24 @@ const calcRecipeCost = (ingredientData, recipe) => {
   return totalCost
 };
 
+const selectRandomUser = (users) => {
+  const index = Math.floor(Math.random(users.length - 1));
+  const user = users[index];
+  return user;
+}
+
+const saveRecipe = (userData, recipeData) => {
+  userData.recipesToCook ? userData.recipesToCook.push(recipeData) : userData.recipesToCook =[recipeData];
+  return userData;
+};
+
 
 module.exports = {
   filterByTag,
   filterByName,
   getInstructions,
-  listIngredients,
-  calcRecipeCost
+  getIngredientInfo,
+  calcRecipeCost,
+  selectRandomUser, 
+  saveRecipe
 };

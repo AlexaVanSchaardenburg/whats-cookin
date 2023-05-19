@@ -6,18 +6,27 @@ import apiCalls from './apiCalls'
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
-import ingredientsData from './data/ingredients.js'
+import {recipeData} from './data/recipes'
+import {ingredientsData} from './data/ingredients'
 
 //Import Functions
 
-import {showRecipesPage, showRecipeByTag} from './domUpdates.js'
+import {
+  showRecipesPage, 
+  showDomElement, 
+  hideDomElement, 
+  displayRecipes, 
+  showRecipePage, 
+  displayRecipe, 
+  searchRecipeByName
+} from './domUpdates.js'
 
 //Query Selectors
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
-const allRecipesPage = document.querySelector('.all-recipes-page')
 const recipePage = document.querySelector('.recipe-page')
+const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
 
@@ -28,4 +37,54 @@ goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
 // allRecipesBox.addEventListener('click', ())
 
-export{goToRecipesButton, homePage, allRecipesPage, recipePage, allRecipesBox, recipeTags}
+const searchInput = document.querySelector('#searchInput');
+const searchInput2 = document.querySelector('#searchInput2');
+const searchButton = document.querySelector('#searchButton');
+const searchButton2 = document.querySelector('#searchButton2')
+// const homeForm = document.querySelector('.home-form');
+
+const recipePageImage = document.querySelector('.aside-img');
+const recipeIngredientListSection = document.querySelector('.ingredients-list');
+const recipePageNameSection = document.querySelector('#recipe-name');
+const recipeTagsSection = document.querySelector('.flex-tags');
+const recipeInstructionsSection = document.querySelector('.instructions-list'); 
+const recipeCostSection = document.querySelector('.total-cost'); 
+
+//Event Listeners
+
+goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+
+searchButton.addEventListener('click', () => {
+  if (searchInput.value) {
+    searchRecipeByName(recipeData, searchInput)}
+  }
+);
+
+searchButton2.addEventListener('click', () => {
+  if (searchInput.value) {
+    searchRecipeByName(recipeData, searchInput2)}
+  }
+);
+
+allRecipesBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('recipe')) {
+    showRecipePage();
+    displayRecipe(ingredientsData, event);
+  };
+});
+
+export {
+  goToRecipesButton, 
+  homePage, 
+  allRecipesPage, 
+  recipePage, 
+  allRecipesBox, 
+  searchInput, 
+  recipePageImage,
+  recipePageNameSection, 
+  recipeTagsSection, 
+  recipeIngredientListSection, 
+  recipeCostSection, 
+  recipeInstructionsSection,
+  recipeTags, 
+}

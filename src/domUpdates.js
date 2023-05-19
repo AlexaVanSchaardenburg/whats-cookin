@@ -1,7 +1,29 @@
 //NOTE: Your DOM manipulation will occur in this file
-import{homePage, allRecipesPage, recipePage, allRecipesBox, recipeTags} from './scripts.js'
-import {recipeData} from './data/recipes.js'
-import { filterByTag } from './RecipeRepository.js';
+import {recipeData} from './data/recipes'
+import {ingredientsData} from './data/ingredients'
+
+import {
+  homePage, 
+  allRecipesPage, 
+  recipePage, 
+  allRecipesBox, 
+  recipePageImage, 
+  recipeIngredientListSection,
+  recipePageNameSection, 
+  recipeTagsSection, 
+  recipeInstructionsSection, 
+  recipeCostSection,
+  searchInput,
+  searchInput2
+} from './scripts.js'
+
+const { 
+  filterByTag,
+  filterByName,
+  getInstructions,
+  getIngredientInfo,
+  calcRecipeCost
+} = require('../src/RecipeRepository.js');
 
 //DOM Functions
 
@@ -14,19 +36,29 @@ const showDomElement = (element) => {
 };
 
 const showRecipesPage = () => {
-  displayAllRecipes(recipeData)
-  hideDomElement(homePage)
+  displayRecipes(recipeData)
   hideDomElement(homePage)
   showDomElement(allRecipesPage)
 };
 
-const displayAllRecipes = (data) => {
+const displayRecipes = (data) => {
   data.forEach((recipe) => {
-  allRecipesBox.innerHTML += `<article class="all-recipe-box" id="${recipe.id}">
-  <img class="all-recipe-image" src="${recipe.image}">
-  <h3>${recipe.name}</h3>
+  allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
+  <img class="recipe all-recipe-image" src="${recipe.image}">
+  <h3 class="recipe">${recipe.name}</h3>
   </article>`})
 };
+
+const searchRecipeByName = (recipeData, searchInput) => {
+  showRecipesPage();
+  const filteredNames = filterByName(recipeData, searchInput.value);
+  allRecipesBox.innerHTML = "";
+  if (typeof filteredNames === 'string') {
+    allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
+  } else {
+    displayRecipes(filteredNames);
+  }
+}
 
 const showRecipePage = () => {
   hideDomElement(homePage)
@@ -35,15 +67,36 @@ const showRecipePage = () => {
 };
 
 const selectRecipe = (e) => {
-    //iterate through the recipes data and find the recipe with the matching id to the elements id that was clicked. - FUNCTION
-    return selectedRecipe = recipeData.find(recipe => recipe.id === e.id)
+  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
+  return recipe
 };
 
-const displayRecipe = (event) => {
-  //needs to take in an event target as the parameter -- event listener listens for click on page and returns the element that was clicked (child element) -- put event listener on allRecipesBox - IN SCRIPT.JS FILE
+const displayRecipe = (ingredientsData, event) => {
   const recipe = selectRecipe(event)
-  //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
-  showRecipePage()
+  // //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
+  recipePageImage.src = recipe.image;
+  recipePageNameSection.innerText = recipe.name;
+  const recipeCost = calcRecipeCost(ingredientsData, recipe);
+  recipeCostSection.innerText = `Total Cost: $${recipeCost}`
+
+  recipe.tags.forEach(tag => {
+    recipeTagsSection.innerHTML += `<li>#${tag}</li>`
+  })
+
+  const ingredientNames = getIngredientInfo(ingredientsData, recipe, 'name');
+  const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
+  const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
+
+  recipe.ingredients.forEach((ingredient, i) => {
+    recipeIngredientListSection.innerHTML += '';
+    recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}<li>`
+  })  
+
+  const recipeInstructions = getInstructions(recipe)
+  const numSteps = Object.keys(recipeInstructions)
+  numSteps.forEach(step => {
+    recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
+  }
 };
 
 const showRecipeByTag = () => {
