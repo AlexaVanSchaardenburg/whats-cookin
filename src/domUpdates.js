@@ -21,7 +21,7 @@ const {
   filterByTag,
   filterByName,
   getInstructions,
-  listIngredient,
+  getIngredientInfo,
   calcRecipeCost
 } = require('../src/RecipeRepository.js');
 
@@ -79,14 +79,18 @@ const displayRecipe = (ingredientsData, event) => {
   const recipeCost = calcRecipeCost(ingredientsData, recipe);
   recipeCostSection.innerText = `Total Cost: $${recipeCost}`
 
-  recipe.ingredients.forEach(ingredient => {
-    console.log(listIngredient(recipeData, ingredient))
-    recipeIngredientListSection.innerHTML += `<li>${listIngredient(recipeData, ingredient)} | ${ingredient.quantity.amount} ${ingredient.quantity.unit}<li>`
-  })
-
   recipe.tags.forEach(tag => {
     recipeTagsSection.innerHTML += `<li>#${tag}</li>`
   })
+
+  const ingredientNames = getIngredientInfo(ingredientsData, recipe, 'name');
+  const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
+  const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
+
+  recipe.ingredients.forEach((ingredient, i) => {
+    recipeIngredientListSection.innerHTML += '';
+    recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}<li>`
+  })  
 
   const recipeInstructions = getInstructions(recipe)
   const numSteps = Object.keys(recipeInstructions)

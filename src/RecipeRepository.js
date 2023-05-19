@@ -30,15 +30,25 @@ const getInstructions = (recipe) => {
   }, {});
 };
 
+const getIngredientInfo = (ingredientData, recipe, key) =>  {
+  const ingredientIds = recipe.ingredients.map(ingredient => ingredient.id);
+  const ingredientInfo = ingredientIds.map(id => {
+    const ingredientIndex = ingredientData.findIndex(ingredient => id === ingredient.id)
+    return ingredientData[ingredientIndex][key]
+    });
 
-const listIngredient = (ingredientData, ingredient) =>  {
-  const ingredientInfo = ingredientData.find(ingredientExample => ingredient.id === ingredientExample.id)
-  console.log(ingredientInfo)
-  const ingredientName = ingredientInfo.name
-
-  // console.log(ingredientName)
-  return ingredientName;
+  return ingredientInfo;
 };
+
+// ALEXA'S VERSION
+// const listIngredient = (ingredientData, ingredient) =>  {
+//   const ingredientInfo = ingredientData.find(ingredientExample => ingredient.id === ingredientExample.id)
+//   console.log(ingredientInfo)
+//   const ingredientName = ingredientInfo.name
+
+//   // console.log(ingredientName)
+//   return ingredientName;
+// };
 
 const calcRecipeCost = (ingredientData, recipe) => {
   /*
@@ -81,7 +91,7 @@ module.exports = {
   filterByTag,
   filterByName,
   getInstructions,
-  listIngredient,
+  getIngredientInfo,
   calcRecipeCost,
   selectRandomUser, 
   saveRecipe
