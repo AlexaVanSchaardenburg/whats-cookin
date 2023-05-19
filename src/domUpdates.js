@@ -47,8 +47,9 @@ const showHomePage = () => {
 
 const showRecipesPage = () => {
   homeButton.classList.remove('invisible')
-  hideDomElement(homePage)
+  // hideDomElement(homePage)
   showDomElement(allRecipesPage)
+  hideDomElement(recipePage)
 };
 
 const displayRecipes = (data) => {
@@ -71,7 +72,7 @@ const searchRecipeByName = (recipeData, searchInput) => {
 }
 
 const showRecipePage = () => {
-  hideDomElement(homePage)
+  // hideDomElement(homePage)
   hideDomElement(allRecipesPage)
   showDomElement(recipePage)
 };
