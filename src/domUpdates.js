@@ -1,4 +1,6 @@
 //NOTE: Your DOM manipulation will occur in this file
+import {recipeData} from './data/recipes'
+import {ingredientsData} from './data/ingredients'
 
 import {
   homePage, 
@@ -14,8 +16,7 @@ import {
   searchInput,
   searchInput2
 } from './scripts.js'
-import {recipeData} from './data/recipes'
-import {ingredientsData} from './data/ingredients'
+
 const { 
   filterByTag,
   filterByName,
@@ -49,7 +50,6 @@ const displayRecipes = (data) => {
 };
 
 const searchRecipeByName = (recipeData, searchInput) => {
-  console.log(recipeData)
   showRecipesPage();
   const filteredNames = filterByName(recipeData, searchInput.value);
   allRecipesBox.innerHTML = "";
@@ -71,13 +71,13 @@ const selectRecipe = (e) => {
   return recipe
 };
 
-const displayRecipe = (event) => {
+const displayRecipe = (ingredientsData, event) => {
   const recipe = selectRecipe(event)
   // //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
-
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
-  recipeCostSection.innerText = `Total Cost: ${`cost here`}`
+  const recipeCost = calcRecipeCost(ingredientsData, recipe);
+  recipeCostSection.innerText = `Total Cost: $${recipeCost}`
 
   recipe.ingredients.forEach(ingredient => {
     console.log(listIngredient(recipeData, ingredient))

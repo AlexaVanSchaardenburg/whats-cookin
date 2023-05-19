@@ -60,7 +60,7 @@ searchButton2.addEventListener('click', () => {
 allRecipesBox.addEventListener('click', (event) => {
   if (event.target.classList.contains('recipe')) {
     showRecipePage();
-    displayRecipe(event);
+    displayRecipe(ingredientsData, event);
   };
 });
 
