@@ -41,6 +41,7 @@ const showHomePage = () => {
   showDomElement(homePage)
   hideDomElement(allRecipesPage);
   hideDomElement(recipePage)
+  homeButton.classList.add('invisible');
 }
 
 const showRecipesPage = () => {
@@ -51,6 +52,7 @@ const showRecipesPage = () => {
 };
 
 const displayRecipes = (data) => {
+  allRecipesBox.innerHTML = "";
   data.forEach((recipe) => {
   allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
   <img class="recipe all-recipe-image" src="${recipe.image}">
