@@ -8,12 +8,12 @@
   <header class="flex-header">
     <img class="header-image" src="../images/whats-cookin-header.png">
     <div>
-      <button class="invisible">All Recipes</button>
+      <button class="invisible go-to-recipes">All Recipes</button>
       <button class="invisible">Home</button>
     </div>
   </header>
   <body>
-    <section class="home-page hidden">
+    <section class="home-page ">
      <div>
       <section class="call-to-action-box">
         <!-- <div> -->
@@ -25,8 +25,9 @@
               Indulge in a gastronomic journey with our food recipe website! Start your day with healthy breakfast options, savor delectable lunch creations, and explore irresistible dinner recipes. Discover the perfect blend of healthy and delicious flavors, right at your fingertips.
             </p>
             <div class="home-buttons-container">
-              <input class="search-box" name="search-box" placeholder="search by name">
-              <button class="view-all">View All</button>
+                <input type="text" id="searchInput" name="search-box" placeholder="search by name">
+                <button type="submit" value="submit" id="searchButton">Submit</button>
+              <button class="view-all go-to-recipes">View All</button>
             </div>
           </div>
           
@@ -57,71 +58,57 @@
     <section class="all-recipes-page hidden">
       <div>
         <div class="all-recipes-page-buttons">
-          <label for="filter-recipes">Filter Recipes</label>
-          <select name="filter-recipes">
-            <option></option>
-            <!-- all options here -->
-          </select>
-          <input class="all-recipe-search-box" name="all-recipe-search-box" placeholder="search be name">
-          <button class="saved-recipe">View Saved Recipes</button>
+          <label class="tag-filter" for="filter-recipes">Search Tags
+            <select class="recipe-tags" name="filter-recipes">
+              <option>antipasti</option>
+              <option>antipasto</option>
+              <option>appetizer</option>
+              <option>breakfast</option>
+              <option>brunch</option>
+              <option>condiment</option>
+              <option>dinner</option>
+              <option>dip</option>
+              <option>hor d'oeuvre</option>
+              <option>lunch</option>
+              <option>main course</option>
+              <option>main dish</option>
+              <option>morning meal</option>
+              <option>salad</option>
+              <option>sauce</option>
+              <option>side dish</option>
+              <option>snack</option>
+              <option>spread</option>
+              <option>starter</option>
+            </select></label>
+          <input type="text" id="searchInput2" class="all-recipe-search-box" name="search-box" placeholder="search by name">
+          <button class="search-recipe" id="searchButton2" type="submit" value="submit">Submit</button>
+          <!-- <form>
+            <input class="all-recipe-search-box" name="all-recipe-search-box"  placeholder="search by name" minlength="1" required>
+            <input class="search-recipe" type="submit" value="submit">Search</input>
+          </form> -->
+            <button class="saved-recipe">View Saved Recipes</button>
         </div>
       </div>
-      <section class="all-recipe-flex">
-        <!-- Recipes Go Here -->
-        <article class="all-recipe-box">
-          <img class="all-recipe-image" src="../images/turing-logo.png">
-          <h3>Recipe Title</h3>
-        </article>
-        <article class="all-recipe-box">
-          <img class="all-recipe-image" src="../images/turing-logo.png">
-          <h3>Recipe Title</h3>
-        </article>
-        <article class="all-recipe-box">
-          <img class="all-recipe-image" src="../images/turing-logo.png">
-          <h3>Recipe Title</h3>
-        </article>
-        <article class="all-recipe-box">
-          <img class="all-recipe-image" src="../images/turing-logo.png">
-          <h3>Recipe Title</h3>
-        </article>
-        <article class="all-recipe-box">
-          <img class="all-recipe-image" src="../images/turing-logo.png">
-          <h3>Recipe Title</h3>
-        </article>
+      <section class="all-recipe-flex"> 
       </section>
     </section>
-    <section class="recipe-page">
+    <section class="recipe-page hidden">
       <aside>
         <img class="aside-img" src="../images/turing-logo.png">
         <h3 class="ingredients-header">Ingredients:</h3>
         <ul class="ingredients-list">
           <!-- Ingredients Go Here -->
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
-          <li>chocolate | quantity</li>
         </ul>
       </aside>
       <section class="right-side">
         <div class="green-flex-container">
-          <h2>Recipe Name</h2>
+          <h2 id="recipe-name">Recipe Name</h2>
           <button class="save-recipe">Save Recipe</button>
         </div>
         <div class="pink-container-flex">
           <div class="tags">
             <ul class="flex-tags">
               <!-- Tags Populate Here -->
-              <li>#dinner</li>
-              <li>#soup</li>
-              <li>#yummy</li>
-              <li>#vegetarian</li>
-              <li>#feeds4</li>
             </ul>
           </div>
           <div>
@@ -130,16 +117,8 @@
         </div>
         <div>
           <h3 class="instructions">Instructions:</h3>
-          <ol>
+          <ol class="instructions-list">
             <!-- Instructions Populate Here -->
-            <li>Step</li>
-            <li>Step</li>
-            <li>Step</li>
-            <li>Step</li>
-            <li>Step</li>
-            <li>Step</li>
-            <li>Step</li>
-            <li>Step</li>
           </ol>
         </div>
       </section>
