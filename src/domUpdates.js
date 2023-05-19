@@ -15,7 +15,8 @@ import {
   recipeCostSection,
   searchInput,
   searchInput2,
-  recipeTags
+  recipeTags,
+
 } from './scripts.js'
 
 const { 
