@@ -184,6 +184,7 @@ select {
   width: 95%;
   margin: 0 auto;
   border-radius: 8px;
+  padding: 20px;
 }
 
 .recipe-page {
@@ -223,6 +224,7 @@ aside {
   background-color: #D60A58;
   border-radius: 8px;
   padding: 5px 30px;
+  gap: 1rem;
 }
 
 .pink-container-flex {
@@ -246,6 +248,11 @@ aside {
 .instructions {
   margin-bottom: 15px;
   font-weight: 500;
+}
+
+.instructions-list {
+  line-height: 1.6;
+  width: 80%;
 }
  
 .hidden {
