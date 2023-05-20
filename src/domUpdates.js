@@ -19,7 +19,7 @@ import {
   searchInput2,
   recipeTags,
   saveRecipesButton,
-  // user
+  user
 
 } from './scripts.js'
 
@@ -230,10 +230,10 @@ const showRecipesPage = () => {
   showDomElement(allRecipesPage)
 };
 
-const findRecipeById = (id, recipeData) => {
-  const recipe = recipeData.find((recipe) => recipe.id === id)
-  return recipe
-}
+// const findRecipeById = (id, recipeData) => {
+//   const recipe = recipeData.find((recipe) => recipe.id === id)
+//   return recipe
+// }
 
 const displayRecipes = (data) => {
   allRecipesBox.innerHTML = "";
@@ -305,10 +305,9 @@ const showRecipeByTag = () => {
  })
 };
 
-const saveSelectedRecipe = (event, user) => {
- const recipe = findRecipeById(parseInt(event.target.id), recipeData)
- user.recipesToCook.push(recipe)
- console.log(user)
+const saveSelectedRecipe = (event, user, recipeData) => {
+  const recipe = recipeData.filter((index) => index.id === parseInt(event.target.id))
+  saveRecipe(user, recipe)
 };
 
 export {  

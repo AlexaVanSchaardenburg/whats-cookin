@@ -9,7 +9,7 @@ import './images/healthy-cook.png'
 import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
 import { usersData } from './data/users'
-import { selectRandomUser } from './RecipeRepository'
+import { selectRandomUser, saveRecipe} from './RecipeRepository'
 //Import Functions
 
 import {
@@ -46,11 +46,12 @@ window.addEventListener('load', () => {
   return user
 })
 
-// setTimeout(function(){console.log(user)}, 2000)
+setTimeout(function(){console.log(user)}, 2000)
 
 saveRecipesButton.addEventListener('click', (event) => {
-  saveSelectedRecipe(event, user)
-  setTimeout(function(){console.log(user)}, 2000)
+  saveSelectedRecipe(event, user, recipeData)
+  console.log(user)
+  //setTimeout(function(){console.log(user)}, 2000)
 })
 savedRecipeSectionButton.addEventListener('click', () => {})
 goToRecipesButton.addEventListener('click', () => {
@@ -116,5 +117,5 @@ export {
   recipeInstructionsSection,
   recipeTags,
   saveRecipesButton,
-  // user 
+  user 
 }
