@@ -9,7 +9,7 @@ import './images/healthy-cook.png'
 import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
 import { usersData } from './data/users'
-import { selectRandomUser } from './RecipeRepository'
+import { saveRecipe} from './RecipeRepository'
 //Import Functions
 
 import {
@@ -21,11 +21,12 @@ import {
   showRecipePage, 
   displayRecipe, 
   searchRecipeByName,
-  showRecipeByTag
+  showRecipeByTag,
+  user,
+  saveSelectedRecipe
+  // selectRandomUser
 } from './domUpdates.js'
-
-//Query Selectors
-
+console.log(user)
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
 const recipePage = document.querySelector('.recipe-page')
@@ -33,10 +34,15 @@ const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
 const homeButton = document.querySelector('.home-button')
-const savedRecipesButton = document.querySelector('.save-recipe')
+const saveRecipesButton = document.querySelector('.save-recipe')
 
 //Event Listeners
-window.addEventListener('load', () => {selectRandomUser(usersData)})
+//window.addEventListener('load', () => {selectRandomUser(usersData, user)})
+saveRecipesButton.addEventListener('click', (event) => {saveSelectedRecipe(event, user)})
+goToRecipesButton.addEventListener('click', () => {
+  displayRecipes(recipeData)
+  showRecipesPage()})
+
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
@@ -58,16 +64,18 @@ const recipeCostSection = document.querySelector('.total-cost');
 
 //Event Listeners
 
-goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+// goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
 
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
+    showRecipesPage()
     searchRecipeByName(recipeData, searchInput)}
   }
 );
 
 searchButton2.addEventListener('click', () => {
   if (searchInput.value) {
+    showRecipesPage()
     searchRecipeByName(recipeData, searchInput2)}
   }
 );
@@ -93,5 +101,6 @@ export {
   recipeIngredientListSection, 
   recipeCostSection, 
   recipeInstructionsSection,
-  recipeTags, 
+  recipeTags,
+  saveRecipesButton 
 }

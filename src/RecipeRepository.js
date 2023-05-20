@@ -1,3 +1,5 @@
+const { usersData } = require("./data/users");
+
 const filterByTag = (recipeData, tag) => {
   const filteredRecipes = recipeData.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
   
@@ -63,12 +65,12 @@ const calcRecipeCost = (ingredientData, recipe) => {
   return totalCost
 };
 
-const selectRandomUser = (users) => {
-  const index = Math.floor(Math.random() * users.length + 1);
-  const user = users[index];
-  console.log(user)
-  return user;
-}
+// const selectRandomUser = (users) => {
+//   const index = Math.floor(Math.random() * users.length + 1);
+//   const user = users[index];
+//   // console.log(user)
+//   return user;
+// }
 
 const saveRecipe = (userData, recipeData) => {
   userData.recipesToCook ? userData.recipesToCook.push(recipeData) : userData.recipesToCook =[recipeData];
@@ -85,8 +87,7 @@ module.exports = {
   filterByName,
   getInstructions,
   getIngredientInfo,
-  calcRecipeCost,
-  selectRandomUser, 
+  calcRecipeCost, 
   saveRecipe,
   deleteRecipe
 };

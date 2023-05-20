@@ -3,7 +3,7 @@ const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe');
 const {mockIngredientsData} = require('../src/data/mockIngredients');
 const {mockUserData} = require('../src/data/mockUser');
-const {filterByTag, filterByName, getInstructions, listIngredient, calcRecipeCost, selectRandomUser, saveRecipe, deleteRecipe} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, getInstructions, listIngredient, calcRecipeCost, saveRecipe, deleteRecipe} = require('../src/RecipeRepository');
 
 const recipes = mockRecipeData;
 const ingredients = mockIngredientsData;
