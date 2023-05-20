@@ -164,17 +164,21 @@ select {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
   text-align: center;
 }
 
 .all-recipe-box {
   background-color: #AEB88E;
   width: 20%;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 30px;
 }
 
 .all-recipe-image {
   max-width: 95%;
+  border-radius: 8px;
 }
 
 /* INDIVIDUAL RECIPE PAGE */
@@ -197,6 +201,7 @@ aside {
 
 .aside-img {
   max-width: 90%;
+  border-radius: 8px;
 }
 
 .ingredients-header {
