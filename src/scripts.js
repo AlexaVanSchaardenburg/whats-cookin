@@ -23,6 +23,7 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
+  showSavedRecipesPage
 } from './domUpdates.js'
 
 // let user = selectRandomUser(usersData)
@@ -37,6 +38,7 @@ const recipeTags = document.querySelector('.recipe-tags')
 const homeButton = document.querySelector('.home-button')
 const saveRecipesButton = document.querySelector('.save-recipe')
 const savedRecipeSectionButton = document.querySelector('.saved-recipe')
+const savedRecipesPage = document.querySelector('.saved-recipes-page')
 let user;
 
 // Event Listeners
@@ -53,7 +55,7 @@ saveRecipesButton.addEventListener('click', (event) => {
   console.log(user)
   //setTimeout(function(){console.log(user)}, 2000)
 })
-savedRecipeSectionButton.addEventListener('click', () => {})
+savedRecipeSectionButton.addEventListener('click', () => {showSavedRecipesPage()})
 goToRecipesButton.addEventListener('click', () => {
   displayRecipes(recipeData)
   showRecipesPage()})
@@ -117,5 +119,6 @@ export {
   recipeInstructionsSection,
   recipeTags,
   saveRecipesButton,
+  savedRecipesPage,
   user 
 }

@@ -18,6 +18,7 @@ import {
   searchInput,
   searchInput2,
   recipeTags,
+  savedRecipesPage,
   saveRecipesButton,
   user
 
@@ -230,10 +231,10 @@ const showRecipesPage = () => {
   showDomElement(allRecipesPage)
 };
 
-// const findRecipeById = (id, recipeData) => {
-//   const recipe = recipeData.find((recipe) => recipe.id === id)
-//   return recipe
-// }
+const showSavedRecipesPage = () => {
+  hideDomElement(allRecipesPage)
+  showDomElement(savedRecipesPage)
+}
 
 const displayRecipes = (data) => {
   allRecipesBox.innerHTML = "";
@@ -321,4 +322,5 @@ export {
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
+  showSavedRecipesPage
 }
