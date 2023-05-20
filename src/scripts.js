@@ -83,14 +83,14 @@ const recipeCostSection = document.querySelector('.total-cost');
 
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
-    showRecipesPage()
+    showAllRecipesPage()
     searchRecipeByName(recipeData, searchInput)}
   }
 );
 
 searchButton2.addEventListener('click', () => {
   if (searchInput.value) {
-    showRecipesPage()
+    showAllRecipesPage()
     searchRecipeByName(recipeData, searchInput2)}
   }
 );
