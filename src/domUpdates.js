@@ -1,6 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
 import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
+import { usersData } from './data/users';
 
 import {
   homePage, 
@@ -17,7 +18,8 @@ import {
   searchInput,
   searchInput2,
   recipeTags,
-  saveRecipesButton
+  saveRecipesButton,
+  // user
 
 } from './scripts.js'
 
@@ -32,178 +34,177 @@ const {
 } = require('../src/RecipeRepository.js');
 
 //DOM Functions
+// const user = {
+//   "name": "Noe Conroy",
+//   "id": 39,
+//   "recipesToCook": [],
+//   "pantry": [
+//     {
+//       "ingredient": 4053,
+//       "amount": 4
+//     },
+//     {
+//       "ingredient": 1032009,
+//       "amount": 7
+//     },
+//     {
+//       "ingredient": 12135,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 11282,
+//       "amount": 5
+//     },
+//     {
+//       "ingredient": 15152,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 2031,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 1053,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 1214,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 14412,
+//       "amount": 5
+//     },
+//     {
+//       "ingredient": 19335,
+//       "amount": 4
+//     },
+//     {
+//       "ingredient": 1145,
+//       "amount": 5
+//     },
+//     {
+//       "ingredient": 4025,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 1077,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 1082047,
+//       "amount": 5
+//     },
+//     {
+//       "ingredient": 2050,
+//       "amount": 5
+//     },
+//     {
+//       "ingredient": 1124,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 1001,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 1123,
+//       "amount": 7
+//     },
+//     {
+//       "ingredient": 20081,
+//       "amount": 4
+//     },
+//     {
+//       "ingredient": 18372,
+//       "amount": 5
+//     },
+//     {
+//       "ingredient": 11215,
+//       "amount": 8
+//     },
+//     {
+//       "ingredient": 11291,
+//       "amount": 4
+//     },
+//     {
+//       "ingredient": 14106,
+//       "amount": 4
+//     },
+//     {
+//       "ingredient": 1002030,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 1033,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 2027,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 16124,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 11821,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 11297,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 12142,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 19336,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 1102047,
+//       "amount": 3
+//     },
+//     {
+//       "ingredient": 6150,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 11124,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 2047,
+//       "amount": 7
+//     },
+//     {
+//       "ingredient": 11529,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 93607,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 12061,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 2028,
+//       "amount": 2
+//     },
+//     {
+//       "ingredient": 2009,
+//       "amount": 2
+//     }
+//   ]
+// }
 
-const user = {
-  "name": "Noe Conroy",
-  "id": 39,
-  "recipesToCook": [],
-  "pantry": [
-    {
-      "ingredient": 4053,
-      "amount": 4
-    },
-    {
-      "ingredient": 1032009,
-      "amount": 7
-    },
-    {
-      "ingredient": 12135,
-      "amount": 2
-    },
-    {
-      "ingredient": 11282,
-      "amount": 5
-    },
-    {
-      "ingredient": 15152,
-      "amount": 3
-    },
-    {
-      "ingredient": 2031,
-      "amount": 2
-    },
-    {
-      "ingredient": 1053,
-      "amount": 2
-    },
-    {
-      "ingredient": 1214,
-      "amount": 2
-    },
-    {
-      "ingredient": 14412,
-      "amount": 5
-    },
-    {
-      "ingredient": 19335,
-      "amount": 4
-    },
-    {
-      "ingredient": 1145,
-      "amount": 5
-    },
-    {
-      "ingredient": 4025,
-      "amount": 3
-    },
-    {
-      "ingredient": 1077,
-      "amount": 2
-    },
-    {
-      "ingredient": 1082047,
-      "amount": 5
-    },
-    {
-      "ingredient": 2050,
-      "amount": 5
-    },
-    {
-      "ingredient": 1124,
-      "amount": 3
-    },
-    {
-      "ingredient": 1001,
-      "amount": 2
-    },
-    {
-      "ingredient": 1123,
-      "amount": 7
-    },
-    {
-      "ingredient": 20081,
-      "amount": 4
-    },
-    {
-      "ingredient": 18372,
-      "amount": 5
-    },
-    {
-      "ingredient": 11215,
-      "amount": 8
-    },
-    {
-      "ingredient": 11291,
-      "amount": 4
-    },
-    {
-      "ingredient": 14106,
-      "amount": 4
-    },
-    {
-      "ingredient": 1002030,
-      "amount": 3
-    },
-    {
-      "ingredient": 1033,
-      "amount": 3
-    },
-    {
-      "ingredient": 2027,
-      "amount": 3
-    },
-    {
-      "ingredient": 16124,
-      "amount": 2
-    },
-    {
-      "ingredient": 11821,
-      "amount": 3
-    },
-    {
-      "ingredient": 11297,
-      "amount": 2
-    },
-    {
-      "ingredient": 12142,
-      "amount": 2
-    },
-    {
-      "ingredient": 19336,
-      "amount": 2
-    },
-    {
-      "ingredient": 1102047,
-      "amount": 3
-    },
-    {
-      "ingredient": 6150,
-      "amount": 2
-    },
-    {
-      "ingredient": 11124,
-      "amount": 2
-    },
-    {
-      "ingredient": 2047,
-      "amount": 7
-    },
-    {
-      "ingredient": 11529,
-      "amount": 2
-    },
-    {
-      "ingredient": 93607,
-      "amount": 2
-    },
-    {
-      "ingredient": 12061,
-      "amount": 2
-    },
-    {
-      "ingredient": 2028,
-      "amount": 2
-    },
-    {
-      "ingredient": 2009,
-      "amount": 2
-    }
-  ]
-}
-
-// const selectRandomUser = (users, user) => {
+// const selectRandomUser = (users) => {
 //   const index = Math.floor(Math.random() * users.length + 1);
-//   user = users[index];
+//   const user = users[index];
 //   console.log(user)
 //   return user;
 // }
@@ -320,6 +321,5 @@ export {
   displayRecipe, 
   searchRecipeByName, 
   showRecipeByTag,
-  user,
-  saveSelectedRecipe
+  saveSelectedRecipe,
 }

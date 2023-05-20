@@ -65,12 +65,12 @@ const calcRecipeCost = (ingredientData, recipe) => {
   return totalCost
 };
 
-// const selectRandomUser = (users) => {
-//   const index = Math.floor(Math.random() * users.length + 1);
-//   const user = users[index];
-//   // console.log(user)
-//   return user;
-// }
+const selectRandomUser = (users) => {
+  const index = Math.floor(Math.random() * users.length + 1);
+  const aUser = users[index];
+  //console.log(user)
+  return aUser;
+}
 
 const saveRecipe = (userData, recipeData) => {
   userData.recipesToCook ? userData.recipesToCook.push(recipeData) : userData.recipesToCook =[recipeData];
@@ -89,5 +89,6 @@ module.exports = {
   getIngredientInfo,
   calcRecipeCost, 
   saveRecipe,
-  deleteRecipe
+  deleteRecipe,
+  selectRandomUser
 };

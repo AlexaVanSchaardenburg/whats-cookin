@@ -9,7 +9,7 @@ import './images/healthy-cook.png'
 import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
 import { usersData } from './data/users'
-import { saveRecipe} from './RecipeRepository'
+import { selectRandomUser } from './RecipeRepository'
 //Import Functions
 
 import {
@@ -22,11 +22,12 @@ import {
   displayRecipe, 
   searchRecipeByName,
   showRecipeByTag,
-  user,
-  saveSelectedRecipe
-  // selectRandomUser
+  saveSelectedRecipe,
 } from './domUpdates.js'
-console.log(user)
+
+// let user = selectRandomUser(usersData)
+// console.log(user)
+
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
 const recipePage = document.querySelector('.recipe-page')
@@ -35,14 +36,26 @@ const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
 const homeButton = document.querySelector('.home-button')
 const saveRecipesButton = document.querySelector('.save-recipe')
+const savedRecipeSectionButton = document.querySelector('.saved-recipe')
+let user;
 
-//Event Listeners
-//window.addEventListener('load', () => {selectRandomUser(usersData, user)})
-saveRecipesButton.addEventListener('click', (event) => {saveSelectedRecipe(event, user)})
+// Event Listeners
+window.addEventListener('load', () => {
+  user = selectRandomUser(usersData)
+  console.log(user)
+  return user
+})
+
+// setTimeout(function(){console.log(user)}, 2000)
+
+saveRecipesButton.addEventListener('click', (event) => {
+  saveSelectedRecipe(event, user)
+  setTimeout(function(){console.log(user)}, 2000)
+})
+savedRecipeSectionButton.addEventListener('click', () => {})
 goToRecipesButton.addEventListener('click', () => {
   displayRecipes(recipeData)
   showRecipesPage()})
-
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
@@ -102,5 +115,6 @@ export {
   recipeCostSection, 
   recipeInstructionsSection,
   recipeTags,
-  saveRecipesButton 
+  saveRecipesButton,
+  // user 
 }
