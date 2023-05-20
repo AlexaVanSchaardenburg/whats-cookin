@@ -227,12 +227,13 @@ aside {
 
 .pink-container-flex {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
 .total-cost {
   background-color: #D60A58;
-  margin-left: 120px;
+  margin-right: 30px;
   padding: 5px 30px;
   border-radius: 8px;
 }
