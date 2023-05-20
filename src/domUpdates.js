@@ -46,9 +46,10 @@ const showHomePage = () => {
 }
 
 const showRecipesPage = () => {
-  homeButton.classList.remove('invisible')
+  homeButton.classList.add('invisible')
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
+  displayRecipes(recipeData)
 };
 
 const displayRecipes = (data) => {
