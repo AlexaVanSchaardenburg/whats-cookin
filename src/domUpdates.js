@@ -24,7 +24,7 @@ const {
   filterByTag,
   filterByName,
   getInstructions,
-  getIngredientInfo,
+  getIngredientNames,
   calcRecipeCost
 } = require('../src/RecipeRepository.js');
 
@@ -93,7 +93,7 @@ const displayRecipe = (ingredientsData, event) => {
     recipeTagsSection.innerHTML += `<li>#${tag}</li>`
   })
 
-  const ingredientNames = getIngredientInfo(ingredientsData, recipe, 'name');
+  const ingredientNames = getIngredientNames(ingredientsData, recipe);
   const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
   const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
 

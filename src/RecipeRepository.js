@@ -28,14 +28,14 @@ const getInstructions = (recipe) => {
   }, {});
 };
 
-const getIngredientInfo = (ingredientData, recipe, key) =>  {
+const getIngredientNames = (ingredientData, recipe) =>  {
   const ingredientIds = recipe.ingredients.map(ingredient => ingredient.id);
-  const ingredientInfo = ingredientIds.map(id => {
+  const ingredientNames = ingredientIds.map(id => {
     const ingredientIndex = ingredientData.findIndex(ingredient => id === ingredient.id)
-    return ingredientData[ingredientIndex][key]
+    return ingredientData[ingredientIndex].name
     });
 
-  return ingredientInfo;
+  return ingredientNames;
 };
 
 const calcRecipeCost = (ingredientData, recipe) => {
@@ -83,7 +83,7 @@ module.exports = {
   filterByTag,
   filterByName,
   getInstructions,
-  getIngredientInfo,
+  getIngredientNames,
   calcRecipeCost,
   selectRandomUser, 
   saveRecipe,
