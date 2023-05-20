@@ -2,7 +2,9 @@
 
 import './styles.css'
 import apiCalls from './apiCalls'
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
+
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
@@ -10,6 +12,7 @@ import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
 import { usersData } from './data/users'
 import { selectRandomUser, saveRecipe} from './RecipeRepository'
+
 //Import Functions
 
 import {
@@ -48,8 +51,6 @@ window.addEventListener('load', () => {
   return user
 })
 
-//setTimeout(function(){console.log(user)}, 2000)
-
 saveRecipesButton.addEventListener('click', (event) => {
   saveSelectedRecipe(event, user, recipeData)
   console.log(user)
@@ -59,16 +60,13 @@ goToRecipesButton.addEventListener('click', () => {
   displayRecipes(recipeData)
   showAllRecipesPage()})
 goToRecipesButton.addEventListener('click', () => {showAllRecipesPage()})
-// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
-// allRecipesBox.addEventListener('click', ())
 homeButton.addEventListener('click', () => {showHomePage()})
 
 const searchInput = document.querySelector('#searchInput');
 const searchInput2 = document.querySelector('#searchInput2');
 const searchButton = document.querySelector('#searchButton');
 const searchButton2 = document.querySelector('#searchButton2')
-// const homeForm = document.querySelector('.home-form');
 
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
@@ -78,8 +76,6 @@ const recipeInstructionsSection = document.querySelector('.instructions-list');
 const recipeCostSection = document.querySelector('.total-cost'); 
 
 //Event Listeners
-
-// goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
 
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {

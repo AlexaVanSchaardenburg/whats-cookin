@@ -274,7 +274,6 @@ const selectRecipe = (e) => {
 
 const displayRecipe = (ingredientsData, event) => {
   const recipe = selectRecipe(event)
-  // //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
   saveRecipesButton.setAttribute('id', `${recipe.id}`)
