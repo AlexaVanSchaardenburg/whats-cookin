@@ -13,7 +13,7 @@ import { selectRandomUser, saveRecipe} from './RecipeRepository'
 //Import Functions
 
 import {
-  showRecipesPage, 
+  showAllRecipesPage, 
   showHomePage,
   showDomElement, 
   hideDomElement, 
@@ -23,11 +23,8 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
-  showSavedRecipesPage
+  showSavedRecipesPage,
 } from './domUpdates.js'
-
-// let user = selectRandomUser(usersData)
-// console.log(user)
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const homePage = document.querySelector('.home-page')
@@ -39,27 +36,29 @@ const homeButton = document.querySelector('.home-button')
 const saveRecipesButton = document.querySelector('.save-recipe')
 const savedRecipeSectionButton = document.querySelector('.saved-recipe')
 const savedRecipesPage = document.querySelector('.saved-recipes-page')
-let user;
+const savedRecipesBox = document.querySelector('.saved-recipe-flex')
 
-// Event Listeners
+let user; 
+
+//Event Listeners
+
 window.addEventListener('load', () => {
   user = selectRandomUser(usersData)
   console.log(user)
   return user
 })
 
-setTimeout(function(){console.log(user)}, 2000)
+//setTimeout(function(){console.log(user)}, 2000)
 
 saveRecipesButton.addEventListener('click', (event) => {
   saveSelectedRecipe(event, user, recipeData)
   console.log(user)
-  //setTimeout(function(){console.log(user)}, 2000)
 })
 savedRecipeSectionButton.addEventListener('click', () => {showSavedRecipesPage()})
 goToRecipesButton.addEventListener('click', () => {
   displayRecipes(recipeData)
-  showRecipesPage()})
-goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
+  showAllRecipesPage()})
+goToRecipesButton.addEventListener('click', () => {showAllRecipesPage()})
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
 // allRecipesBox.addEventListener('click', ())
@@ -120,5 +119,6 @@ export {
   recipeTags,
   saveRecipesButton,
   savedRecipesPage,
+  savedRecipesBox,
   user 
 }

@@ -20,6 +20,7 @@ import {
   recipeTags,
   savedRecipesPage,
   saveRecipesButton,
+  savedRecipesBox,
   user
 
 } from './scripts.js'
@@ -222,17 +223,22 @@ const showHomePage = () => {
   showDomElement(homePage)
   hideDomElement(allRecipesPage);
   hideDomElement(recipePage)
+  hideDomElement(savedRecipesPage)
   homeButton.classList.add('invisible');
 }
 
-const showRecipesPage = () => {
+const showAllRecipesPage = () => {
   homeButton.classList.remove('invisible')
   hideDomElement(homePage)
+  hideDomElement(savedRecipesPage)
+  hideDomElement(recipePage)
   showDomElement(allRecipesPage)
 };
 
 const showSavedRecipesPage = () => {
   hideDomElement(allRecipesPage)
+  hideDomElement(recipePage)
+  hideDomElement(homePage)
   showDomElement(savedRecipesPage)
 }
 
@@ -309,10 +315,16 @@ const showRecipeByTag = () => {
 const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.filter((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
+  console.log(user)
+  recipe.forEach((recipe) => {
+    savedRecipesBox.innerHTML += `<article class="recipe saved-recipe-box" id="${recipe.id}">
+    <img class="recipe saved-recipe-image" src="${recipe.image}">
+    <h3 class="recipe">${recipe.name}</h3>
+    </article>`})
 };
 
 export {  
-  showRecipesPage, 
+  showAllRecipesPage, 
   showDomElement, 
   hideDomElement, 
   showHomePage,
@@ -322,5 +334,5 @@ export {
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
-  showSavedRecipesPage
+  showSavedRecipesPage,
 }
