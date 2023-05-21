@@ -44,10 +44,10 @@ const recipeCostSection = document.querySelector('.total-cost');
 
 //Event Listeners
 
-window.addEventListener('load', () => {
-  showRecipesPage()
-  displayRecipes(recipeData)
-})
+// window.addEventListener('load', () => {
+//   showRecipesPage()
+//   displayRecipes(recipeData)
+// })
 
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
