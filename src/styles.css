@@ -16,6 +16,7 @@
   font-family: 'Instrument Sans';
   font-weight: 400;
   color: #101913;
+  border: 2px solid blue;
 }
 
 body {

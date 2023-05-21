@@ -7,87 +7,40 @@
   </head>
   <header class="flex-header">
     <img class="header-image" src="../images/whats-cookin-header.png">
-    <div>
-      <button class="go-to-recipes header-button">All Recipes</button>
-      <button class="home-button invisible header-button">Home</button>
-    </div>
+    <button class="go-to-recipes header-button">View All Recipes</button>
   </header>
   <body>
-    <section class="home-page ">
-     <div>
-      <section class="call-to-action-box">
-        <!-- <div> -->
-          <div class="left-side-call-to-action">
-            <h3 class="intro-title">
-              What's Cookin'
-            </h3>
-            <p class="intro-text">
-              Indulge in a gastronomic journey with our food recipe website! Start your day with healthy breakfast options, savor delectable lunch creations, and explore irresistible dinner recipes. Discover the perfect blend of healthy and delicious flavors, right at your fingertips.
-            </p>
-            <div class="home-buttons-container">
-                <input type="text" id="searchInput" name="search-box" placeholder="search by name">
-                <button type="submit" value="submit" id="searchButton">Submit</button>
-              <button class="view-all go-to-recipes">View All</button>
-            </div>
-          </div>
-          
-            <img class="font-page-img" src="./images/healthy-cook.png">
-        <!-- </div> -->
-      </section>
-      <section class="featured-box">
-        <div>
-          <h2 class="featured-text">Featured Recipes</h2>
-          <div class="recipes-container">
-            <article class="recipe-box">
-              <img>
-              <h3></h3>
-            </article>
-            <article class="recipe-box">
-              <img>
-              <h3></h3>
-            </article>
-            <article class="recipe-box">
-              <img>
-              <h3></h3>
-            </article>
-          </div>
-        </div>
-      </section>
-     </div> 
-    </section>
-    <section class="all-recipes-page hidden">
-      <div>
-        <div class="all-recipes-page-buttons">
-          <label class="tag-filter" for="filter-recipes">Search Tags
-            <select class="recipe-tags" name="filter-recipes">
-              <option>antipasti</option>
-              <option>antipasto</option>
-              <option>appetizer</option>
-              <option>breakfast</option>
-              <option>brunch</option>
-              <option>condiment</option>
-              <option>dinner</option>
-              <option>dip</option>
-              <option>hor d'oeuvre</option>
-              <option>lunch</option>
-              <option>main course</option>
-              <option>main dish</option>
-              <option>morning meal</option>
-              <option>salad</option>
-              <option>sauce</option>
-              <option>side dish</option>
-              <option>snack</option>
-              <option>spread</option>
-              <option>starter</option>
-            </select></label>
-          <input type="text" id="searchInput2" class="all-recipe-search-box" name="search-box" placeholder="search by name">
-          <button class="search-recipe" id="searchButton2" type="submit" value="submit">Submit</button>
-          <!-- <form>
-            <input class="all-recipe-search-box" name="all-recipe-search-box"  placeholder="search by name" minlength="1" required>
-            <input class="search-recipe" type="submit" value="submit">Search</input>
-          </form> -->
-            <button class="saved-recipe">View Saved Recipes</button>
-        </div>
+    <section class="all-recipes-page">
+      <div class="all-recipes-page-buttons">
+        <label class="tag-filter" for="filter-recipes">Search Tags
+          <select class="recipe-tags" name="filter-recipes">
+            <option>antipasti</option>
+            <option>antipasto</option>
+            <option>appetizer</option>
+            <option>breakfast</option>
+            <option>brunch</option>
+            <option>condiment</option>
+            <option>dinner</option>
+            <option>dip</option>
+            <option>hor d'oeuvre</option>
+            <option>lunch</option>
+            <option>main course</option>
+            <option>main dish</option>
+            <option>morning meal</option>
+            <option>salad</option>
+            <option>sauce</option>
+            <option>side dish</option>
+            <option>snack</option>
+            <option>spread</option>
+            <option>starter</option>
+          </select></label>
+        <input type="text" id="searchInput" class="all-recipe-search-box" name="search-box" placeholder="search by name">
+        <button class="search-recipe" id="searchButton" type="submit" value="submit">Submit</button>
+        <!-- <form>
+          <input class="all-recipe-search-box" name="all-recipe-search-box"  placeholder="search by name" minlength="1" required>
+          <input class="search-recipe" type="submit" value="submit">Search</input>
+        </form> -->
+          <button class="saved-recipe">View Saved Recipes</button>
       </div>
       <section class="all-recipe-flex"> 
       </section>

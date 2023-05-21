@@ -31,24 +31,10 @@ const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
+const savedRecipesButton = document.querySelector('.saved-recipe')
 const homeButton = document.querySelector('.home-button')
-
-//Event Listeners
-
-goToRecipesButton.addEventListener('click', () => {
-  displayRecipes(recipeData)
-  showRecipesPage()})
-// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
-recipeTags.addEventListener('change', () => {showRecipeByTag()})
-// allRecipesBox.addEventListener('click', ())
-homeButton.addEventListener('click', () => {showHomePage()})
-
 const searchInput = document.querySelector('#searchInput');
-const searchInput2 = document.querySelector('#searchInput2');
-const searchButton = document.querySelector('#searchButton');
-const searchButton2 = document.querySelector('#searchButton2')
-// const homeForm = document.querySelector('.home-form');
-
+const searchButton = document.querySelector('#searchButton')
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
@@ -58,19 +44,21 @@ const recipeCostSection = document.querySelector('.total-cost');
 
 //Event Listeners
 
-// goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+window.addEventListener('load', () => {
+  showRecipesPage()
+  displayRecipes(recipeData)
+})
+
+// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
+recipeTags.addEventListener('change', () => {showRecipeByTag()})
+// allRecipesBox.addEventListener('click', ())
+
+goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
 
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
     showRecipesPage()
     searchRecipeByName(recipeData, searchInput)}
-  }
-);
-
-searchButton2.addEventListener('click', () => {
-  if (searchInput.value) {
-    showRecipesPage()
-    searchRecipeByName(recipeData, searchInput2)}
   }
 );
 
@@ -83,8 +71,6 @@ allRecipesBox.addEventListener('click', (event) => {
 
 export {
   goToRecipesButton, 
-  homePage, 
-  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 
