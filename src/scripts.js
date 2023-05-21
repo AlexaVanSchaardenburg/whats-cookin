@@ -30,16 +30,12 @@ import {
 } from './domUpdates.js'
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
-
 const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
-// const savedRecipesButton = document.querySelector('.saved-recipe')
 const saveRecipeButton = document.querySelector('.save-recipe')
 const viewSavedRecipesButton = document.querySelector('.view-saved-recipes')
-const savedRecipesPage = document.querySelector('.saved-recipes-page')
-const savedRecipesBox = document.querySelector('.saved-recipe-flex')
 const searchInput = document.querySelector('#searchInput');
 const searchButton = document.querySelector('#searchButton')
 const recipePageImage = document.querySelector('.aside-img');
@@ -61,16 +57,24 @@ window.addEventListener('load', () => {
   return user
 })
 
-saveRecipeButton.addEventListener('click', (event) => {saveSelectedRecipe(event, user, recipeData)})
-savedRecipesBox.addEventListener('dblclick', (event) => {deleteSelectedRecipe(event, user, recipeData)})
-viewSavedRecipesButton.addEventListener('click', () => {showSavedRecipesPage()})
+saveRecipeButton.addEventListener('click', (event) => {
+  saveSelectedRecipe(event, user, recipeData)
+})
+
+viewSavedRecipesButton.addEventListener('click', () => {
+  showRecipesPage()
+  displayRecipes(user.recipesToCook);
+})
+
 goToRecipesButton.addEventListener('click', () => {
   showRecipesPage()
   displayRecipes(recipeData)
 })
+
 recipeTags.addEventListener('change', () => {
   showRecipeByTag()
 })
+
 recipeTags.addEventListener('change', () => {
   showRecipeByTag()
 })
@@ -83,13 +87,6 @@ searchButton.addEventListener('click', () => {
 );
 
 allRecipesBox.addEventListener('click', (event) => {
-  if (event.target.classList.contains('recipe')) {
-    showRecipePage();
-    displayRecipe(ingredientsData, event);
-  };
-});
-
-savedRecipesBox.addEventListener('click', (event) => {
   if (event.target.classList.contains('recipe')) {
     showRecipePage();
     displayRecipe(ingredientsData, event);
@@ -110,8 +107,6 @@ export {
   recipeInstructionsSection,
   recipeTags,
   saveRecipeButton,
-  savedRecipesPage,
-  savedRecipesBox,
   user,
   viewSavedRecipesButton
 }

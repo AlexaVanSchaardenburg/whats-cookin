@@ -15,9 +15,7 @@ import {
   recipeCostSection,
   searchInput,
   recipeTags,
-  savedRecipesPage,
   saveRecipeButton,
-  savedRecipesBox,
   user,
   goToRecipesButton,
   viewSavedRecipesButton
@@ -47,33 +45,29 @@ const showDomElement = (element) => {
 const showRecipesPage = () => {
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
-  hideDomElement(savedRecipesPage)
-  hideDomElement(goToRecipesButton)
+  showDomElement(goToRecipesButton)
   showDomElement(viewSavedRecipesButton)
 };
 
 const showRecipePage = () => {
   hideDomElement(allRecipesPage)
-  hideDomElement(savedRecipesPage)
   showDomElement(recipePage)
   showDomElement(goToRecipesButton)
+  showDomElement(viewSavedRecipesButton)
 };
-
-const showSavedRecipesPage = () => {
-  hideDomElement(allRecipesPage)
-  hideDomElement(recipePage)
-  showDomElement(savedRecipesPage)
-  showDomElement(goToRecipesButton)
-  hideDomElement(viewSavedRecipesButton)
-}
 
 const displayRecipes = (data) => {
   allRecipesBox.innerHTML = "";
-  data.forEach((recipe) => {
-  allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
-  <img class="recipe all-recipe-image" src="${recipe.image}">
-  <h3 class="recipe">${recipe.name}</h3>
-  </article>`})
+  console.log(data);
+  if (!data || !data.length) {
+    allRecipesBox.innerHTML = `<p>Sorry, No recipes were found!</p>`
+  } else {
+    data.forEach((recipe) => {
+      allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
+      <img class="recipe all-recipe-image" src="${recipe.image}">
+      <h3 class="recipe">${recipe.name}</h3>
+      </article>`})
+  }
 };
 
 const searchRecipeByName = (recipeData, searchInput) => {
@@ -132,21 +126,13 @@ const showRecipeByTag = () => {
 };
 
 const saveSelectedRecipe = (event, user, recipeData) => {
-  //const recipe = recipeData.filter((index) => index.id === parseInt(event.target.id))
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
-  console.log(user)
-  savedRecipesBox.innerHTML += " "
-    savedRecipesBox.innerHTML += `<article class="recipe saved-recipe-box" id="${recipe.id}">
-    <img class="recipe saved-recipe-image" src="${recipe.image}">
-    <h3 class="recipe">${recipe.name}</h3>
-    </article>`
 };
 
 const deleteSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.closest('article').id))
   deleteRecipe(user, recipe)
-  console.log(user.recipesToCook)
   event.target.closest('article').remove()
   //still need to remove recipe from the Dom. 
   //Refactor event listener from dblclick to delete button?
@@ -163,6 +149,5 @@ export {
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
-  showSavedRecipesPage,
   deleteSelectedRecipe
 }
