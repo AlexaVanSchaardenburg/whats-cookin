@@ -180,6 +180,10 @@ select {
   text-align: center;
 }
 
+.recipe-page-title {
+  text-align: center
+}
+
 .all-recipe-box,
 .saved-recipe-box {
   background-color: #AEB88E;
