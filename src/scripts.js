@@ -52,7 +52,6 @@ window.addEventListener('load', () => {
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
 // allRecipesBox.addEventListener('click', ())
-// homeButton.addEventListener('click', () => {showRecipesPage()})
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
 
@@ -72,8 +71,6 @@ allRecipesBox.addEventListener('click', (event) => {
 
 export {
   goToRecipesButton, 
-  homePage, 
-  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 

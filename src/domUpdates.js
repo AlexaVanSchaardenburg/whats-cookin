@@ -3,8 +3,6 @@ import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
 
 import {
-  homePage, 
-  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 
@@ -15,7 +13,6 @@ import {
   recipeInstructionsSection, 
   recipeCostSection,
   searchInput,
-  searchInput2,
   recipeTags,
 
 } from './scripts.js'
@@ -38,18 +35,14 @@ const showDomElement = (element) => {
   element.classList.remove('hidden')
 };
 
-// const showHomePage = () => {
-//   showDomElement(homePage)
-//   hideDomElement(allRecipesPage);
-//   hideDomElement(recipePage)
-//   homeButton.classList.add('invisible');
-// }
-
 const showRecipesPage = () => {
-  // homeButton.classList.add('invisible')
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
-  // displayRecipes(recipeData)
+};
+
+const showRecipePage = () => {
+  hideDomElement(allRecipesPage)
+  showDomElement(recipePage)
 };
 
 const displayRecipes = (data) => {
@@ -72,12 +65,6 @@ const searchRecipeByName = (recipeData, searchInput) => {
   searchInput.value = '';
 }
 
-const showRecipePage = () => {
-  // hideDomElement(homePage)
-  hideDomElement(allRecipesPage)
-  showDomElement(recipePage)
-};
-
 const selectRecipe = (e) => {
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
   return recipe
@@ -85,7 +72,6 @@ const selectRecipe = (e) => {
 
 const displayRecipe = (ingredientsData, event) => {
   const recipe = selectRecipe(event)
-  // //display the selected recipes name, ingredients, instructions, and total cost on the individual recipe page using helper functions from RecipeRepository.js file
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
   const recipeCost = calcRecipeCost(ingredientsData, recipe);
@@ -127,7 +113,6 @@ export {
   showRecipesPage, 
   showDomElement, 
   hideDomElement, 
-  // showHomePage,
   displayRecipes, 
   showRecipePage, 
   displayRecipe, 
