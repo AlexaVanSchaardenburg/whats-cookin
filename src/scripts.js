@@ -27,6 +27,7 @@ import {
   showRecipeByTag,
   saveSelectedRecipe,
   showSavedRecipesPage,
+  deleteSelectedRecipe
 } from './domUpdates.js'
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
@@ -51,10 +52,8 @@ window.addEventListener('load', () => {
   return user
 })
 
-saveRecipesButton.addEventListener('click', (event) => {
-  saveSelectedRecipe(event, user, recipeData)
-  console.log(user)
-})
+saveRecipesButton.addEventListener('click', (event) => {saveSelectedRecipe(event, user, recipeData)})
+savedRecipesBox.addEventListener('dblclick', (event) => {deleteSelectedRecipe(event, user, recipeData)})
 savedRecipeSectionButton.addEventListener('click', () => {showSavedRecipesPage()})
 goToRecipesButton.addEventListener('click', () => {
   displayRecipes(recipeData)

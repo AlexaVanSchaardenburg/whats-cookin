@@ -138,14 +138,24 @@ const showRecipeByTag = () => {
 };
 
 const saveSelectedRecipe = (event, user, recipeData) => {
-  const recipe = recipeData.filter((index) => index.id === parseInt(event.target.id))
+  //const recipe = recipeData.filter((index) => index.id === parseInt(event.target.id))
+  const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
   console.log(user)
-  recipe.forEach((recipe) => {
+  //const savedRecipes = user.recipesToCook.flat()
     savedRecipesBox.innerHTML += `<article class="recipe saved-recipe-box" id="${recipe.id}">
     <img class="recipe saved-recipe-image" src="${recipe.image}">
     <h3 class="recipe">${recipe.name}</h3>
-    </article>`})
+    </article>`
+};
+
+const deleteSelectedRecipe = (event, user, recipeData) => {
+  const recipe = recipeData.find((index) => index.id === parseInt(event.target.closest('article').id))
+  console.log(recipe)
+  deleteRecipe(user, recipe)
+  console.log(user.recipesToCook)
+  //still need to remove recipe from the Dom. 
+  //Refactor event listener from dblclick to delete button?
 };
 
 export {  
@@ -160,4 +170,5 @@ export {
   showRecipeByTag,
   saveSelectedRecipe,
   showSavedRecipesPage,
+  deleteSelectedRecipe
 }
