@@ -205,11 +205,17 @@ select {
 
 aside {
   width: 30%;
+  padding: 15px;
+}
+
+.right-side {
+  margin-left: 30px;
 }
 
 .aside-img {
   max-width: 90%;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .ingredients-header {
