@@ -15,13 +15,12 @@ import { selectRandomUser, saveRecipe} from './RecipeRepository'
 
 //Import Functions
 
-import {
-  showAllRecipesPage, 
-  showHomePage,
+import { 
   showDomElement, 
   hideDomElement, 
   displayRecipes, 
-  showRecipePage, 
+  showRecipePage,
+  showRecipesPage, 
   displayRecipe, 
   searchRecipeByName,
   showRecipeByTag,
@@ -31,12 +30,12 @@ import {
 } from './domUpdates.js'
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
-const homePage = document.querySelector('.home-page')
+
 const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
-const homeButton = document.querySelector('.home-button')
+const savedRecipesButton = document.querySelector('.saved-recipe')
 const saveRecipesButton = document.querySelector('.save-recipe')
 const savedRecipeSectionButton = document.querySelector('.saved-recipe')
 const savedRecipesPage = document.querySelector('.saved-recipes-page')
@@ -57,36 +56,37 @@ savedRecipesBox.addEventListener('dblclick', (event) => {deleteSelectedRecipe(ev
 savedRecipeSectionButton.addEventListener('click', () => {showSavedRecipesPage()})
 goToRecipesButton.addEventListener('click', () => {
   displayRecipes(recipeData)
-  showAllRecipesPage()})
-goToRecipesButton.addEventListener('click', () => {showAllRecipesPage()})
+  showRecipesPage()})
+goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})
-homeButton.addEventListener('click', () => {showHomePage()})
+
 
 const searchInput = document.querySelector('#searchInput');
-const searchInput2 = document.querySelector('#searchInput2');
-const searchButton = document.querySelector('#searchButton');
-const searchButton2 = document.querySelector('#searchButton2')
-
+const searchButton = document.querySelector('#searchButton')
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
 const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
-const recipeCostSection = document.querySelector('.total-cost'); 
+const recipeCostSection = document.querySelector('.total-cost');
 
 //Event Listeners
 
+window.addEventListener('load', () => {
+  showRecipesPage()
+  displayRecipes(recipeData)
+})
+
+// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
+recipeTags.addEventListener('change', () => {showRecipeByTag()})
+// allRecipesBox.addEventListener('click', ())
+
+goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
-    showAllRecipesPage()
+    showRecipesPage()
     searchRecipeByName(recipeData, searchInput)}
-  }
-);
-
-searchButton2.addEventListener('click', () => {
-  if (searchInput.value) {
-    showAllRecipesPage()
-    searchRecipeByName(recipeData, searchInput2)}
   }
 );
 
@@ -106,8 +106,6 @@ savedRecipesBox.addEventListener('click', (event) => {
 
 export {
   goToRecipesButton, 
-  homePage, 
-  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 

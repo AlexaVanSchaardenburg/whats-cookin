@@ -4,8 +4,6 @@ import {ingredientsData} from './data/ingredients'
 import { usersData } from './data/users';
 
 import {
-  homePage, 
-  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 
@@ -16,7 +14,6 @@ import {
   recipeInstructionsSection, 
   recipeCostSection,
   searchInput,
-  searchInput2,
   recipeTags,
   savedRecipesPage,
   saveRecipesButton,
@@ -45,26 +42,22 @@ const showDomElement = (element) => {
   element.classList.remove('hidden')
 };
 
-const showHomePage = () => {
-  showDomElement(homePage)
-  hideDomElement(allRecipesPage);
-  hideDomElement(recipePage)
-  hideDomElement(savedRecipesPage)
-  homeButton.classList.add('invisible');
-}
-
-const showAllRecipesPage = () => {
-  homeButton.classList.remove('invisible')
-  hideDomElement(homePage)
-  hideDomElement(savedRecipesPage)
-  hideDomElement(recipePage)
+const showRecipesPage = () => {
   showDomElement(allRecipesPage)
+  hideDomElement(recipePage)
+  hideDomElement(savedRecipesPage)
+
+};
+
+const showRecipePage = () => {
+  hideDomElement(allRecipesPage)
+  hideDomElement(savedRecipesPage)
+  showDomElement(recipePage)
 };
 
 const showSavedRecipesPage = () => {
   hideDomElement(allRecipesPage)
   hideDomElement(recipePage)
-  hideDomElement(homePage)
   showDomElement(savedRecipesPage)
 }
 
@@ -85,14 +78,8 @@ const searchRecipeByName = (recipeData, searchInput) => {
   } else {
     displayRecipes(filteredNames);
   }
+  searchInput.value = '';
 }
-
-const showRecipePage = () => {
-  hideDomElement(homePage)
-  hideDomElement(allRecipesPage)
-  hideDomElement(savedRecipesPage)
-  showDomElement(recipePage)
-};
 
 const selectRecipe = (e) => {
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
@@ -143,7 +130,7 @@ const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
   console.log(user)
-  //const savedRecipes = user.recipesToCook.flat()
+  savedRecipesBox.innerHTML += " "
     savedRecipesBox.innerHTML += `<article class="recipe saved-recipe-box" id="${recipe.id}">
     <img class="recipe saved-recipe-image" src="${recipe.image}">
     <h3 class="recipe">${recipe.name}</h3>
@@ -152,7 +139,6 @@ const saveSelectedRecipe = (event, user, recipeData) => {
 
 const deleteSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.closest('article').id))
-  console.log(recipe)
   deleteRecipe(user, recipe)
   console.log(user.recipesToCook)
   event.target.closest('article').remove()
@@ -162,10 +148,9 @@ const deleteSelectedRecipe = (event, user, recipeData) => {
 };
 
 export {  
-  showAllRecipesPage, 
+  showRecipesPage, 
   showDomElement, 
   hideDomElement, 
-  showHomePage,
   displayRecipes, 
   showRecipePage, 
   displayRecipe, 
