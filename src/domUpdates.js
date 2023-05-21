@@ -90,6 +90,7 @@ const searchRecipeByName = (recipeData, searchInput) => {
 const showRecipePage = () => {
   hideDomElement(homePage)
   hideDomElement(allRecipesPage)
+  hideDomElement(savedRecipesPage)
   showDomElement(recipePage)
 };
 
@@ -154,8 +155,10 @@ const deleteSelectedRecipe = (event, user, recipeData) => {
   console.log(recipe)
   deleteRecipe(user, recipe)
   console.log(user.recipesToCook)
+  event.target.closest('article').remove()
   //still need to remove recipe from the Dom. 
   //Refactor event listener from dblclick to delete button?
+  //Need to make sure existing recipe cannot be added to array
 };
 
 export {  

@@ -97,6 +97,13 @@ allRecipesBox.addEventListener('click', (event) => {
   };
 });
 
+savedRecipesBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('recipe')) {
+    showRecipePage();
+    displayRecipe(ingredientsData, event);
+  };
+});
+
 export {
   goToRecipesButton, 
   homePage, 
