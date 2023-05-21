@@ -1,5 +1,5 @@
 //NOTE: Your DOM manipulation will occur in this file
-import {recipeData} from './data/recipes'
+import {recipeData} from './apiCalls'
 import {ingredientsData} from './data/ingredients'
 
 import {

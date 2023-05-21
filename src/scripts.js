@@ -1,12 +1,12 @@
 //NOTE: Data model and non-dom manipulating logic will live in this file.
 
 import './styles.css'
-import apiCalls from './apiCalls'
+import {recipeData} from './apiCalls'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
-import {recipeData} from './data/recipes'
+// import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
 
 //Import Functions
@@ -43,11 +43,6 @@ const recipeInstructionsSection = document.querySelector('.instructions-list');
 const recipeCostSection = document.querySelector('.total-cost'); 
 
 //Event Listeners
-
-// window.addEventListener('load', () => {
-//   showRecipesPage()
-//   displayRecipes(recipeData)
-// })
 
 // recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
 recipeTags.addEventListener('change', () => {showRecipeByTag()})

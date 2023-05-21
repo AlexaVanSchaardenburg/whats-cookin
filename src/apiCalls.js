@@ -1,5 +1,5 @@
 // Your fetch requests will live here!
-let recipesData, ingredients, users
+let recipeData, ingredients, users
 
 import {showRecipesPage, displayRecipes} from './domUpdates.js'
 // import {displayRecipes, showRecipePage} from './domUpdates.js'
@@ -19,7 +19,7 @@ Promise.all([recipeResponse]).then(([recipes]) => {
 //load user and recipes
 // console.log(recipes)
 
-recipesData = recipes.recipes
+recipeData = recipes.recipes
 
 // console.log(recipeData)
 
@@ -33,5 +33,5 @@ displayRecipes(recipes.recipes)
 console.log('I will be a fetch request!')
 
 export {
-    recipesData,
+    recipeData,
 }
