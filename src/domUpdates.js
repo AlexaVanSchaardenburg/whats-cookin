@@ -16,9 +16,11 @@ import {
   searchInput,
   recipeTags,
   savedRecipesPage,
-  saveRecipesButton,
+  saveRecipeButton,
   savedRecipesBox,
-  user
+  user,
+  goToRecipesButton,
+  viewSavedRecipesButton
 
 } from './scripts.js'
 
@@ -46,19 +48,23 @@ const showRecipesPage = () => {
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
   hideDomElement(savedRecipesPage)
-
+  hideDomElement(goToRecipesButton)
+  showDomElement(viewSavedRecipesButton)
 };
 
 const showRecipePage = () => {
   hideDomElement(allRecipesPage)
   hideDomElement(savedRecipesPage)
   showDomElement(recipePage)
+  showDomElement(goToRecipesButton)
 };
 
 const showSavedRecipesPage = () => {
   hideDomElement(allRecipesPage)
   hideDomElement(recipePage)
   showDomElement(savedRecipesPage)
+  showDomElement(goToRecipesButton)
+  hideDomElement(viewSavedRecipesButton)
 }
 
 const displayRecipes = (data) => {
@@ -90,7 +96,7 @@ const displayRecipe = (ingredientsData, event) => {
   const recipe = selectRecipe(event)
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
-  saveRecipesButton.setAttribute('id', `${recipe.id}`)
+  saveRecipeButton.setAttribute('id', `${recipe.id}`)
   const recipeCost = calcRecipeCost(ingredientsData, recipe);
   recipeCostSection.innerText = `Total Cost: $${recipeCost}`
   recipeTagsSection.innerHTML = ''

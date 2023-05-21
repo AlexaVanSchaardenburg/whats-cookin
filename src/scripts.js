@@ -35,32 +35,11 @@ const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
-const savedRecipesButton = document.querySelector('.saved-recipe')
-const saveRecipesButton = document.querySelector('.save-recipe')
-const savedRecipeSectionButton = document.querySelector('.saved-recipe')
+// const savedRecipesButton = document.querySelector('.saved-recipe')
+const saveRecipeButton = document.querySelector('.save-recipe')
+const viewSavedRecipesButton = document.querySelector('.view-saved-recipes')
 const savedRecipesPage = document.querySelector('.saved-recipes-page')
 const savedRecipesBox = document.querySelector('.saved-recipe-flex')
-
-let user; 
-
-//Event Listeners
-
-window.addEventListener('load', () => {
-  user = selectRandomUser(usersData)
-  console.log(user)
-  return user
-})
-
-saveRecipesButton.addEventListener('click', (event) => {saveSelectedRecipe(event, user, recipeData)})
-savedRecipesBox.addEventListener('dblclick', (event) => {deleteSelectedRecipe(event, user, recipeData)})
-savedRecipeSectionButton.addEventListener('click', () => {showSavedRecipesPage()})
-goToRecipesButton.addEventListener('click', () => {
-  displayRecipes(recipeData)
-  showRecipesPage()})
-goToRecipesButton.addEventListener('click', () => {showRecipesPage()})
-recipeTags.addEventListener('change', () => {showRecipeByTag()})
-
-
 const searchInput = document.querySelector('#searchInput');
 const searchButton = document.querySelector('#searchButton')
 const recipePageImage = document.querySelector('.aside-img');
@@ -70,18 +49,31 @@ const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
 const recipeCostSection = document.querySelector('.total-cost');
 
+let user; 
+
 //Event Listeners
 
 window.addEventListener('load', () => {
   showRecipesPage()
   displayRecipes(recipeData)
+  user = selectRandomUser(usersData)
+  console.log(user)
+  return user
 })
 
-// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
-recipeTags.addEventListener('change', () => {showRecipeByTag()})
-// allRecipesBox.addEventListener('click', ())
-
-goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+saveRecipeButton.addEventListener('click', (event) => {saveSelectedRecipe(event, user, recipeData)})
+savedRecipesBox.addEventListener('dblclick', (event) => {deleteSelectedRecipe(event, user, recipeData)})
+viewSavedRecipesButton.addEventListener('click', () => {showSavedRecipesPage()})
+goToRecipesButton.addEventListener('click', () => {
+  showRecipesPage()
+  displayRecipes(recipeData)
+})
+recipeTags.addEventListener('change', () => {
+  showRecipeByTag()
+})
+recipeTags.addEventListener('change', () => {
+  showRecipeByTag()
+})
 
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
@@ -117,8 +109,9 @@ export {
   recipeCostSection, 
   recipeInstructionsSection,
   recipeTags,
-  saveRecipesButton,
+  saveRecipeButton,
   savedRecipesPage,
   savedRecipesBox,
-  user 
+  user,
+  viewSavedRecipesButton
 }
