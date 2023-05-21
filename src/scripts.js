@@ -33,23 +33,8 @@ const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
 const savedRecipesButton = document.querySelector('.saved-recipe')
 const homeButton = document.querySelector('.home-button')
-
-//Event Listeners
-
-window.addEventListener('load', () => {
-  displayRecipes(recipeData)
-  showRecipesPage()})
-
-// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
-recipeTags.addEventListener('change', () => {showRecipeByTag()})
-// allRecipesBox.addEventListener('click', ())
-homeButton.addEventListener('click', () => {showRecipesPage()})
-
-// const searchInput = document.querySelector('#searchInput');
 const searchInput = document.querySelector('#searchInput');
-// const searchButton = document.querySelector('#searchButton');
 const searchButton = document.querySelector('#searchButton')
-
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
@@ -58,6 +43,16 @@ const recipeInstructionsSection = document.querySelector('.instructions-list');
 const recipeCostSection = document.querySelector('.total-cost'); 
 
 //Event Listeners
+
+window.addEventListener('load', () => {
+  showRecipesPage()
+  displayRecipes(recipeData)
+})
+
+// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
+recipeTags.addEventListener('change', () => {showRecipeByTag()})
+// allRecipesBox.addEventListener('click', ())
+// homeButton.addEventListener('click', () => {showRecipesPage()})
 
 goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
 
