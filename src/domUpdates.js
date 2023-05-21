@@ -38,18 +38,18 @@ const showDomElement = (element) => {
   element.classList.remove('hidden')
 };
 
-const showHomePage = () => {
-  showDomElement(homePage)
-  hideDomElement(allRecipesPage);
-  hideDomElement(recipePage)
-  homeButton.classList.add('invisible');
-}
+// const showHomePage = () => {
+//   showDomElement(homePage)
+//   hideDomElement(allRecipesPage);
+//   hideDomElement(recipePage)
+//   homeButton.classList.add('invisible');
+// }
 
 const showRecipesPage = () => {
-  homeButton.classList.add('invisible')
+  // homeButton.classList.add('invisible')
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
-  displayRecipes(recipeData)
+  // displayRecipes(recipeData)
 };
 
 const displayRecipes = (data) => {
@@ -69,6 +69,7 @@ const searchRecipeByName = (recipeData, searchInput) => {
   } else {
     displayRecipes(filteredNames);
   }
+  searchInput.value = '';
 }
 
 const showRecipePage = () => {
@@ -126,7 +127,7 @@ export {
   showRecipesPage, 
   showDomElement, 
   hideDomElement, 
-  showHomePage,
+  // showHomePage,
   displayRecipes, 
   showRecipePage, 
   displayRecipe, 
