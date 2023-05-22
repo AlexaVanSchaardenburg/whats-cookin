@@ -72,7 +72,10 @@ const selectRandomUser = (users) => {
 }
 
 const saveRecipe = (userData, recipeData) => {
-  userData.recipesToCook ? userData.recipesToCook.push(recipeData) : userData.recipesToCook =[recipeData];
+  userData.recipesToCook || (userData.recipesToCook = []);
+  if (!userData.recipesToCook.includes(recipeData)) {
+    userData.recipesToCook.push(recipeData)
+  }
   return userData;
 };
 
