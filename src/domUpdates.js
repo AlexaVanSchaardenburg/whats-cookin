@@ -20,6 +20,7 @@ import {
   goToRecipesButton,
   viewSavedRecipesButton,
   deleteRecipeButton,
+  currentView
 } from './scripts.js'
 
 const { 
@@ -45,8 +46,14 @@ const showDomElement = (element) => {
 const showRecipesPage = () => {
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
-  showDomElement(goToRecipesButton)
-  showDomElement(viewSavedRecipesButton)
+
+  if (currentView === 'saved') {
+    showDomElement(goToRecipesButton)
+    hideDomElement(viewSavedRecipesButton)
+  } else {
+    showDomElement(viewSavedRecipesButton)
+    hideDomElement(goToRecipesButton)
+  }
 };
 
 const showRecipePage = () => {
@@ -69,8 +76,14 @@ const displayRecipes = (data) => {
   }
 };
 
-const searchRecipeByName = (recipeData, searchInput) => {
-  const filteredNames = filterByName(recipeData, searchInput.value);
+const searchRecipeByName = (currentView, searchInput) => {
+  let filteredNames;
+  if (currentView === 'saved') {
+    filteredNames = filterByName(user.recipesToCook, searchInput.value);
+  } else {
+    filteredNames = filterByName(recipeData, searchInput.value);
+  }
+  
   if (typeof filteredNames === 'string') {
     allRecipesBox.innerHTML = "";
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`

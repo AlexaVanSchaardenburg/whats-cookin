@@ -47,11 +47,12 @@ const recipeCostSection = document.querySelector('.total-cost');
 const deleteRecipeButton = document.querySelector('.delete-recipe')
 
 let user; 
+let currentView = 'all'
 
 //Event Listeners
 
 window.addEventListener('load', () => {
-  showRecipesPage()
+  showRecipesPage();
   displayRecipes(recipeData)
   user = selectRandomUser(usersData)
   console.log(user)
@@ -63,13 +64,17 @@ saveRecipeButton.addEventListener('click', (event) => {
 })
 
 viewSavedRecipesButton.addEventListener('click', () => {
+  currentView = 'saved'
   showRecipesPage()
   displayRecipes(user.recipesToCook);
+  console.log(currentView);
 })
 
 goToRecipesButton.addEventListener('click', () => {
+  currentView = 'all'
   showRecipesPage()
   displayRecipes(recipeData)
+  console.log(currentView);
 })
 
 recipeTags.addEventListener('change', () => {
@@ -83,7 +88,7 @@ recipeTags.addEventListener('change', () => {
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
     showRecipesPage()
-    searchRecipeByName(recipeData, searchInput)}
+    searchRecipeByName(currentView, searchInput)}
   }
 );
 
@@ -115,4 +120,5 @@ export {
   user,
   viewSavedRecipesButton,
   deleteRecipeButton,
+  currentView
 }
