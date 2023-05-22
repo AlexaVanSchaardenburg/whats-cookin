@@ -1,4 +1,3 @@
-// Your fetch requests will live here!
 let recipeData, ingredientsData, usersData, user
 
 import {showRecipesPage, displayRecipes} from './domUpdates.js'
