@@ -3,7 +3,7 @@ const expect = chai.expect
 const {mockRecipeData} = require('../src/data/mockRecipe');
 const {mockIngredientsData} = require('../src/data/mockIngredients');
 const {mockUserData} = require('../src/data/mockUser');
-const {filterByTag, filterByName, getInstructions, listIngredient, calcRecipeCost, selectRandomUser, saveRecipe, deleteRecipe} = require('../src/RecipeRepository');
+const {filterByTag, filterByName, getInstructions, getIngredientNames, calcRecipeCost, selectRandomUser, saveRecipe, deleteRecipe} = require('../src/RecipeRepository');
 
 const recipes = mockRecipeData;
 const ingredients = mockIngredientsData;
@@ -1054,19 +1054,41 @@ describe('Get info by recipe', () => {
     });
   });
 
-  it('should return the name of an ingredient given a recipe ingredient', () => {
-    const ingredientsByRecipe = listIngredient(ingredients, recipe1.ingredients[0]);
+  it('should return an array of ingredient names for a recipe', () => {
+    const ingredientNames = getIngredientNames(ingredients, recipe1);
     
-    expect(ingredientsByRecipe).to.equal(
-      'wheat flour');
+    expect(ingredientNames).to.deep.equal([
+    'wheat flour',
+    'bicarbonate of soda',
+    'eggs',
+    'sucrose',
+    'instant vanilla pudding',
+    'brown sugar',
+    'salt',
+    'fine sea salt',
+    'semi sweet chips',
+    'unsalted butter',
+    'vanilla'
+    ]);
   });
 
-  it('should return an ingredient for a different recipe', () => {
-    const ingredientsByRecipe = listIngredient(ingredients, recipe2.ingredients[1]);
+  it('should be able to return ingredient names for a different recipe', () => {
+    const ingredientsByRecipe = getIngredientNames(ingredients, recipe2);
     
-    expect(ingredientsByRecipe).to.equal(
-      'brown sugar'
-);
+    expect(ingredientsByRecipe).to.deep.equal([
+      'whole almonds',
+      'brown sugar',
+      'coconut',
+      'coconut cream',
+      'coconut oil',
+      'dark chocolate morsels',
+      'granola cereal',
+      'maple',
+      'oatmeal',
+      'pecan',
+      'salt',
+      'vanilla'
+    ]);
   });
 
   it('should calculate the total cost in dollars given a recipe',() => {

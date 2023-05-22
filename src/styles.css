@@ -154,17 +154,8 @@ select {
   margin-left: 5px;
 }
 
-.search-recipe {
+.search-submit {
   border-radius: 8px;
-}
-
-.saved-recipe {
-  border-radius: 8px;
-  padding: 5px 20px;
-  flex-grow: 1;
-  margin-left: 30px;
-  background-color: #476F54;
-  color: white;
 }
 
 .all-recipe-flex {
@@ -205,11 +196,12 @@ select {
 }
 
 aside {
-  width: 30%;
+  width: 25%;
   padding: 15px;
 }
 
 .right-side {
+  width: 75%;
   margin-left: 30px;
 }
 
@@ -260,7 +252,8 @@ aside {
   border-radius: 8px;
 }
 
-.save-recipe {
+.save-recipe, 
+.delete-recipe {
   border-radius: 8px;
   padding: 5px 30px;
 }
