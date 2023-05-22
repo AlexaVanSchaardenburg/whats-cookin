@@ -271,3 +271,12 @@ aside {
 .hidden {
   display: none;
 }
+
+.flex-tags > li,
+.green-flex-container > h2,
+.total-cost,
+.all-recipe-box > h3 {
+  color: white;
+}
+
+
