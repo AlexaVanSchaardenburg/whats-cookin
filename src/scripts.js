@@ -2,76 +2,93 @@
 
 import './styles.css'
 import apiCalls from './apiCalls'
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
+
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
 import {recipeData} from './data/recipes'
 import {ingredientsData} from './data/ingredients'
+import { usersData } from './data/users'
+import { selectRandomUser, saveRecipe} from './RecipeRepository'
 
 //Import Functions
 
-import {
-  showRecipesPage, 
-  showHomePage,
+import { 
   showDomElement, 
   hideDomElement, 
   displayRecipes, 
-  showRecipePage, 
+  showRecipePage,
+  showRecipesPage, 
   displayRecipe, 
   searchRecipeByName,
-  showRecipeByTag
+  showRecipeByTag,
+  saveSelectedRecipe,
+  showSavedRecipesPage,
+  deleteSelectedRecipe
 } from './domUpdates.js'
 
-//Query Selectors
-
 const goToRecipesButton = document.querySelector('.go-to-recipes')
-const homePage = document.querySelector('.home-page')
 const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
 const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
-const savedRecipesButton = document.querySelector('.saved-recipe')
-const homeButton = document.querySelector('.home-button')
-
-//Event Listeners
-
-goToRecipesButton.addEventListener('click', () => {
-  displayRecipes(recipeData)
-  showRecipesPage()})
-// recipeTags.addEventListener('change', () => {console.log(recipeTags.value)})
-recipeTags.addEventListener('change', () => {showRecipeByTag()})
-// allRecipesBox.addEventListener('click', ())
-homeButton.addEventListener('click', () => {showHomePage()})
-
+const saveRecipeButton = document.querySelector('.save-recipe')
+const viewSavedRecipesButton = document.querySelector('.view-saved-recipes')
 const searchInput = document.querySelector('#searchInput');
-const searchInput2 = document.querySelector('#searchInput2');
-const searchButton = document.querySelector('#searchButton');
-const searchButton2 = document.querySelector('#searchButton2')
-// const homeForm = document.querySelector('.home-form');
-
+const searchButton = document.querySelector('.search-submit')
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
 const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
-const recipeCostSection = document.querySelector('.total-cost'); 
+const recipeCostSection = document.querySelector('.total-cost');
+const deleteRecipeButton = document.querySelector('.delete-recipe')
+
+let user; 
+let currentView = 'all'
 
 //Event Listeners
 
-// goToRecipesButton.addEventListener('click', () => {showRecipesPage()});
+window.addEventListener('load', () => {
+  showRecipesPage();
+  displayRecipes(recipeData)
+  user = selectRandomUser(usersData)
+  console.log(user)
+  return user
+})
+
+saveRecipeButton.addEventListener('click', (event) => {
+  saveSelectedRecipe(event, user, recipeData)
+})
+
+viewSavedRecipesButton.addEventListener('click', () => {
+  currentView = 'saved'
+  showRecipesPage()
+  displayRecipes(user.recipesToCook);
+  console.log(currentView);
+})
+
+goToRecipesButton.addEventListener('click', () => {
+  currentView = 'all'
+  showRecipesPage()
+  displayRecipes(recipeData)
+  console.log(currentView);
+})
+
+recipeTags.addEventListener('change', () => {
+  showRecipeByTag()
+})
+
+recipeTags.addEventListener('change', () => {
+  showRecipeByTag(currentView)
+})
 
 searchButton.addEventListener('click', () => {
   if (searchInput.value) {
     showRecipesPage()
-    searchRecipeByName(recipeData, searchInput)}
-  }
-);
-
-searchButton2.addEventListener('click', () => {
-  if (searchInput.value) {
-    showRecipesPage()
-    searchRecipeByName(recipeData, searchInput2)}
+    searchRecipeByName(currentView, searchInput)}
   }
 );
 
@@ -82,10 +99,12 @@ allRecipesBox.addEventListener('click', (event) => {
   };
 });
 
+deleteRecipeButton.addEventListener('click', () => {
+  deleteSelectedRecipe(event, user, recipeData);
+})
+
 export {
   goToRecipesButton, 
-  homePage, 
-  homeButton,
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 
@@ -96,5 +115,10 @@ export {
   recipeIngredientListSection, 
   recipeCostSection, 
   recipeInstructionsSection,
-  recipeTags, 
+  recipeTags,
+  saveRecipeButton,
+  user,
+  viewSavedRecipesButton,
+  deleteRecipeButton,
+  currentView
 }
