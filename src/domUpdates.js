@@ -87,7 +87,24 @@ const selectRecipe = (e) => {
 
 const displayRecipe = (ingredientsData, event) => {
   const recipe = selectRecipe(event)
+  toggleRecipeButtons(recipe) 
+  displayIngredients(ingredientsData, recipe)
+  displayInstructions(recipe) 
 
+  recipePageImage.src = recipe.image;
+  recipePageNameSection.innerText = recipe.name;
+  saveRecipeButton.setAttribute('id', `${recipe.id}`)
+
+  recipeTagsSection.innerHTML = ''
+  recipe.tags.forEach(tag => {
+    recipeTagsSection.innerHTML += `<li>#${tag}</li>`
+  })
+
+  const recipeCost = calcRecipeCost(ingredientsData, recipe);
+  recipeCostSection.innerText = `Total Cost: $${recipeCost}`  
+};
+
+const toggleRecipeButtons = (recipe) => {
   const alreadySaved = !user.recipesToCook || user.recipesToCook.some(savedRecipe => savedRecipe === recipe)
   
   if (!user.recipesToCook || !alreadySaved) {
@@ -97,17 +114,9 @@ const displayRecipe = (ingredientsData, event) => {
     hideDomElement(saveRecipeButton);
     showDomElement(deleteRecipeButton)
   }
+}
 
-  recipePageImage.src = recipe.image;
-  recipePageNameSection.innerText = recipe.name;
-  saveRecipeButton.setAttribute('id', `${recipe.id}`)
-  const recipeCost = calcRecipeCost(ingredientsData, recipe);
-  recipeCostSection.innerText = `Total Cost: $${recipeCost}`
-  recipeTagsSection.innerHTML = ''
-  recipe.tags.forEach(tag => {
-    recipeTagsSection.innerHTML += `<li>#${tag}</li>`
-  })
-
+const displayIngredients = (ingredientsData, recipe) => {
   const ingredientNames = getIngredientInfo(ingredientsData, recipe, 'name');
   const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
   const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
@@ -116,13 +125,15 @@ const displayRecipe = (ingredientsData, event) => {
   recipe.ingredients.forEach((ingredient, i) => {
     recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}`
   })  
+}
 
+const displayInstructions = (recipe) => {
   const recipeInstructions = getInstructions(recipe)
   const numSteps = Object.keys(recipeInstructions)
   numSteps.forEach(step => {
    recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
   })
-};
+}
 
 const showRecipeByTag = () => {
   allRecipesBox.innerHTML = ''
