@@ -1,7 +1,7 @@
 //NOTE: Data model and non-dom manipulating logic will live in this file.
 
 import './styles.css'
-import {recipeData, usersData, ingredientsData} from './apiCalls'
+import {recipeData, usersData, ingredientsData, user} from './apiCalls'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 import './images/turing-logo.png'
@@ -45,7 +45,7 @@ const recipeInstructionsSection = document.querySelector('.instructions-list');
 const recipeCostSection = document.querySelector('.total-cost');
 const deleteRecipeButton = document.querySelector('.delete-recipe')
 
-let user; 
+// let user; 
 let currentView = 'all'
 
 //Event Listeners
@@ -115,7 +115,7 @@ export {
   recipeInstructionsSection,
   recipeTags,
   saveRecipeButton,
-  user,
+  // user,
   viewSavedRecipesButton,
   deleteRecipeButton,
   currentView

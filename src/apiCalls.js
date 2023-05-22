@@ -14,21 +14,17 @@ Promise.all([usersResponse, recipeResponse, ingredientsResponse]).then(([users, 
 recipeData = recipes.recipes
 usersData = users.users
 ingredientsData = ingredients.ingredients
-console.log(usersData)
 
 showRecipesPage();
-displayRecipes(recipeData)
 user = selectRandomUser(usersData)
+displayRecipes(recipeData)
+console.log(user)
 return user
-
 })})
-
-// setTimeout((() => {console.log(recipesData)}), 1000)
-
-console.log('I will be a fetch request!')
 
 export {
     recipeData,
     usersData,
-    ingredientsData
+    ingredientsData,
+    // user
 }
