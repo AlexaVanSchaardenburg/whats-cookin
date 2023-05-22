@@ -18,7 +18,7 @@ import {
   currentView
 } from './scripts.js'
 
-const { 
+import { 
   filterByTag,
   filterByName,
   getInstructions,
@@ -26,7 +26,7 @@ const {
   calcRecipeCost,
   saveRecipe,
   deleteRecipe
-} = require('../src/RecipeRepository.js');
+} from '../src/RecipeRepository.js';
 
 //DOM Functions
 

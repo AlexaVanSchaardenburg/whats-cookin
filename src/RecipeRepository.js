@@ -13,7 +13,7 @@ const filterByTag = (recipeData, tag) => {
 
 const filterByName = (recipeData, searchInput) => {
   const searchTerms = searchInput.toLowerCase().split(' ');
-  const formattedSearch = searchTerms.map(word => capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const formattedSearch = searchTerms.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const filteredRecipes = recipeData.filter(recipe => recipe.name.includes(formattedSearch));
   return findLength(filteredRecipes)
 };
@@ -63,13 +63,11 @@ const deleteRecipe = (userData, recipeData) => {
  return userData;
 }
 
-module.exports = {
+export {
   filterByTag,
   filterByName,
   getInstructions,
   getIngredientNames,
-  calcRecipeCost,
-  selectRandomUser, 
   calcRecipeCost, 
   saveRecipe,
   deleteRecipe,
