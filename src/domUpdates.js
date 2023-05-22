@@ -1,7 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
-import {recipeData} from './data/recipes'
-import {ingredientsData} from './data/ingredients'
-import { usersData } from './data/users';
+import {recipeData, usersData, ingredientsData, user} from './apiCalls'
+// import {ingredientsData} from './data/ingredients'
+// import { usersData } from './data/users';
 
 import {
   allRecipesPage, 
@@ -16,7 +16,7 @@ import {
   searchInput,
   recipeTags,
   saveRecipeButton,
-  user,
+  // user,
   goToRecipesButton,
   viewSavedRecipesButton,
   deleteRecipeButton,
@@ -136,6 +136,7 @@ const displayRecipe = (ingredientsData, event) => {
 };
 
 const toggleRecipeButtons = (recipe) => {
+  console.log(user)
   const alreadySaved = !user.recipesToCook || user.recipesToCook.some(savedRecipe => savedRecipe === recipe)
   
   if (!user.recipesToCook || !alreadySaved) {

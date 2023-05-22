@@ -1,4 +1,6 @@
-const { usersData } = require("./data/users");
+// const { usersData } = require("./data/users");
+// import {user} from './apiCalls'
+
 
 const filterByTag = (recipeData, tag) => {
   const filteredRecipes = recipeData.filter((recipe) => recipe.tags.includes(tag.toLowerCase()))
@@ -66,6 +68,7 @@ const calcRecipeCost = (ingredientData, recipe) => {
 };
 
 const selectRandomUser = (users) => {
+  // console.log(users)
   const index = Math.floor(Math.random() * users.length - 1);
   const aUser = users[index];
   return aUser;
