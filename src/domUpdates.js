@@ -93,6 +93,24 @@ const searchRecipeByName = (currentView, searchInput) => {
   searchInput.value = '';
 }
 
+const showRecipeByTag = (currentView) => {
+  allRecipesBox.innerHTML = ''
+
+  let filteredTags;
+  if (currentView === 'saved') {
+    filteredTags = filterByTag(user.recipesToCook, recipeTags.value);
+  } else {
+    filteredTags = filterByTag(recipeData, recipeTags.value);
+  }
+
+  if (typeof filteredTags === 'string') {
+    allRecipesBox.innerHTML = "";
+    allRecipesBox.innerHTML = `<p>${filteredTags}</p>`
+  } else {
+    displayRecipes(filteredTags);
+  }
+};
+
 const selectRecipe = (e) => {
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
   return recipe
@@ -147,17 +165,6 @@ const displayInstructions = (recipe) => {
    recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
   })
 }
-
-const showRecipeByTag = () => {
-  allRecipesBox.innerHTML = ''
-    const recipes = filterByTag(recipeData, recipeTags.value)
-      recipes.forEach((recipe) => {
-  allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
-  <img class="recipe all-recipe-image" src="${recipe.image}">
-  <h3 class="recipe">${recipe.name}</h3>
-  </article>`
- })
-};
 
 const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))

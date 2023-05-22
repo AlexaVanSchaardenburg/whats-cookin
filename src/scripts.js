@@ -82,7 +82,7 @@ recipeTags.addEventListener('change', () => {
 })
 
 recipeTags.addEventListener('change', () => {
-  showRecipeByTag()
+  showRecipeByTag(currentView)
 })
 
 searchButton.addEventListener('click', () => {

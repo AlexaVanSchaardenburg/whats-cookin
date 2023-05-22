@@ -66,7 +66,7 @@ const calcRecipeCost = (ingredientData, recipe) => {
 };
 
 const selectRandomUser = (users) => {
-  const index = Math.floor(Math.random() * users.length + 1);
+  const index = Math.floor(Math.random() * users.length - 1);
   const aUser = users[index];
   return aUser;
 }
