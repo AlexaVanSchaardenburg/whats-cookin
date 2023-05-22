@@ -1,30 +1,25 @@
 // Your fetch requests will live here!
-let recipeData, ingredients, users
+let recipeData, ingredientsData, usersData, user
 
 import {showRecipesPage, displayRecipes} from './domUpdates.js'
-// import {displayRecipes, showRecipePage} from './domUpdates.js'
+const { selectRandomUser } = require('../src/RecipeRepository.js');
 
-// const usersResponse = fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users').then((response) => response.json());
+const usersResponse = fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users').then((response) => response.json());
 const recipeResponse = fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/recipes').then(response => response.json());
-// const ingredientsResponse = fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/ingredients').then((response) => response.json());
-
-// console.log(recipeResponse)
+const ingredientsResponse = fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/ingredients').then((response) => response.json());
 
 window.addEventListener('load', () => {
-Promise.all([recipeResponse]).then(([recipes]) => {
-
-//logic here
-//anything needed on page load
-//global variable declarations
-//load user and recipes
-// console.log(recipes)
+Promise.all([usersResponse, recipeResponse, ingredientsResponse]).then(([users, recipes, ingredients]) => {
 
 recipeData = recipes.recipes
+usersData = users.users
+ingredientsData = ingredients.ingredients
+console.log(usersData)
 
-// console.log(recipeData)
-
-showRecipesPage()
-displayRecipes(recipes.recipes)
+showRecipesPage();
+displayRecipes(recipeData)
+user = selectRandomUser(usersData)
+return user
 
 })})
 
@@ -34,4 +29,6 @@ console.log('I will be a fetch request!')
 
 export {
     recipeData,
+    usersData,
+    ingredientsData
 }

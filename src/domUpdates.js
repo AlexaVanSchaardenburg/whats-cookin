@@ -1,7 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
-import {recipeData} from './apiCalls'
-import {ingredientsData} from './data/ingredients'
-import { usersData } from './data/users';
+import {recipeData, usersData, ingredientsData} from './apiCalls'
+// import {ingredientsData} from './data/ingredients'
+// import { usersData } from './data/users';
 
 import {
   allRecipesPage, 

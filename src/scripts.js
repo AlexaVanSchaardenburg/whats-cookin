@@ -1,15 +1,15 @@
 //NOTE: Data model and non-dom manipulating logic will live in this file.
 
 import './styles.css'
-import {recipeData} from './apiCalls'
+import {recipeData, usersData, ingredientsData} from './apiCalls'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
 import './images/healthy-cook.png'
 // import {recipeData} from './data/recipes'
-import {ingredientsData} from './data/ingredients'
-import { usersData } from './data/users'
+// import {ingredientsData} from './data/ingredients'
+// import { usersData } from './data/users'
 import { selectRandomUser, saveRecipe} from './RecipeRepository'
 
 //Import Functions
@@ -50,13 +50,12 @@ let currentView = 'all'
 
 //Event Listeners
 
-window.addEventListener('load', () => {
-  showRecipesPage();
-  displayRecipes(recipeData)
-  user = selectRandomUser(usersData)
-  console.log(user)
-  return user
-})
+// window.addEventListener('load', () => {
+//   showRecipesPage();
+//   displayRecipes(recipeData)
+//   user = selectRandomUser(usersData)
+//   return user
+// })
 
 saveRecipeButton.addEventListener('click', (event) => {
   saveSelectedRecipe(event, user, recipeData)
