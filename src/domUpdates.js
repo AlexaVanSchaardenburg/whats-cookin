@@ -148,7 +148,7 @@ const toggleRecipeButtons = (recipe) => {
 }
 
 const displayIngredients = (ingredientsData, recipe) => {
-  const ingredientNames = getIngredientInfo(ingredientsData, recipe, 'name');
+  const ingredientNames = getIngredientNames(ingredientsData, recipe, 'name');
   const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
   const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
 
