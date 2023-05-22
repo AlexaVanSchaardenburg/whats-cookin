@@ -26,5 +26,5 @@ export {
     recipeData,
     usersData,
     ingredientsData,
-    // user
+    user
 }
