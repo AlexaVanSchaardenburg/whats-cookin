@@ -18,8 +18,8 @@ import {
   saveRecipeButton,
   user,
   goToRecipesButton,
-  viewSavedRecipesButton
-
+  viewSavedRecipesButton,
+  deleteRecipeButton,
 } from './scripts.js'
 
 const { 
@@ -58,7 +58,6 @@ const showRecipePage = () => {
 
 const displayRecipes = (data) => {
   allRecipesBox.innerHTML = "";
-  console.log(data);
   if (!data || !data.length) {
     allRecipesBox.innerHTML = `<p>Sorry, No recipes were found!</p>`
   } else {
@@ -88,6 +87,17 @@ const selectRecipe = (e) => {
 
 const displayRecipe = (ingredientsData, event) => {
   const recipe = selectRecipe(event)
+
+  const alreadySaved = !user.recipesToCook || user.recipesToCook.some(savedRecipe => savedRecipe === recipe)
+  
+  if (!user.recipesToCook || !alreadySaved) {
+    hideDomElement(deleteRecipeButton);
+    showDomElement(saveRecipeButton)
+  } else {
+    hideDomElement(saveRecipeButton);
+    showDomElement(deleteRecipeButton)
+  }
+
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
   saveRecipeButton.setAttribute('id', `${recipe.id}`)
@@ -128,15 +138,15 @@ const showRecipeByTag = () => {
 const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
+  hideDomElement(saveRecipeButton)
+  showDomElement(deleteRecipeButton)
 };
 
 const deleteSelectedRecipe = (event, user, recipeData) => {
-  const recipe = recipeData.find((index) => index.id === parseInt(event.target.closest('article').id))
+  const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   deleteRecipe(user, recipe)
-  event.target.closest('article').remove()
-  //still need to remove recipe from the Dom. 
-  //Refactor event listener from dblclick to delete button?
-  //Need to make sure existing recipe cannot be added to array
+  hideDomElement(deleteRecipeButton)
+  showDomElement(saveRecipeButton)
 };
 
 export {  

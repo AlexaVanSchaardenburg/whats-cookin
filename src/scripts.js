@@ -37,13 +37,14 @@ const recipeTags = document.querySelector('.recipe-tags')
 const saveRecipeButton = document.querySelector('.save-recipe')
 const viewSavedRecipesButton = document.querySelector('.view-saved-recipes')
 const searchInput = document.querySelector('#searchInput');
-const searchButton = document.querySelector('#searchButton')
+const searchButton = document.querySelector('.search-submit')
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
 const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
 const recipeCostSection = document.querySelector('.total-cost');
+const deleteRecipeButton = document.querySelector('.delete-recipe')
 
 let user; 
 
@@ -93,6 +94,10 @@ allRecipesBox.addEventListener('click', (event) => {
   };
 });
 
+deleteRecipeButton.addEventListener('click', () => {
+  deleteSelectedRecipe(event, user, recipeData);
+})
+
 export {
   goToRecipesButton, 
   allRecipesPage, 
@@ -108,5 +113,6 @@ export {
   recipeTags,
   saveRecipeButton,
   user,
-  viewSavedRecipesButton
+  viewSavedRecipesButton,
+  deleteRecipeButton,
 }

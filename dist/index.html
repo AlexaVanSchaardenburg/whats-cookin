@@ -39,7 +39,7 @@
           </select>
         </label>
         <input type="text" id="searchInput" class="all-recipe-search-box" name="search-box" placeholder="search by name">
-        <button class="search-recipe" id="searchButton" type="submit" value="submit">Submit</button>
+        <button class="search-submit">Submit</button>
       </div>
       <section class="all-recipe-flex"> 
         <!-- Recipe Cards Populate Here -->
@@ -56,7 +56,10 @@
       <section class="right-side">
         <div class="green-flex-container">
           <h2 id="recipe-name">Recipe Name</h2>
-          <button class="save-recipe">Save Recipe</button>
+          <div>
+            <button class="save-recipe">Save Recipe</button>
+            <button class="delete-recipe">Remove From Saved Recipes</button>
+          </div>
         </div>
         <div class="pink-container-flex">
           <div class="tags">

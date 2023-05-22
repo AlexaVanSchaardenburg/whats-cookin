@@ -154,7 +154,7 @@ select {
   margin-left: 5px;
 }
 
-.search-recipe {
+.search-submit {
   border-radius: 8px;
 }
 
@@ -252,7 +252,8 @@ aside {
   border-radius: 8px;
 }
 
-.save-recipe {
+.save-recipe, 
+.delete-recipe {
   border-radius: 8px;
   padding: 5px 30px;
 }
