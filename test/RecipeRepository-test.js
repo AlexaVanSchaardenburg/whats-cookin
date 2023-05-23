@@ -1120,7 +1120,7 @@ describe('Select a random user', () => {
 describe('Save recipes', () => {
   const recipe1 = mockRecipeData[0];
   const recipe2 = mockRecipeData[1];
-  const recipe3 = mockRecipeData[2];
+  // const recipe3 = mockRecipeData[2];
   let user;
   beforeEach(() => {
     user = mockUserData[0];
