@@ -76,7 +76,7 @@ allRecipesBox.addEventListener('click', (event) => {
   };
 });
 
-deleteRecipeButton.addEventListener('click', () => {
+deleteRecipeButton.addEventListener('click', (event) => {
   deleteSelectedRecipe(event, user, recipeData);
 })
 

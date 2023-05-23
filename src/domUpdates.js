@@ -120,6 +120,8 @@ const displayRecipe = (ingredientsData, event) => {
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
   saveRecipeButton.setAttribute('id', `${recipe.id}`)
+  
+  deleteRecipeButton.setAttribute('id', `${recipe.id}`)
 
   recipeTagsSection.innerHTML = ''
   recipe.tags.forEach(tag => {
