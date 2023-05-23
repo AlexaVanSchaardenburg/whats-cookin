@@ -147,7 +147,7 @@ const displayIngredients = (ingredientsData, recipe) => {
   const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
   const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
 
-  recipeIngredientListSection.innerHTML += '';
+  recipeIngredientListSection.innerHTML = '';
   recipe.ingredients.forEach((ingredient, i) => {
     recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}`
   })  
@@ -156,6 +156,7 @@ const displayIngredients = (ingredientsData, recipe) => {
 const displayInstructions = (recipe) => {
   const recipeInstructions = getInstructions(recipe)
   const numSteps = Object.keys(recipeInstructions)
+  recipeInstructionsSection.innerHTML = '';
   numSteps.forEach(step => {
    recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
   })
