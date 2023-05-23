@@ -272,3 +272,11 @@ aside {
   background-color: #AEB88E;
   border: 1px solid black;
 } */
+
+.flex-tags > li,
+.green-flex-container > h2,
+.total-cost {
+  color: white;
+}
+
+
