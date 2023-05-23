@@ -1,22 +1,12 @@
-//NOTE: Data model and non-dom manipulating logic will live in this file.
-
 import './styles.css'
-import {recipeData, usersData, ingredientsData, user} from './apiCalls'
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+import {recipeData, ingredientsData, user} from './apiCalls'
 
 import './images/turing-logo.png'
 import './images/whats-cookin-header.png'
-import './images/healthy-cook.png'
-// import {recipeData} from './data/recipes'
-// import {ingredientsData} from './data/ingredients'
-// import { usersData } from './data/users'
-import { selectRandomUser, saveRecipe} from './RecipeRepository'
 
 //Import Functions
 
 import { 
-  showDomElement, 
-  hideDomElement, 
   displayRecipes, 
   showRecipePage,
   showRecipesPage, 
@@ -24,7 +14,6 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
-  showSavedRecipesPage,
   deleteSelectedRecipe
 } from './domUpdates.js'
 
@@ -45,17 +34,9 @@ const recipeInstructionsSection = document.querySelector('.instructions-list');
 const recipeCostSection = document.querySelector('.total-cost');
 const deleteRecipeButton = document.querySelector('.delete-recipe')
 
-// let user; 
 let currentView = 'all'
 
 //Event Listeners
-
-// window.addEventListener('load', () => {
-//   showRecipesPage();
-//   displayRecipes(recipeData)
-//   user = selectRandomUser(usersData)
-//   return user
-// })
 
 saveRecipeButton.addEventListener('click', (event) => {
   saveSelectedRecipe(event, user, recipeData)
@@ -65,14 +46,12 @@ viewSavedRecipesButton.addEventListener('click', () => {
   currentView = 'saved'
   showRecipesPage()
   displayRecipes(user.recipesToCook);
-  console.log(currentView);
 })
 
 goToRecipesButton.addEventListener('click', () => {
   currentView = 'all'
   showRecipesPage()
   displayRecipes(recipeData)
-  console.log(currentView);
 })
 
 recipeTags.addEventListener('change', () => {
@@ -115,7 +94,6 @@ export {
   recipeInstructionsSection,
   recipeTags,
   saveRecipeButton,
-  // user,
   viewSavedRecipesButton,
   deleteRecipeButton,
   currentView

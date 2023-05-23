@@ -1,8 +1,7 @@
-// Your fetch requests will live here!
 let recipeData, ingredientsData, usersData, user
 
 import {showRecipesPage, displayRecipes} from './domUpdates.js'
-const { selectRandomUser } = require('../src/RecipeRepository.js');
+import { selectRandomUser } from '../src/RecipeRepository.js';
 
 const usersResponse = fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users').then((response) => response.json());
 const recipeResponse = fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/recipes').then(response => response.json());
@@ -18,7 +17,6 @@ ingredientsData = ingredients.ingredients
 showRecipesPage();
 user = selectRandomUser(usersData)
 displayRecipes(recipeData)
-console.log(user)
 return user
 })})
 

@@ -1,7 +1,4 @@
-//NOTE: Your DOM manipulation will occur in this file
-import {recipeData, usersData, ingredientsData, user} from './apiCalls'
-// import {ingredientsData} from './data/ingredients'
-// import { usersData } from './data/users';
+import {recipeData, user} from './apiCalls'
 
 import {
   allRecipesPage, 
@@ -13,17 +10,15 @@ import {
   recipeTagsSection, 
   recipeInstructionsSection, 
   recipeCostSection,
-  searchInput,
   recipeTags,
   saveRecipeButton,
-  // user,
   goToRecipesButton,
   viewSavedRecipesButton,
   deleteRecipeButton,
   currentView
 } from './scripts.js'
 
-const { 
+import { 
   filterByTag,
   filterByName,
   getInstructions,
@@ -31,7 +26,7 @@ const {
   calcRecipeCost,
   saveRecipe,
   deleteRecipe
-} = require('../src/RecipeRepository.js');
+} from '../src/RecipeRepository.js';
 
 //DOM Functions
 
@@ -136,7 +131,6 @@ const displayRecipe = (ingredientsData, event) => {
 };
 
 const toggleRecipeButtons = (recipe) => {
-  console.log(user)
   const alreadySaved = !user.recipesToCook || user.recipesToCook.some(savedRecipe => savedRecipe === recipe)
   
   if (!user.recipesToCook || !alreadySaved) {
@@ -153,7 +147,7 @@ const displayIngredients = (ingredientsData, recipe) => {
   const ingredientQuantities = recipe.ingredients.map(ingredient => ingredient.quantity.amount);
   const ingredientUnits = recipe.ingredients.map(ingredient => ingredient.quantity.unit)
 
-  recipeIngredientListSection.innerHTML += '';
+  recipeIngredientListSection.innerHTML = '';
   recipe.ingredients.forEach((ingredient, i) => {
     recipeIngredientListSection.innerHTML += `<li>${ingredientNames[i]} | ${ingredientQuantities[i]} ${ingredientUnits[i]}`
   })  
@@ -162,6 +156,7 @@ const displayIngredients = (ingredientsData, recipe) => {
 const displayInstructions = (recipe) => {
   const recipeInstructions = getInstructions(recipe)
   const numSteps = Object.keys(recipeInstructions)
+  recipeInstructionsSection.innerHTML = '';
   numSteps.forEach(step => {
    recipeInstructionsSection.innerHTML += `<li>${recipeInstructions[step]}`
   })
