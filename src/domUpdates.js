@@ -65,7 +65,7 @@ const displayRecipes = (data) => {
   } else {
     data.forEach((recipe) => {
       allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
-      <img class="recipe all-recipe-image" src="${recipe.image}">
+      <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
       <h3 class="recipe">${recipe.name}</h3>
       </article>`})
   }
