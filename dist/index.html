@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <html lang="en">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Lily+Script+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet">
     <title>Whats Cookin</title>
   </head>
   <header class="flex-header">
@@ -15,8 +17,8 @@
   </header>
   <body>
     <section class="all-recipes-page">
-      <div class="all-recipes-page-buttons">
-        <label class="tag-filter" for="filter-recipes">Search Tags
+      <div class="all-recipes-buttons-container">
+        <label class="tag-filter" for="filter-recipes">Search by Tag
           <select class="recipe-tags" name="filter-recipes">
             <option>antipasti</option>
             <option>antipasto</option>
@@ -39,8 +41,15 @@
             <option>starter</option>
           </select>
         </label>
-        <input type="text" id="searchInput" class="all-recipe-search-box" name="search-box" placeholder="search by name">
-        <button class="search-submit">Submit</button>
+        <form>
+          <label for="search-box">
+            <span class="material-icons-round white">
+              search
+            </span>
+            <input type="text" name="search-box" class="all-recipe-search-box" id="search-box" placeholder="search by name" required>         
+            <button class="search-submit">Submit</button>
+          </label>
+        </form>
       </div>
       <section class="all-recipe-flex"> 
         <!-- Recipe Cards Populate Here -->
