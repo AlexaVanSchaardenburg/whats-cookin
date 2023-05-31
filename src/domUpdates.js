@@ -64,10 +64,10 @@ const displayRecipes = (data) => {
     allRecipesBox.innerHTML = `<p>Sorry, No recipes were found!</p>`
   } else {
     data.forEach((recipe) => {
-      allRecipesBox.innerHTML += `<article tabindex="0" class="recipe all-recipe-box" id="${recipe.id}">
+      allRecipesBox.innerHTML += `<button class="recipe all-recipe-box" id="${recipe.id}">
       <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
       <h3 class="recipe">${recipe.name}</h3>
-      </article>`})
+      </button>`})
   }
 };
 
@@ -107,7 +107,7 @@ const showRecipeByTag = (currentView) => {
 };
 
 const selectRecipe = (e) => {
-  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('article').id))
+  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.closest('button').id))
   return recipe
 };
 
