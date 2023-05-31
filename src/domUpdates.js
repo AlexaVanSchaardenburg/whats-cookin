@@ -64,7 +64,7 @@ const displayRecipes = (data) => {
     allRecipesBox.innerHTML = `<p>Sorry, No recipes were found!</p>`
   } else {
     data.forEach((recipe) => {
-      allRecipesBox.innerHTML += `<article class="recipe all-recipe-box" id="${recipe.id}">
+      allRecipesBox.innerHTML += `<article tabindex="0" class="recipe all-recipe-box" id="${recipe.id}">
       <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
       <h3 class="recipe">${recipe.name}</h3>
       </article>`})
@@ -117,6 +117,8 @@ const displayRecipe = (ingredientsData, event) => {
   displayIngredients(ingredientsData, recipe)
   displayInstructions(recipe) 
 
+
+  recipePageImage.alt = `Photo of ${recipe.name}`
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
   saveRecipeButton.setAttribute('id', `${recipe.id}`)
