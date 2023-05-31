@@ -26,6 +26,11 @@ body {
   max-width: 45%;
 }
 
+input {
+  border: none;
+  height: 1.5rem;
+}
+
 button {
   border-style: none;
   cursor: pointer;
@@ -38,7 +43,6 @@ button {
   width: 90%;
   margin: 0 auto;
 }
-
 
 .header-button {
   padding: 10px 30px;
@@ -54,27 +58,55 @@ button {
 
 /* ALL RECIPES PAGE */
 
-.all-recipes-page-buttons {
+.all-recipes-buttons-container {
   width: 95%;
   margin: 0 auto;
-  display: flex;
   margin-bottom: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #476F54;
+  border-radius: 8px;
+  color: #ffffff;
 }
  
 label {
-  background-color: #476F54;
   color: white;
-  border-radius: 8px;
   padding: 5px 20px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+/* .tag-filter {
+  padding: 0 4em;
+} */
+
+form {
+  display: flex;
+  align-items: center;
+  /* padding-left: 1em; */
+}
+
+.material-icons-round.white {
+  color: #ffffff;
+}
+
+.search-submit {
+  height: 1.5rem;
+  color: #101913;
+  background-color: #ffffff;
+  margin: 0.5em;
 }
 
 select {
-  margin-right: 30px;
+  margin-left: 5px;
+  height: 1.75rem;
+  border-radius: 8px;
 }
  
 .all-recipe-search-box {
+  width: 50%;
   flex-grow: 2;
   border-radius: 8px;
   margin-right: 10px;
