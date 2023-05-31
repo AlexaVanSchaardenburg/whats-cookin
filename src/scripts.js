@@ -24,8 +24,8 @@ const allRecipesBox = document.querySelector('.all-recipe-flex')
 const recipeTags = document.querySelector('.recipe-tags')
 const saveRecipeButton = document.querySelector('.save-recipe')
 const viewSavedRecipesButton = document.querySelector('.view-saved-recipes')
-const searchInput = document.querySelector('#searchInput');
-const searchButton = document.querySelector('.search-submit')
+const searchInput = document.querySelector('#search-box');
+const form = document.querySelector('form');
 const recipePageImage = document.querySelector('.aside-img');
 const recipeIngredientListSection = document.querySelector('.ingredients-list');
 const recipePageNameSection = document.querySelector('#recipe-name');
@@ -62,12 +62,10 @@ recipeTags.addEventListener('change', () => {
   showRecipeByTag(currentView)
 })
 
-searchButton.addEventListener('click', () => {
-  if (searchInput.value) {
-    showRecipesPage()
-    searchRecipeByName(currentView, searchInput)}
-  }
-);
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  searchRecipeByName(currentView, searchInput)
+})
 
 allRecipesBox.addEventListener('click', (event) => {
   if (event.target.classList.contains('recipe')) {
@@ -85,7 +83,6 @@ export {
   allRecipesPage, 
   recipePage, 
   allRecipesBox, 
-  searchInput, 
   recipePageImage,
   recipePageNameSection, 
   recipeTagsSection, 
