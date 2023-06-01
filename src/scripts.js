@@ -14,7 +14,8 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe
+  deleteSelectedRecipe,
+  convertCurrency
 } from './domUpdates.js'
 
 const currency = document.querySelectorAll('.currency')
