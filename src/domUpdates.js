@@ -177,6 +177,18 @@ const deleteSelectedRecipe = (event, user, recipeData) => {
   showDomElement(saveRecipeButton)
 };
 
+const convertCurrency = () => { 
+  if (currency[0].value) {
+fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from=USD&to=${currency[0].value}`)
+  .then((data) => data.json())
+  .then((data) => {
+    console.log(data)
+    outputCurrency.value = Object.values(data.rates)[0]
+    console.log(recipeCostSection.value)
+  });
+  }
+};
+
 export {  
   showRecipesPage, 
   showDomElement, 
