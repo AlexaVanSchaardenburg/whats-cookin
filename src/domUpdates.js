@@ -130,7 +130,8 @@ const displayRecipe = (ingredientsData, event) => {
   })
 
   const recipeCost = calcRecipeCost(ingredientsData, recipe);
-  recipeCostSection.innerText = `Total Cost: $${recipeCost}`  
+  recipeCostSection.innerText = `Total Cost: $${recipeCost}`
+  recipeCostSection.value = recipeCost  
 };
 
 const toggleRecipeButtons = (recipe) => {
@@ -201,5 +202,6 @@ export {
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe
+  deleteSelectedRecipe,
+  convertCurrency
 }
