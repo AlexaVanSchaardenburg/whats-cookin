@@ -42,6 +42,8 @@ let currentView = 'all'
 
 //Event Listeners
 
+convertButton.addEventListener('click', convertCurrency)
+
 saveRecipeButton.addEventListener('click', (event) => {
   saveSelectedRecipe(event, user, recipeData)
 })
@@ -98,4 +100,6 @@ export {
   viewSavedRecipesButton,
   deleteRecipeButton,
   currentView,
+  currency,
+  outputCurrency
 }
