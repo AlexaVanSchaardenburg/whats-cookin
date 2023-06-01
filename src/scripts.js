@@ -96,5 +96,5 @@ export {
   saveRecipeButton,
   viewSavedRecipesButton,
   deleteRecipeButton,
-  currentView
+  currentView,
 }
