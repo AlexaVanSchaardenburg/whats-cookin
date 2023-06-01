@@ -15,7 +15,9 @@ import {
   goToRecipesButton,
   viewSavedRecipesButton,
   deleteRecipeButton,
-  currentView
+  currentView,
+  outputCurrency,
+  currency
 } from './scripts.js'
 
 import { 
