@@ -17,6 +17,9 @@ import {
   deleteSelectedRecipe
 } from './domUpdates.js'
 
+const currency = document.querySelectorAll('.currency')
+const outputCurrency = document.getElementById('output-currency')
+const convertButton = document.querySelector('.convert')
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
