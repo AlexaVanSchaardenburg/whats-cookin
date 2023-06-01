@@ -20,6 +20,16 @@ displayRecipes(recipeData)
 return user
 })})
 
+fetch(`https://api.frankfurter.app/currencies`)
+  .then(data => data.json())
+  .then((data) => {
+    const entries = Object.entries(data);
+    console.log(entries)
+    entries.forEach((entry) => {
+      currency[0].innerHTML += `<option value="${entry[0]}">${entry[0]}</option>`
+    })
+  });
+
 export {
     recipeData,
     usersData,
