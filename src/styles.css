@@ -196,6 +196,7 @@ aside {
   border-radius: 8px;
   padding: 5px 30px;
   gap: 1rem;
+  flex-wrap: wrap;
   /* color: white */
 }
 
