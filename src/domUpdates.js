@@ -15,7 +15,9 @@ import {
   goToRecipesButton,
   viewSavedRecipesButton,
   deleteRecipeButton,
-  currentView
+  currentView,
+  outputCurrency,
+  currency
 } from './scripts.js'
 
 import { 
@@ -52,6 +54,7 @@ const showRecipesPage = () => {
 };
 
 const showRecipePage = () => {
+  outputCurrency.value = ''
   hideDomElement(allRecipesPage)
   showDomElement(recipePage)
   showDomElement(goToRecipesButton)
@@ -130,7 +133,8 @@ const displayRecipe = (ingredientsData, event) => {
   })
 
   const recipeCost = calcRecipeCost(ingredientsData, recipe);
-  recipeCostSection.innerText = `Total Cost: $${recipeCost}`  
+  recipeCostSection.innerText = `Total Cost: $${recipeCost}`
+  recipeCostSection.value = recipeCost  
 };
 
 const toggleRecipeButtons = (recipe) => {
@@ -179,6 +183,23 @@ const deleteSelectedRecipe = (event, user, recipeData) => {
   showDomElement(saveRecipeButton)
 };
 
+const convertCurrency = () => { 
+  if (currency[0].value) {
+fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from=USD&to=${currency[0].value}`)
+  .then((response) => {
+    if(!response.ok) {
+      throw new Error(`${response.status}`)
+    } else {
+      return response.json();
+    }
+})
+  .then((data) => {
+    outputCurrency.value = Object.values(data.rates)[0]
+  })
+  .catch(error => alert(`${error.message}`));
+  }
+};
+
 export {  
   showRecipesPage, 
   showDomElement, 
@@ -189,5 +210,6 @@ export {
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe
+  deleteSelectedRecipe,
+  convertCurrency
 }
