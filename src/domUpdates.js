@@ -108,7 +108,7 @@ const searchRecipeByName = (currentView, searchInput) => {
     allRecipesBox.innerHTML = "";
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
-    displayRecipes(filteredNames);
+    displayAllRecipes(filteredNames);
   }
   searchInput.value = '';
 }
@@ -127,7 +127,7 @@ const showRecipeByTag = (currentView) => {
     allRecipesBox.innerHTML = "";
     allRecipesBox.innerHTML = `<p>${filteredTags}</p>`
   } else {
-    displayRecipes(filteredTags);
+    displayAllRecipes(filteredTags);
   }
 };
 
