@@ -1,6 +1,6 @@
 let recipeData, ingredientsData, usersData, user
 
-import {showRecipesPage, displayRecipes} from './domUpdates.js'
+import {showRecipesPage, displayAllRecipes} from './domUpdates.js'
 import { selectRandomUser } from '../src/RecipeRepository.js';
 
 const usersResponse = fetch('http://localhost:3001/api/v1/users').then((response) => response.json());
@@ -16,8 +16,7 @@ ingredientsData = ingredients.ingredients
 
 showRecipesPage();
 user = selectRandomUser(usersData)
-console.log('user before:', user)
-displayRecipes(recipeData)
+displayAllRecipes(recipeData)
 return user
 })})
 

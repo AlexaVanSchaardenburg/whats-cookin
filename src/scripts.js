@@ -7,7 +7,7 @@ import './images/whats-cookin-header.png'
 //Import Functions
 
 import { 
-  displayRecipes, 
+  displayAllRecipes, 
   showRecipePage,
   showRecipesPage, 
   displayRecipe, 
@@ -47,7 +47,6 @@ viewSavedRecipesButton.addEventListener('click', () => {
   currentView = 'saved'
   showRecipesPage()
   displaySavedRecipes(user);
-  console.log(user)
 })
 
 goToRecipesButton.addEventListener('click', () => {

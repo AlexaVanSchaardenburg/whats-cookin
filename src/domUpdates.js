@@ -62,7 +62,7 @@ const showRecipePage = () => {
   showDomElement(viewSavedRecipesButton)
 };
 
-const displayRecipes = (data) => {
+const displayAllRecipes = (data) => {
   allRecipesBox.innerHTML = "";  
   if (!data || !data.length) {
     allRecipesBox.innerHTML = `<p>Sorry, no recipes were found!</p>`
@@ -205,7 +205,7 @@ export {
   showRecipesPage, 
   showDomElement, 
   hideDomElement, 
-  displayRecipes, 
+  displayAllRecipes, 
   showRecipePage, 
   displayRecipe, 
   searchRecipeByName, 
