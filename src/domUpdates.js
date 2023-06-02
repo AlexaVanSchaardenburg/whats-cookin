@@ -26,9 +26,13 @@ import {
   getInstructions,
   getIngredientNames,
   calcRecipeCost,
-  saveRecipe,
+  // saveRecipe,
   deleteRecipe
 } from '../src/RecipeRepository.js';
+
+import {
+  saveRecipe
+} from '../src/apiCalls.js'
 
 //DOM Functions
 
@@ -61,12 +65,30 @@ const showRecipePage = () => {
   showDomElement(viewSavedRecipesButton)
 };
 
-const displayRecipes = (data) => {
-  allRecipesBox.innerHTML = "";
+const displayAllRecipes = (data) => {
+  allRecipesBox.innerHTML = "";  
   if (!data || !data.length) {
-    allRecipesBox.innerHTML = `<p>Sorry, No recipes were found!</p>`
+    allRecipesBox.innerHTML = `<p>Sorry, no recipes were found!</p>`
   } else {
     data.forEach((recipe) => {
+      allRecipesBox.innerHTML += `<button class="recipe all-recipe-box" id="${recipe.id}">
+      <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
+      <h3 class="recipe">${recipe.name}</h3>
+      </button>`})
+  }
+};
+
+const displaySavedRecipes = (user) => {
+  allRecipesBox.innerHTML = "";
+
+  const recipesToCook = user.recipesToCook.map(id => {
+    return recipeData.find(recipe => recipe.id === id)
+  })
+
+  if (!recipesToCook || !recipesToCook.length) {
+    allRecipesBox.innerHTML = `<p>Sorry, no recipes were found!</p>`
+  } else {
+    recipesToCook.forEach(recipe => {
       allRecipesBox.innerHTML += `<button class="recipe all-recipe-box" id="${recipe.id}">
       <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
       <h3 class="recipe">${recipe.name}</h3>
@@ -173,15 +195,15 @@ const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
   hideDomElement(saveRecipeButton)
-  showDomElement(deleteRecipeButton)
+  // showDomElement(deleteRecipeButton)
 };
 
-const deleteSelectedRecipe = (event, user, recipeData) => {
-  const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
-  deleteRecipe(user, recipe)
-  hideDomElement(deleteRecipeButton)
-  showDomElement(saveRecipeButton)
-};
+// const deleteSelectedRecipe = (event, user, recipeData) => {
+//   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
+//   deleteRecipe(user, recipe)
+//   hideDomElement(deleteRecipeButton)
+//   showDomElement(saveRecipeButton)
+// };
 
 const convertCurrency = () => { 
   if (currency[0].value) {
@@ -204,12 +226,13 @@ export {
   showRecipesPage, 
   showDomElement, 
   hideDomElement, 
-  displayRecipes, 
+  displayAllRecipes, 
   showRecipePage, 
   displayRecipe, 
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe,
+  displaySavedRecipes,
+  // deleteSelectedRecipe
   convertCurrency
 }

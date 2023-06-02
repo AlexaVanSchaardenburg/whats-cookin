@@ -1,6 +1,6 @@
 let recipeData, ingredientsData, usersData, user
 
-import {showRecipesPage, displayRecipes} from './domUpdates.js'
+import {showRecipesPage, displayAllRecipes} from './domUpdates.js'
 import { selectRandomUser } from '../src/RecipeRepository.js';
 import { currency } from './scripts.js'
 
@@ -38,7 +38,7 @@ ingredientsData = ingredients.ingredients
 
 showRecipesPage();
 user = selectRandomUser(usersData);
-displayRecipes(recipeData);
+displayAllRecipes(recipeData);
 return user;
 })});
 
@@ -52,9 +52,38 @@ fetch(`https://api.frankfurter.app/currencies`)
   })
   .catch(error => alert(`${error.message}`));
 
+const saveRecipe = (userData, recipeData) => {
+  fetch('http://localhost:3001/api/v1/usersRecipes', {
+    method: 'POST',
+    body: JSON.stringify({
+      userID: userData.id,
+      recipeID: recipeData.id
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(getUpdatedUsers(userData.id))
+  .catch(err => alert(err));
+};
+
+const getUpdatedUsers = (id) => {
+  fetch('http://localhost:3001/api/v1/users')
+  .then(response => response.json())
+  .then(users => {
+    usersData = users.users
+    user = usersData.find(user => user.id === id)
+    return user
+  })
+  .catch(err => alert(err))
+}
+
 export {
     recipeData,
     usersData,
     ingredientsData,
     user,
+    saveRecipe,
+    getUpdatedUsers
 }
