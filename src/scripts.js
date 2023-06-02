@@ -58,7 +58,7 @@ viewSavedRecipesButton.addEventListener('click', () => {
 goToRecipesButton.addEventListener('click', () => {
   currentView = 'all'
   showRecipesPage()
-  displayRecipes(recipeData)
+  displayAllRecipes(recipeData)
 })
 
 recipeTags.addEventListener('change', () => {
