@@ -1,4 +1,4 @@
-import {recipeData, user, fetchCurrencies} from './apiCalls'
+import {recipeData, user} from './apiCalls'
 
 import {
   allRecipesPage, 
@@ -55,7 +55,6 @@ const showRecipesPage = () => {
 
 const showRecipePage = () => {
   outputCurrency.value = ''
-  fetchCurrencies()
   hideDomElement(allRecipesPage)
   showDomElement(recipePage)
   showDomElement(goToRecipesButton)
@@ -188,7 +187,8 @@ fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from
   .then((data) => data.json())
   .then((data) => {
     outputCurrency.value = Object.values(data.rates)[0]
-  });
+  })
+  .catch(error => alert(`${error.message}: server down`));
   }
 };
 
