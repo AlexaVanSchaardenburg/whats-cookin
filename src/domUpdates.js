@@ -184,11 +184,17 @@ const deleteSelectedRecipe = (event, user, recipeData) => {
 const convertCurrency = () => { 
   if (currency[0].value) {
 fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from=USD&to=${currency[0].value}`)
-  .then((data) => data.json())
+  .then((response) => {
+    if(!response.ok) {
+      throw new Error(`${response.status}`)
+    } else {
+      return response.json();
+    }
+})
   .then((data) => {
     outputCurrency.value = Object.values(data.rates)[0]
   })
-  .catch(error => alert(`${error.message}: server down`));
+  .catch(error => alert(`${error.message}`));
   }
 };
 
