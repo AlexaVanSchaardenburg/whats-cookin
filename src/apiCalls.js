@@ -47,7 +47,9 @@ fetch(`https://api.frankfurter.app/currencies`)
   .then((data) => {
     const entries = Object.entries(data);
     entries.forEach((entry) => {
-      currency[0].innerHTML += `<option value="${entry[0]}">${entry[0]}</option>`;
+      if (entry[0] !== 'USD') {
+        currency[0].innerHTML += `<option value="${entry[0]}">${entry[0]}</option>`;
+        }
     })
   })
   .catch(error => alert(`${error.message}`));
