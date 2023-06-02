@@ -50,12 +50,28 @@ const selectRandomUser = (users) => {
   return aUser;
 }
 
+// const saveRecipe = (userData, recipeData) => {
+//   userData.recipesToCook || (userData.recipesToCook = []);
+//   if (!userData.recipesToCook.includes(recipeData)) {
+//     userData.recipesToCook.push(recipeData)
+//   }
+//   return userData;
+// };
+
 const saveRecipe = (userData, recipeData) => {
-  userData.recipesToCook || (userData.recipesToCook = []);
-  if (!userData.recipesToCook.includes(recipeData)) {
-    userData.recipesToCook.push(recipeData)
-  }
-  return userData;
+  fetch('http://localhost:3001/api/v1/usersRecipes', {
+    method: 'POST',
+    body: JSON.stringify({
+      userID: userData.id,
+      recipeID: recipeData.id
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => alert(error));
 };
 
 const deleteRecipe = (userData, recipeData) => {

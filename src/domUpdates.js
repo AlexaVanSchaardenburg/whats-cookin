@@ -172,12 +172,14 @@ const saveSelectedRecipe = (event, user, recipeData) => {
   showDomElement(deleteRecipeButton)
 };
 
-const deleteSelectedRecipe = (event, user, recipeData) => {
-  const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
-  deleteRecipe(user, recipe)
-  hideDomElement(deleteRecipeButton)
-  showDomElement(saveRecipeButton)
-};
+
+
+// const deleteSelectedRecipe = (event, user, recipeData) => {
+//   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
+//   deleteRecipe(user, recipe)
+//   hideDomElement(deleteRecipeButton)
+//   showDomElement(saveRecipeButton)
+// };
 
 export {  
   showRecipesPage, 
@@ -189,5 +191,5 @@ export {
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe
+  // deleteSelectedRecipe
 }
