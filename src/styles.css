@@ -10,10 +10,6 @@
 /* Instrument Sans Medium 500 */
 /* Instrument Sans Bold 700 */
 
-.blue{
-  border: 1px solid blue;
-}
-
 * {
   margin: 0;
   font-family: 'Instrument Sans';
@@ -249,7 +245,10 @@ aside {
 }
 
 .convert{
-  
+  border-radius: 8px;
+  margin-left: 5px;
+  margin-top: 5px;
+  background: white;
 }
 
 /* FUTURE LANDING PAGE
