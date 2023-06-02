@@ -63,11 +63,29 @@ const showRecipePage = () => {
 };
 
 const displayRecipes = (data) => {
-  allRecipesBox.innerHTML = "";
+  allRecipesBox.innerHTML = "";  
   if (!data || !data.length) {
-    allRecipesBox.innerHTML = `<p>Sorry, No recipes were found!</p>`
+    allRecipesBox.innerHTML = `<p>Sorry, no recipes were found!</p>`
   } else {
     data.forEach((recipe) => {
+      allRecipesBox.innerHTML += `<button class="recipe all-recipe-box" id="${recipe.id}">
+      <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
+      <h3 class="recipe">${recipe.name}</h3>
+      </button>`})
+  }
+};
+
+const displaySavedRecipes = (user) => {
+  allRecipesBox.innerHTML = "";
+
+  const recipesToCook = user.recipesToCook.map(id => {
+    return recipeData.find(recipe => recipe.id === id)
+  })
+
+  if (!recipesToCook || !recipesToCook.length) {
+    allRecipesBox.innerHTML = `<p>Sorry, no recipes were found!</p>`
+  } else {
+    recipesToCook.forEach(recipe => {
       allRecipesBox.innerHTML += `<button class="recipe all-recipe-box" id="${recipe.id}">
       <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
       <h3 class="recipe">${recipe.name}</h3>
@@ -193,5 +211,6 @@ export {
   searchRecipeByName, 
   showRecipeByTag,
   saveSelectedRecipe,
+  displaySavedRecipes
   // deleteSelectedRecipe
 }

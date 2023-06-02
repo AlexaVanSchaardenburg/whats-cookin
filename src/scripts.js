@@ -14,7 +14,8 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe
+  deleteSelectedRecipe,
+  displaySavedRecipes
 } from './domUpdates.js'
 
 const goToRecipesButton = document.querySelector('.go-to-recipes')
@@ -45,8 +46,8 @@ saveRecipeButton.addEventListener('click', (event) => {
 viewSavedRecipesButton.addEventListener('click', () => {
   currentView = 'saved'
   showRecipesPage()
-  displayRecipes(user.recipesToCook);
-  console.log(user);
+  displaySavedRecipes(user);
+  console.log(user)
 })
 
 goToRecipesButton.addEventListener('click', () => {
