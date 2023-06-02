@@ -85,15 +85,7 @@ const displaySavedRecipes = (user) => {
     return recipeData.find(recipe => recipe.id === id)
   })
 
-  if (!recipesToCook || !recipesToCook.length) {
-    allRecipesBox.innerHTML = `<p>Sorry, no recipes were found!</p>`
-  } else {
-    recipesToCook.forEach(recipe => {
-      allRecipesBox.innerHTML += `<button class="recipe all-recipe-box" id="${recipe.id}">
-      <img class="recipe all-recipe-image" alt="Photo of ${recipe.name}" src="${recipe.image}">
-      <h3 class="recipe">${recipe.name}</h3>
-      </button>`})
-  }
+  displayAllRecipes(recipesToCook);
 };
 
 const searchRecipeByName = (currentView, searchInput) => {
