@@ -15,9 +15,13 @@ import {
   showRecipeByTag,
   saveSelectedRecipe,
   deleteSelectedRecipe,
-  displaySavedRecipes
+  displaySavedRecipes,
+  convertCurrency
 } from './domUpdates.js'
 
+const currency = document.querySelectorAll('.currency')
+const outputCurrency = document.getElementById('output-currency')
+const convertButton = document.querySelector('.convert')
 const goToRecipesButton = document.querySelector('.go-to-recipes')
 const recipePage = document.querySelector('.recipe-page')
 const allRecipesPage = document.querySelector('.all-recipes-page')
@@ -38,6 +42,8 @@ const deleteRecipeButton = document.querySelector('.delete-recipe')
 let currentView = 'all'
 
 //Event Listeners
+
+convertButton.addEventListener('click', convertCurrency)
 
 saveRecipeButton.addEventListener('click', (event) => {
   saveSelectedRecipe(event, user, recipeData)
@@ -94,5 +100,7 @@ export {
   saveRecipeButton,
   viewSavedRecipesButton,
   deleteRecipeButton,
-  currentView
+  currentView,
+  currency,
+  outputCurrency
 }
