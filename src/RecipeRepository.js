@@ -58,26 +58,10 @@ const selectRandomUser = (users) => {
 //   return userData;
 // };
 
-const saveRecipe = (userData, recipeData) => {
-  fetch('http://localhost:3001/api/v1/usersRecipes', {
-    method: 'POST',
-    body: JSON.stringify({
-      userID: userData.id,
-      recipeID: recipeData.id
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => alert(error));
-};
-
-const deleteRecipe = (userData, recipeData) => {
- userData.recipesToCook.splice(userData.recipesToCook.indexOf(recipeData), 1);
- return userData;
-}
+// const deleteRecipe = (userData, recipeData) => {
+//  userData.recipesToCook.splice(userData.recipesToCook.indexOf(recipeData), 1);
+//  return userData;
+// }
 
 export {
   filterByTag,
@@ -85,7 +69,7 @@ export {
   getInstructions,
   getIngredientNames,
   calcRecipeCost, 
-  saveRecipe,
-  deleteRecipe,
+  // saveRecipe,
+  // deleteRecipe,
   selectRandomUser
 };

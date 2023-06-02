@@ -46,6 +46,7 @@ viewSavedRecipesButton.addEventListener('click', () => {
   currentView = 'saved'
   showRecipesPage()
   displayRecipes(user.recipesToCook);
+  console.log(user);
 })
 
 goToRecipesButton.addEventListener('click', () => {

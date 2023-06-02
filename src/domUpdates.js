@@ -24,9 +24,13 @@ import {
   getInstructions,
   getIngredientNames,
   calcRecipeCost,
-  saveRecipe,
+  // saveRecipe,
   deleteRecipe
 } from '../src/RecipeRepository.js';
+
+import {
+  saveRecipe
+} from '../src/apiCalls.js'
 
 //DOM Functions
 
@@ -169,10 +173,8 @@ const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
   hideDomElement(saveRecipeButton)
-  showDomElement(deleteRecipeButton)
+  // showDomElement(deleteRecipeButton)
 };
-
-
 
 // const deleteSelectedRecipe = (event, user, recipeData) => {
 //   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
