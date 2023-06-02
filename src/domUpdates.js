@@ -1,4 +1,4 @@
-import {recipeData, user} from './apiCalls'
+import {recipeData, user, fetchCurrencies} from './apiCalls'
 
 import {
   allRecipesPage, 
@@ -54,6 +54,8 @@ const showRecipesPage = () => {
 };
 
 const showRecipePage = () => {
+  outputCurrency.value = ''
+  fetchCurrencies()
   hideDomElement(allRecipesPage)
   showDomElement(recipePage)
   showDomElement(goToRecipesButton)

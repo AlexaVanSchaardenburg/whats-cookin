@@ -22,7 +22,7 @@ displayRecipes(recipeData)
 return user
 })})
 
-fetch(`https://api.frankfurter.app/currencies`)
+const fetchCurrencies = () => fetch(`https://api.frankfurter.app/currencies`)
   .then(data => data.json())
   .then((data) => {
     const entries = Object.entries(data);
@@ -35,5 +35,6 @@ export {
     recipeData,
     usersData,
     ingredientsData,
-    user
+    user,
+    fetchCurrencies
 }
