@@ -10,6 +10,9 @@
 /* Instrument Sans Medium 500 */
 /* Instrument Sans Bold 700 */
 
+.blue{
+  border: 1px solid blue;
+}
 
 * {
   margin: 0;
@@ -207,9 +210,10 @@ aside {
   /* color: white */
 }
 
-.total-cost {
+.total-cost-box {
   background-color: #D60A58;
   margin-right: 30px;
+  margin-left: 10px;
   padding: 5px 30px;
   border-radius: 8px;
   color: white
@@ -233,6 +237,19 @@ aside {
  
 .hidden {
   display: none;
+}
+
+.currency-container{
+  color: white;
+}
+
+.currency-header{
+  color: white;
+  font-size: 12px;
+}
+
+.convert{
+  
 }
 
 /* FUTURE LANDING PAGE
