@@ -50,26 +50,11 @@ const selectRandomUser = (users) => {
   return aUser;
 }
 
-// const saveRecipe = (userData, recipeData) => {
-//   userData.recipesToCook || (userData.recipesToCook = []);
-//   if (!userData.recipesToCook.includes(recipeData)) {
-//     userData.recipesToCook.push(recipeData)
-//   }
-//   return userData;
-// };
-
-// const deleteRecipe = (userData, recipeData) => {
-//  userData.recipesToCook.splice(userData.recipesToCook.indexOf(recipeData), 1);
-//  return userData;
-// }
-
 export {
   filterByTag,
   filterByName,
   getInstructions,
   getIngredientNames,
   calcRecipeCost, 
-  // saveRecipe,
-  // deleteRecipe,
   selectRandomUser
 };

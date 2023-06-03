@@ -216,8 +216,7 @@ aside {
   color: white
 }
 
-.save-recipe, 
-.delete-recipe {
+.save-recipe {
   border-radius: 8px;
   padding: 5px 30px;
 }

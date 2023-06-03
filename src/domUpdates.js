@@ -14,7 +14,6 @@ import {
   saveRecipeButton,
   goToRecipesButton,
   viewSavedRecipesButton,
-  deleteRecipeButton,
   currentView,
   outputCurrency,
   currency,
@@ -27,8 +26,6 @@ import {
   getInstructions,
   getIngredientNames,
   calcRecipeCost,
-  // saveRecipe,
-  deleteRecipe
 } from '../src/RecipeRepository.js';
 
 import {
@@ -147,7 +144,6 @@ const displayRecipe = (ingredientsData, event) => {
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
   saveRecipeButton.setAttribute('id', `${recipe.id}`)
-  deleteRecipeButton.setAttribute('id', `${recipe.id}`)
 
   recipeTagsSection.innerHTML = ''
   recipe.tags.forEach(tag => {
@@ -163,11 +159,9 @@ const toggleRecipeButtons = (recipe) => {
   const alreadySaved = !user.recipesToCook || user.recipesToCook.some(savedRecipe => savedRecipe === recipe)
   
   if (!user.recipesToCook || !alreadySaved) {
-    hideDomElement(deleteRecipeButton);
     showDomElement(saveRecipeButton)
   } else {
     hideDomElement(saveRecipeButton);
-    showDomElement(deleteRecipeButton)
   }
 }
 
@@ -195,15 +189,7 @@ const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
   hideDomElement(saveRecipeButton)
-  // showDomElement(deleteRecipeButton)
 };
-
-// const deleteSelectedRecipe = (event, user, recipeData) => {
-//   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
-//   deleteRecipe(user, recipe)
-//   hideDomElement(deleteRecipeButton)
-//   showDomElement(saveRecipeButton)
-// };
 
 const convertCurrency = () => { 
   if (currency[0].value) {
@@ -233,7 +219,6 @@ export {
   showRecipeByTag,
   saveSelectedRecipe,
   displaySavedRecipes,
-  // deleteSelectedRecipe
   convertCurrency,
   showLoadingButton
 }

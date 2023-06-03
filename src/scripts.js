@@ -14,7 +14,6 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
-  // deleteSelectedRecipe,
   displaySavedRecipes,
   convertCurrency,
   showLoadingButton
@@ -38,7 +37,6 @@ const recipePageNameSection = document.querySelector('#recipe-name');
 const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
 const recipeCostSection = document.querySelector('.total-cost');
-const deleteRecipeButton = document.querySelector('.delete-recipe')
 const loadingButton = document.querySelector('.loading');
 
 let currentView = 'all'
@@ -85,10 +83,6 @@ allRecipesBox.addEventListener('click', (event) => {
   };
 });
 
-deleteRecipeButton.addEventListener('click', (event) => {
-  deleteSelectedRecipe(event, user, recipeData);
-})
-
 export {
   goToRecipesButton, 
   allRecipesPage, 
@@ -103,7 +97,6 @@ export {
   recipeTags,
   saveRecipeButton,
   viewSavedRecipesButton,
-  deleteRecipeButton,
   currentView,
   currency,
   outputCurrency,
