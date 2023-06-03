@@ -38,6 +38,7 @@ const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
 const recipeCostSection = document.querySelector('.total-cost');
 const loadingButton = document.querySelector('.loading');
+const logo = document.querySelector('.header-image');
 
 let currentView = 'all'
 
@@ -57,6 +58,12 @@ viewSavedRecipesButton.addEventListener('click', () => {
 })
 
 goToRecipesButton.addEventListener('click', () => {
+  currentView = 'all'
+  showRecipesPage()
+  displayAllRecipes(recipeData)
+})
+
+logo.addEventListener('click', () => {
   currentView = 'all'
   showRecipesPage()
   displayAllRecipes(recipeData)

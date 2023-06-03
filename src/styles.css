@@ -30,7 +30,8 @@ input {
   height: 1.5rem;
 }
 
-button {
+button,
+.header-image {
   border-style: none;
   cursor: pointer;
 }
