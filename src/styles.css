@@ -219,6 +219,11 @@ aside {
 .save-recipe {
   border-radius: 8px;
   padding: 5px 30px;
+  opacity: 1;
+}
+
+.save-recipe:disabled {
+  opacity: 0.8;
 }
 
 .instructions {

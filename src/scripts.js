@@ -54,7 +54,6 @@ viewSavedRecipesButton.addEventListener('click', () => {
   showLoadingButton();
   setTimeout(showRecipesPage, 3000)
   setTimeout(displaySavedRecipes, 3000, user);
-  setTimeout(console.log, 3000, user)
 })
 
 goToRecipesButton.addEventListener('click', () => {

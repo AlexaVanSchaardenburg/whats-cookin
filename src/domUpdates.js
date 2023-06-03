@@ -139,7 +139,6 @@ const displayRecipe = (ingredientsData, event) => {
   displayIngredients(ingredientsData, recipe)
   displayInstructions(recipe) 
 
-
   recipePageImage.alt = `Photo of ${recipe.name}`
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
@@ -156,12 +155,18 @@ const displayRecipe = (ingredientsData, event) => {
 };
 
 const toggleRecipeButtons = (recipe) => {
-  const alreadySaved = !user.recipesToCook || user.recipesToCook.some(savedRecipe => savedRecipe === recipe)
+  const recipesToCook = user.recipesToCook.map(id => {
+    return recipeData.find(recipe => recipe.id === id)
+  })
   
-  if (!user.recipesToCook || !alreadySaved) {
-    showDomElement(saveRecipeButton)
+  const alreadySaved = !recipesToCook || recipesToCook.some(savedRecipe => savedRecipe === recipe)
+
+  if (alreadySaved) {
+    saveRecipeButton.innerText = 'Saved!'
+    saveRecipeButton.setAttribute('disabled', 'true');
   } else {
-    hideDomElement(saveRecipeButton);
+    saveRecipeButton.innerText = 'Save Recipe'
+    saveRecipeButton.removeAttribute('disabled');
   }
 }
 
@@ -188,23 +193,24 @@ const displayInstructions = (recipe) => {
 const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
-  hideDomElement(saveRecipeButton)
+  saveRecipeButton.innerText = 'Saved!'
+  saveRecipeButton.setAttribute('disabled', 'true');
 };
 
 const convertCurrency = () => { 
   if (currency[0].value) {
-fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from=USD&to=${currency[0].value}`)
-  .then((response) => {
-    if(!response.ok) {
-      throw new Error(`${response.status}`)
-    } else {
-      return response.json();
-    }
-})
-  .then((data) => {
-    outputCurrency.value = Object.values(data.rates)[0]
-  })
-  .catch(error => alert(`${error.message}`));
+  fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from=USD&to=${currency[0].value}`)
+    .then((response) => {
+      if(!response.ok) {
+        throw new Error(`${response.status}`)
+      } else {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      outputCurrency.value = Object.values(data.rates)[0]
+    })
+    .catch(error => alert(`${error.message}`));
   }
 };
 
