@@ -14,9 +14,10 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe,
+  // deleteSelectedRecipe,
   displaySavedRecipes,
-  convertCurrency
+  convertCurrency,
+  showLoadingButton
 } from './domUpdates.js'
 
 const currency = document.querySelectorAll('.currency')
@@ -38,6 +39,7 @@ const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
 const recipeCostSection = document.querySelector('.total-cost');
 const deleteRecipeButton = document.querySelector('.delete-recipe')
+const loadingButton = document.querySelector('.loading');
 
 let currentView = 'all'
 
@@ -51,8 +53,10 @@ saveRecipeButton.addEventListener('click', (event) => {
 
 viewSavedRecipesButton.addEventListener('click', () => {
   currentView = 'saved'
-  showRecipesPage()
-  displaySavedRecipes(user);
+  showLoadingButton();
+  setTimeout(showRecipesPage, 3000)
+  setTimeout(displaySavedRecipes, 3000, user);
+  setTimeout(console.log, 3000, user)
 })
 
 goToRecipesButton.addEventListener('click', () => {
@@ -102,5 +106,6 @@ export {
   deleteRecipeButton,
   currentView,
   currency,
-  outputCurrency
+  outputCurrency,
+  loadingButton
 }

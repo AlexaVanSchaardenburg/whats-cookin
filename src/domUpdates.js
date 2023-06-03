@@ -17,7 +17,8 @@ import {
   deleteRecipeButton,
   currentView,
   outputCurrency,
-  currency
+  currency,
+  loadingButton
 } from './scripts.js'
 
 import { 
@@ -47,6 +48,7 @@ const showDomElement = (element) => {
 const showRecipesPage = () => {
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
+  hideDomElement(loadingButton);
 
   if (currentView === 'saved') {
     showDomElement(goToRecipesButton)
@@ -77,6 +79,12 @@ const displayAllRecipes = (data) => {
       </button>`})
   }
 };
+
+const showLoadingButton = () => {
+  hideDomElement(viewSavedRecipesButton);
+  hideDomElement(goToRecipesButton);
+  showDomElement(loadingButton);
+}
 
 const displaySavedRecipes = (user) => {
   allRecipesBox.innerHTML = "";
@@ -226,5 +234,6 @@ export {
   saveSelectedRecipe,
   displaySavedRecipes,
   // deleteSelectedRecipe
-  convertCurrency
+  convertCurrency,
+  showLoadingButton
 }
