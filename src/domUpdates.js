@@ -105,6 +105,7 @@ const searchRecipeByName = (currentView, searchInput) => {
       return acc
     }, [])
     filteredNames = filterByName(userRecipes, searchInput.value);
+    showDomElement(viewSavedRecipesButton)
   } else {
     filteredNames = filterByName(recipeData, searchInput.value);
   }
@@ -114,6 +115,7 @@ const searchRecipeByName = (currentView, searchInput) => {
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
     displayAllRecipes(filteredNames);
+    showDomElement(goToRecipesButton)
   }
   searchInput.value = '';
 }
@@ -132,6 +134,7 @@ const showRecipeByTag = (currentView) => {
       return acc
     }, [])
     filteredTags = filterByTag(userRecipes, recipeTags.value);
+    showDomElement(viewSavedRecipesButton)
   } else {
     filteredTags = filterByTag(recipeData, recipeTags.value);
   }
@@ -141,6 +144,7 @@ const showRecipeByTag = (currentView) => {
     allRecipesBox.innerHTML = `<p>${filteredTags}</p>`
   } else {
     displayAllRecipes(filteredTags);
+    showDomElement(goToRecipesButton)
   }
 };
 
