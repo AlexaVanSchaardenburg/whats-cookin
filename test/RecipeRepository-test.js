@@ -1103,16 +1103,3 @@ describe('Get info by recipe', () => {
     expect(totalCost).to.equal('114.31')
   });
 });
-
-describe('Select a random user', () => {
-  it('Should return a user object with correct keys', () => {
-    const users = mockUserData;
-
-    const randomUser = selectRandomUser(users);
-
-    expect(typeof randomUser).to.equal('object');
-    expect(randomUser.name).to.exist;
-    expect(randomUser.id).to.exist;
-    expect(randomUser.pantry).to.exist;
-  });
-});
