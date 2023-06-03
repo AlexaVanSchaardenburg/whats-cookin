@@ -14,10 +14,10 @@ import {
   saveRecipeButton,
   goToRecipesButton,
   viewSavedRecipesButton,
-  deleteRecipeButton,
   currentView,
   outputCurrency,
-  currency
+  currency,
+  loadingButton
 } from './scripts.js'
 
 import { 
@@ -26,8 +26,6 @@ import {
   getInstructions,
   getIngredientNames,
   calcRecipeCost,
-  // saveRecipe,
-  deleteRecipe
 } from '../src/RecipeRepository.js';
 
 import {
@@ -47,6 +45,7 @@ const showDomElement = (element) => {
 const showRecipesPage = () => {
   showDomElement(allRecipesPage)
   hideDomElement(recipePage)
+  hideDomElement(loadingButton);
 
   if (currentView === 'saved') {
     showDomElement(goToRecipesButton)
@@ -77,6 +76,12 @@ const displayAllRecipes = (data) => {
       </button>`})
   }
 };
+
+const showLoadingButton = () => {
+  hideDomElement(viewSavedRecipesButton);
+  hideDomElement(goToRecipesButton);
+  showDomElement(loadingButton);
+}
 
 const displaySavedRecipes = (user) => {
   allRecipesBox.innerHTML = "";
@@ -134,12 +139,10 @@ const displayRecipe = (ingredientsData, event) => {
   displayIngredients(ingredientsData, recipe)
   displayInstructions(recipe) 
 
-
   recipePageImage.alt = `Photo of ${recipe.name}`
   recipePageImage.src = recipe.image;
   recipePageNameSection.innerText = recipe.name;
   saveRecipeButton.setAttribute('id', `${recipe.id}`)
-  deleteRecipeButton.setAttribute('id', `${recipe.id}`)
 
   recipeTagsSection.innerHTML = ''
   recipe.tags.forEach(tag => {
@@ -152,14 +155,18 @@ const displayRecipe = (ingredientsData, event) => {
 };
 
 const toggleRecipeButtons = (recipe) => {
-  const alreadySaved = !user.recipesToCook || user.recipesToCook.some(savedRecipe => savedRecipe === recipe)
+  const recipesToCook = user.recipesToCook.map(id => {
+    return recipeData.find(recipe => recipe.id === id)
+  })
   
-  if (!user.recipesToCook || !alreadySaved) {
-    hideDomElement(deleteRecipeButton);
-    showDomElement(saveRecipeButton)
+  const alreadySaved = !recipesToCook || recipesToCook.some(savedRecipe => savedRecipe === recipe)
+
+  if (alreadySaved) {
+    saveRecipeButton.innerText = 'Saved!'
+    saveRecipeButton.setAttribute('disabled', 'true');
   } else {
-    hideDomElement(saveRecipeButton);
-    showDomElement(deleteRecipeButton)
+    saveRecipeButton.innerText = 'Save Recipe'
+    saveRecipeButton.removeAttribute('disabled');
   }
 }
 
@@ -186,31 +193,24 @@ const displayInstructions = (recipe) => {
 const saveSelectedRecipe = (event, user, recipeData) => {
   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
   saveRecipe(user, recipe)
-  hideDomElement(saveRecipeButton)
-  // showDomElement(deleteRecipeButton)
+  saveRecipeButton.innerText = 'Saved!'
+  saveRecipeButton.setAttribute('disabled', 'true');
 };
-
-// const deleteSelectedRecipe = (event, user, recipeData) => {
-//   const recipe = recipeData.find((index) => index.id === parseInt(event.target.id))
-//   deleteRecipe(user, recipe)
-//   hideDomElement(deleteRecipeButton)
-//   showDomElement(saveRecipeButton)
-// };
 
 const convertCurrency = () => { 
   if (currency[0].value) {
-fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from=USD&to=${currency[0].value}`)
-  .then((response) => {
-    if(!response.ok) {
-      throw new Error(`${response.status}`)
-    } else {
-      return response.json();
-    }
-})
-  .then((data) => {
-    outputCurrency.value = Object.values(data.rates)[0]
-  })
-  .catch(error => alert(`${error.message}`));
+  fetch(`https://api.frankfurter.app/latest?amount=${recipeCostSection.value}&from=USD&to=${currency[0].value}`)
+    .then((response) => {
+      if(!response.ok) {
+        throw new Error(`${response.status}`)
+      } else {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      outputCurrency.value = Object.values(data.rates)[0]
+    })
+    .catch(error => alert(`${error.message}`));
   }
 };
 
@@ -225,6 +225,6 @@ export {
   showRecipeByTag,
   saveSelectedRecipe,
   displaySavedRecipes,
-  // deleteSelectedRecipe
-  convertCurrency
+  convertCurrency,
+  showLoadingButton
 }

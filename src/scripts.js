@@ -14,9 +14,9 @@ import {
   searchRecipeByName,
   showRecipeByTag,
   saveSelectedRecipe,
-  deleteSelectedRecipe,
   displaySavedRecipes,
-  convertCurrency
+  convertCurrency,
+  showLoadingButton
 } from './domUpdates.js'
 
 const currency = document.querySelectorAll('.currency')
@@ -37,7 +37,8 @@ const recipePageNameSection = document.querySelector('#recipe-name');
 const recipeTagsSection = document.querySelector('.flex-tags');
 const recipeInstructionsSection = document.querySelector('.instructions-list'); 
 const recipeCostSection = document.querySelector('.total-cost');
-const deleteRecipeButton = document.querySelector('.delete-recipe')
+const loadingButton = document.querySelector('.loading');
+const logo = document.querySelector('.header-image');
 
 let currentView = 'all'
 
@@ -51,11 +52,18 @@ saveRecipeButton.addEventListener('click', (event) => {
 
 viewSavedRecipesButton.addEventListener('click', () => {
   currentView = 'saved'
-  showRecipesPage()
-  displaySavedRecipes(user);
+  showLoadingButton();
+  setTimeout(showRecipesPage, 3000)
+  setTimeout(displaySavedRecipes, 3000, user);
 })
 
 goToRecipesButton.addEventListener('click', () => {
+  currentView = 'all'
+  showRecipesPage()
+  displayAllRecipes(recipeData)
+})
+
+logo.addEventListener('click', () => {
   currentView = 'all'
   showRecipesPage()
   displayAllRecipes(recipeData)
@@ -81,10 +89,6 @@ allRecipesBox.addEventListener('click', (event) => {
   };
 });
 
-deleteRecipeButton.addEventListener('click', (event) => {
-  deleteSelectedRecipe(event, user, recipeData);
-})
-
 export {
   goToRecipesButton, 
   allRecipesPage, 
@@ -99,8 +103,8 @@ export {
   recipeTags,
   saveRecipeButton,
   viewSavedRecipesButton,
-  deleteRecipeButton,
   currentView,
   currency,
-  outputCurrency
+  outputCurrency,
+  loadingButton
 }

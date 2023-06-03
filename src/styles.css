@@ -30,7 +30,8 @@ input {
   height: 1.5rem;
 }
 
-button {
+button,
+.header-image {
   border-style: none;
   cursor: pointer;
 }
@@ -216,10 +217,14 @@ aside {
   color: white
 }
 
-.save-recipe, 
-.delete-recipe {
+.save-recipe {
   border-radius: 8px;
   padding: 5px 30px;
+  opacity: 1;
+}
+
+.save-recipe:disabled {
+  opacity: 0.8;
 }
 
 .instructions {
