@@ -96,7 +96,16 @@ const displaySavedRecipes = (user) => {
 const searchRecipeByName = (currentView, searchInput) => {
   let filteredNames;
   if (currentView === 'saved') {
-    filteredNames = filterByName(user.recipesToCook, searchInput.value);
+    let userRecipes = user.recipesToCook.reduce((acc, recipeId) => {
+      recipeData.forEach((recipe) => {
+        if (recipe.id === recipeId) {
+          acc.push(recipe)
+        }
+      })
+      return acc
+    }, [])
+    filteredNames = filterByName(userRecipes, searchInput.value);
+    showDomElement(viewSavedRecipesButton)
   } else {
     filteredNames = filterByName(recipeData, searchInput.value);
   }
@@ -106,6 +115,7 @@ const searchRecipeByName = (currentView, searchInput) => {
     allRecipesBox.innerHTML = `<p>${filteredNames}</p>`
   } else {
     displayAllRecipes(filteredNames);
+    showDomElement(goToRecipesButton)
   }
   searchInput.value = '';
 }
@@ -115,7 +125,16 @@ const showRecipeByTag = (currentView) => {
 
   let filteredTags;
   if (currentView === 'saved') {
-    filteredTags = filterByTag(user.recipesToCook, recipeTags.value);
+    let userRecipes = user.recipesToCook.reduce((acc, recipeId) => {
+      recipeData.forEach((recipe) => {
+        if (recipe.id === recipeId) {
+          acc.push(recipe)
+        }
+      })
+      return acc
+    }, [])
+    filteredTags = filterByTag(userRecipes, recipeTags.value);
+    showDomElement(viewSavedRecipesButton)
   } else {
     filteredTags = filterByTag(recipeData, recipeTags.value);
   }
@@ -125,6 +144,7 @@ const showRecipeByTag = (currentView) => {
     allRecipesBox.innerHTML = `<p>${filteredTags}</p>`
   } else {
     displayAllRecipes(filteredTags);
+    showDomElement(goToRecipesButton)
   }
 };
 
