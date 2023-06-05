@@ -65,9 +65,15 @@ const saveRecipe = (userData, recipeData) => {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => response.json())
+  .then((response) => {
+    if(!response.ok) {
+      throw new Error(`${response.status}`)
+    } else {
+      return response.json();
+    }
+  })
   .then(getUpdatedUsers(userData.id))
-  .catch(err => alert(err));
+  .catch(error => alert(`${error.message}`));
 };
 
 const getUpdatedUsers = (id) => {
@@ -78,7 +84,7 @@ const getUpdatedUsers = (id) => {
     user = usersData.find(user => user.id === id)
     return user
   })
-  .catch(err => alert(err))
+  .catch(error => alert(`${error.message}`))
 }
 
 export {
