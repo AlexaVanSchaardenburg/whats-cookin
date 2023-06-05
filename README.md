@@ -2,7 +2,7 @@
 
 ## Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
-We are building an interactive web application that allows users to peruse a selection of recipes, view the ingredients, cooking instructions, and total cost of ingredients for a particular recipe. From the recipe page, users can save their favorite recipes to a collection and remove them from the collection at the click of a button. Users can also search the full recipe list or their saved recipes by keywords included in the recipe name, or they can filter by tag.
+We are building an interactive web application that allows users to peruse a selection of recipes, view the ingredients, cooking instructions, and total cost of ingredients for a particular recipe. From the recipe page, users can save their favorite recipes to a collection and remove them from the collection at the click of a button. Users can also search the full recipe list or their saved recipes by keywords included in the recipe name, or they can filter by tag. When viewing a recipe a user can also convert the total cost of the ingredients from USD to a variety of currencies. 
 
 ## Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
