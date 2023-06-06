@@ -15,7 +15,7 @@ We are building an interactive web application that allows users to peruse a sel
 
 ## Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
-![alt](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzczNjBiYjQ0MGViMGQ1Mzk3OTQzM2UxZTViNTI2NjhkZDUzMWQ5MiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/ySQPo5WMdRpIQo1w6F/giphy.gif)
+![alt](https://media.giphy.com/media/0J8IuO67yolevI81CV/giphy.gif)
 
 ## Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
